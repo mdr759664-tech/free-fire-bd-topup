@@ -6,61 +6,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600;700&display=swap" rel="stylesheet">
 <style>body{font-family:'Hind Siliguri',sans-serif}</style>
 </head>
-<body class="bg-[#f5f5f5]">
+<body class="bg-[#f5f5f5] pb-20">
 <!-- Header -->
-<div class="bg-[#e91e63] text-white p-3 text-center sticky top-0 z-50">
+<div class="bg-[#e91e63] text-white p-3 text-center sticky top-0 z-50 shadow">
 <h1 class="text-2xl font-black">ULTRA TOP UP BD</h1>
-<p class="text-xs">⚡ 1 Minute Auto Delivery | Trusted BD Top Up</p>
+<p class="text-xs">⚡ 1 Minute Auto Delivery | Owner: 01837450067</p>
 </div>
 
 <!-- Payment Alert -->
-<div class="bg-yellow-100 border-l-4 border-yellow-500 p-2 m-3 rounded text-sm">
-<b>01837450067</b> - bKash/Nagad/Rocket Personal | 150 টাকার উপরে Send Money | <b>MasterCard/Visa/Dollar Any Currency</b>
+<div class="bg-yellow-100 border-l-4 border-yellow-500 p-2 m-3 rounded text-sm font-bold">
+💰 01837450067 - bKash/Nagad/Rocket Personal | 150৳+ Send Money | MasterCard/Visa/Dollar Supported
 </div>
 
-<!-- Packages -->
+<!-- WhatsApp Channel Promo - NEW -->
+<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank" class="block bg-green-500 text-white m-3 p-3 rounded-2xl text-center font-bold shadow animate-pulse">
+📢 ULTRA TOP UP BD WhatsApp Channel Join করো - Click Here! ✅<br><span class="text-xs">Offer & Diamond Giveaway Update পেতে!</span>
+</a>
+
+<!-- Packages FFbazar Style -->
 <div class="grid grid-cols-2 gap-3 p-3">
-<div class="bg-white rounded-2xl p-3 shadow border-t-4 border-[#e91e63]"><h3 class="font-bold">UID TOP UP</h3><p class="text-xs">25 Diamond = 30 Taka</p><button class="bg-[#e91e63] text-white w-full mt-2 py-2 rounded-xl text-sm">Buy Now</button></div>
-<div class="bg-white rounded-2xl p-3 shadow border-t-4 border-blue-500"><h3 class="font-bold">Weekly / Monthly</h3><p class="text-xs">Weekly = 160 Taka</p><button class="bg-blue-500 text-white w-full mt-2 py-2 rounded-xl text-sm">Buy Now</button></div>
-<div class="bg-white rounded-2xl p-3 shadow"><h3 class="font-bold">Weekly Lite</h3><p class="text-xs">35 Diamond</p><button class="bg-[#e91e63] text-white w-full mt-2 py-2 rounded-xl text-sm">Buy</button></div>
-<div class="bg-white rounded-2xl p-3 shadow"><h3 class="font-bold">Level Up Pass</h3><p class="text-xs">Level 30</p><button class="bg-green-500 text-white w-full mt-2 py-2 rounded-xl text-sm">Buy</button></div>
+<div class="bg-white rounded-2xl p-3 shadow border-t-4 border-[#e91e63]"><h3 class="font-bold">UID TOP UP BD</h3><p class="text-xs">25 Dia = 30 TK</p><button onclick="selectPack('25 Diamond - 30 TK')" class="bg-[#e91e63] text-white w-full mt-2 py-2 rounded-xl text-sm">Buy Now</button></div>
+<div class="bg-white rounded-2xl p-3 shadow border-t-4 border-blue-500"><h3 class="font-bold">Weekly / Monthly</h3><p class="text-xs">Weekly = 160 TK</p><button onclick="selectPack('Weekly - 160 TK')" class="bg-blue-500 text-white w-full mt-2 py-2 rounded-xl text-sm">Buy Now</button></div>
+<div class="bg-white rounded-2xl p-3 shadow"><h3 class="font-bold">Weekly Lite</h3><p class="text-xs">35 Diamond</p><button onclick="selectPack('Weekly Lite - 45 TK')" class="bg-[#e91e63] text-white w-full mt-2 py-2 rounded-xl text-sm">Buy</button></div>
+<div class="bg-white rounded-2xl p-3 shadow"><h3 class="font-bold">Level Up Pass</h3><p class="text-xs">Level 30 Unlock</p><button onclick="selectPack('Level Up Pass - 160 TK')" class="bg-green-500 text-white w-full mt-2 py-2 rounded-xl text-sm">Buy</button></div>
+<div class="bg-white rounded-2xl p-3 shadow"><h3 class="font-bold">FF Like BD</h3><p class="text-xs">100 Like = 20 TK</p><button onclick="selectPack('100 Likes - 20 TK')" class="bg-purple-500 text-white w-full mt-2 py-2 rounded-xl text-sm">Buy</button></div>
+<div class="bg-white rounded-2xl p-3 shadow"><h3 class="font-bold">Indonesia Server</h3><p class="text-xs">70 Dia = 100 TK</p><button onclick="selectPack('70 Diamond ID - 100 TK')" class="bg-orange-500 text-white w-full mt-2 py-2 rounded-xl text-sm">Buy</button></div>
 </div>
 
 <!-- Order Form -->
-<div class="bg-white m-3 p-4 rounded-2xl shadow">
-<h2 class="font-black text-[#e91e63]">💎 Order Now - ULTRA TOP UP BD</h2>
-<input id="uid" placeholder="Free Fire UID দাও" class="w-full border-2 p-3 rounded-xl mt-3">
-<select id="pack" class="w-full border-2 p-3 rounded-xl mt-2">
-<option>25 Diamond - 30 Taka</option>
-<option>50 Diamond - 55 Taka</option>
-<option>115 Diamond - 115 Taka</option>
-<option>240 Diamond - 230 Taka</option>
-<option>Weekly - 160 Taka</option>
-<option>Monthly - 740 Taka</option>
-</select>
+<div id="orderBox" class="bg-white m-3 p-4 rounded-2xl shadow border-2 border-[#e91e63]">
+<h2 class="font-black text-[#e91e63] text-lg">💎 Order Now - ULTRA TOP UP BD</h2>
+<input id="uid" placeholder="Free Fire UID দাও (যেমন: 123456789)" class="w-full border-2 p-3 rounded-xl mt-3">
+<input id="packInput" placeholder="Package Select করো" class="w-full border-2 p-3 rounded-xl mt-2 bg-gray-100">
 <select id="pay" class="w-full border-2 p-3 rounded-xl mt-2">
 <option>bKash Personal - 01837450067</option>
-<option>Nagad - 01837450067</option>
-<option>Rocket - 01837450067</option>
-<option>Visa / MasterCard / Dollar</option>
+<option>Nagad Personal - 01837450067</option>
+<option>Rocket Personal - 01837450067</option>
+<option>Visa / MasterCard / Dollar - Any Currency</option>
 </select>
-<input id="trx" placeholder="TrxID / Last 4 Digit" class="w-full border-2 p-3 rounded-xl mt-2">
-<button onclick="order()" class="bg-[#e91e63] text-white w-full py-3 rounded-xl font-bold mt-3">✅ Confirm Order - ULTRA TOP UP BD</button>
-<p class="text-xs text-center mt-2">আগে 01837450067 এ টাকা পাঠাও → Pending → আমরা 1 মিনিটে Done করব</p>
+<input id="trx" placeholder="TrxID / Last 4 Digit (bKash)" class="w-full border-2 p-3 rounded-xl mt-2">
+<button onclick="order()" class="bg-[#e91e63] text-white w-full py-3 rounded-xl font-black mt-3 text-lg">✅ Confirm Order</button>
+<p class="text-xs text-center mt-2 text-gray-600">আগে 01837450067 এ টাকা পাঠাও → Pending → আমরা 1 মিনিটে Done করব</p>
+<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank" class="block text-center text-green-600 text-xs mt-2 font-bold">📲 Channel Join না করলে Offer মিস করবা!</a>
+</div>
+
+<!-- Social -->
+<div class="m-3 grid grid-cols-3 gap-2 text-center text-xs">
+<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank" class="bg-green-500 text-white p-2 rounded-xl">WhatsApp<br>Channel</a>
+<a href="https://wa.me/8801837450067" target="_blank" class="bg-green-600 text-white p-2 rounded-xl">WhatsApp<br>Direct</a>
+<a href="admin.html" class="bg-gray-800 text-white p-2 rounded-xl">Admin<br>Panel</a>
 </div>
 
 <!-- Bottom Menu -->
-<div class="fixed bottom-0 w-full bg-white border-t flex justify-around p-2 text-xs">
-<div>🏠<br>Home</div><div>🎥<br>Tutorial</div><div class="text-[#e91e63] font-bold">💎<br>Top Up</div><div>📞<br>Contact</div>
+<div class="fixed bottom-0 w-full bg-white border-t flex justify-around p-2 text-xs font-bold z-50">
+<div class="text-center">🏠<br>Home</div><div class="text-center">🎥<br>Tutorial</div><div class="text-center text-[#e91e63]">💎<br>Top Up</div><div class="text-center"><a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank">📢<br>Channel</a></div>
 </div>
 
 <script>
+function selectPack(p){document.getElementById('packInput').value=p;document.getElementById('orderBox').scrollIntoView({behavior:'smooth'});}
 function order(){
+let uid=document.getElementById('uid').value;
+let pack=document.getElementById('packInput').value;
+let pay=document.getElementById('pay').value;
+let trx=document.getElementById('trx').value;
+if(!uid||!pack||!trx){alert('UID, Package, TrxID সব দাও!');return;}
 let o=JSON.parse(localStorage.getItem('ff')||'[]');
-o.push({uid:uid.value,pack:pack.value,pay:pay.value,trx:trx.value,status:'Pending'});
+o.push({uid:uid,pack:pack,pay:pay,trx:trx,status:'Pending',time:new Date().toLocaleString()});
 localStorage.setItem('ff',JSON.stringify(o));
-alert('ULTRA TOP UP BD - Order Pending! 01837450067 এ টাকা পাঠালে 1 মিনিটে Done হবে!');
-window.open(`https://wa.me/8801837450067?text=ULTRA TOP UP BD Order - UID:${uid.value} Pack:${pack.value} Trx:${trx.value}`);
+alert('ULTRA TOP UP BD - Order Pending! 01837450067 এ টাকা পাঠালে 1 মিনিটে Done হবে! Channel Join করো: https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J');
+window.open(`https://wa.me/8801837450067?text=*ULTRA TOP UP BD Order*%0AUID:${uid}%0APack:${pack}%0APay:${pay}%0ATrx:${trx}%0A%0AChannel: https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J`);
 }
 </script>
 </body></html>
