@@ -30,13 +30,12 @@
 
 <div id="loginPage" class="fixed inset-0 bg-white z-[80] p-6">
 <p class="font-black text-[32px] leading-none mt-10">Welcome<br><span class="text-[#e91e63]">Back</span></p>
-<div class="border-2 rounded-[20px] p-4 mt-6"><input id="loginEmail" type="email" placeholder="Gmail - example@gmail.com" class="w-full border-2 p-3.5 rounded-xl text-sm"><input id="loginName" type="text" placeholder="Name" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><button onclick="manualLogin()" class="w-full mt-4 bg-black text-white rounded-xl py-4 font-black">Continue →</button><p class="text-[10px] text-center text-gray-400 mt-2">Gmail প্রাইভেট থাকবে, কেউ দেখবে না</p></div>
+<div class="border-2 rounded-[20px] p-4 mt-6"><input id="loginEmail" type="email" placeholder="Gmail - example@gmail.com" class="w-full border-2 p-3.5 rounded-xl text-sm"><input id="loginName" type="text" placeholder="Name" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><button onclick="manualLogin()" class="w-full mt-4 bg-black text-white rounded-xl py-4 font-black">Continue →</button><p class="text-[10px] text-center text-gray-400 mt-2">Gmail প্রাইভেট থাকবে</p></div>
 </div>
 
 <div id="tab-home">
-<div id="noticeBox" class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white flex gap-2"><div class="flex-1"><p class="font-bold text-[13px]">Notice:</p><p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘন্টাই টপআপ চালু থাকে। সকল টপআপ AI দিয়ে ৩০ সেকেন্ডের ভিতরে দেওয়া হয়। পাচ্ছেন Auto Delivery সুবিধা।</p></div><button onclick="noticeBox.style.display='none'" class="bg-black/20 w-6 h-6 rounded-full text-xs">✕</button></div>
+<div id="noticeBox" class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white flex gap-2"><div class="flex-1"><p class="font-bold text-[13px]">Notice:</p><p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘন্টাই টপআপ চালু থাকে। সকল টপআপ AI দিয়ে ৩০ সেকেন্ডের ভিতরে দেওয়া হয়।</p></div><button onclick="noticeBox.style.display='none'" class="bg-black/20 w-6 h-6 rounded-full text-xs">✕</button></div>
 
-<!-- BANNER WITH YOUR NAME + WHATSAPP -->
 <div class="mx-2.5 mt-2.5 rounded-xl overflow-hidden h-44 bg-black relative">
 <img src="banner.jpg" onerror="this.src='https://i.ibb.co/3yQ6p9h/pubg.jpg'" class="w-full h-full object-cover">
 <div class="absolute inset-0 bg-black/20 flex items-end p-3">
@@ -53,61 +52,83 @@
 
 <p class="font-black text-center text-[18px] mt-6">Spacial offer</p>
 <div class="grid grid-cols-3 gap-2.5 mt-3">
-<div class="text-center"><div class="bg-black rounded-xl h-28 flex items-center justify-center border-2 border-[#00ff00]"><p class="text-yellow-300 font-black text-[10px]">প্রিমিয়াম<br>ইউজার অফার</p></div><p class="text-[10px] font-bold mt-1">Premium Users - ULTRA</p></div>
+<div class="text-center"><div class="bg-black rounded-xl h-28 flex items-center justify-center border-2 border-[#00ff00]"><p class="text-yellow-300 font-black text-[10px]">প্রিমিয়াম<br>ইউজার অফার</p></div><p class="text-[10px] font-bold mt-1">Premium Users</p></div>
 <div class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-[11px]">FRIDAY<br>OFFER</p></div><p class="text-[10px] font-bold mt-1">Friday Offer</p></div>
 <div class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-[12px]">GET FREE 25💎</p></div><p class="text-[10px] font-bold mt-1">Free 25 Diamond</p></div>
 </div>
 
 <p class="font-black text-center text-[20px] mt-8">FF TOPUP</p>
 <div class="grid grid-cols-3 gap-2.5 mt-3">
-<div onclick="orderNow('FF TopUp [BD]',40)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex flex-col items-center justify-center"><p class="text-white font-black text-[11px]">আইডি কোড<br>TOPUP</p></div><p class="text-[11px] font-bold mt-1">FF TopUp [BD]</p></div>
-<div onclick="orderNow('Weekly/Monthly',780)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex flex-col items-center justify-center"><p class="text-white font-black text-[11px]">WEEKLY<br>মান্থলি</p></div><p class="text-[11px] font-bold mt-1">Weekly/Monthly Offer</p></div>
-<div onclick="orderNow('UNIPIN VOUCHER',350)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">UniPin<br>VOUCHER</p></div><p class="text-[11px] font-bold mt-1">UNIPIN VOUCHER BD</p></div>
-<div onclick="orderNow('Weekly Lite',42)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">WEEKLY<br>লাইট</p></div><p class="text-[11px] font-bold mt-1">Weekly Lite</p></div>
-<div onclick="orderNow('Level Up Pass',105)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">লেভেল<br>আপ পাস</p></div><p class="text-[11px] font-bold mt-1">Level Up Pass (BD)</p></div>
-<div onclick="orderNow('Indonesia Server',200)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">ইন্দোনেশিয়া<br>TOPUP</p></div><p class="text-[11px] font-bold mt-1">Indonesia Server [UID]</p></div>
-<div onclick="orderNow('FF Like',50)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex flex-col items-center justify-center"><p class="text-white font-black">FREEFIRE<br>লাইক</p></div><p class="text-[11px] font-bold mt-1">FF Like</p></div>
+<div onclick="orderNow('FF TopUp [BD]',77)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex flex-col items-center justify-center"><p class="text-white font-black text-[11px]">আইডি কোড<br>TOPUP</p></div><p class="text-[11px] font-bold mt-1">FF TopUp [BD]</p></div>
+<div onclick="orderNow('Weekly/Monthly Offer',770)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex flex-col items-center justify-center"><p class="text-white font-black text-[11px]">WEEKLY<br>মান্থলি</p></div><p class="text-[11px] font-bold mt-1">Weekly/Monthly Offer</p></div>
+<div onclick="orderNow('UNIPIN VOUCHER BD',1150)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">UniPin<br>VOUCHER</p></div><p class="text-[11px] font-bold mt-1">UNIPIN VOUCHER BD</p></div>
+<div onclick="orderNow('Weekly Lite',39)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">WEEKLY<br>লাইট</p></div><p class="text-[11px] font-bold mt-1">Weekly Lite</p></div>
+<div onclick="orderNow('Level Up Pass (BD Server)',105)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">লেভেল<br>আপ পাস</p></div><p class="text-[11px] font-bold mt-1">Level Up Pass (BD)</p></div>
+<div onclick="orderNow('Indonesia Server [UID]',115)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex items-center justify-center"><p class="text-white font-black">ইন্দোনেশিয়া<br>TOPUP</p></div><p class="text-[11px] font-bold mt-1">Indonesia Server [UID]</p></div>
+<div onclick="orderNow('FF Like',25)" class="text-center"><div class="gg-green rounded-xl h-[125px] flex flex-col items-center justify-center"><p class="text-white font-black">FREEFIRE<br>লাইক</p></div><p class="text-[11px] font-bold mt-1">FF Like</p></div>
 </div>
 
 <p class="font-black text-center text-[20px] mt-8">PUBG Mobile</p>
-<div class="grid grid-cols-3 gap-2.5 mt-3"><div onclick="orderNow('PUBG UC',500)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden"><img src="https://i.ibb.co/3yQ6p9h/pubg.jpg" class="w-full h-full object-cover"></div><p class="text-[11px] font-bold mt-1">PUBG UC - ULTRA</p></div></div>
+<div class="grid grid-cols-3 gap-2.5 mt-3"><div onclick="orderNow('PUBG UC',115)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden bg-black flex items-center justify-center"><p class="text-white font-black">PUBG UC</p></div><p class="text-[11px] font-bold mt-1">PUBG UC - ULTRA</p></div></div>
 
 <div class="bg-white mt-8 rounded-t-[20px] p-4 shadow border"><div class="flex gap-2 items-center"><div class="bg-pink-50 p-2 rounded-xl">👜</div><div><p class="font-bold text-sm">Recent Orders</p><p class="text-green-600 text-[11px] font-bold">● Live - ULTRA TOP UP BD</p></div></div><div id="recentOrders" class="mt-4 space-y-3"></div></div>
 </div>
 </div>
 
-<div id="tab-account" class="hide">
-<div class="p-2.5">
-<div class="rank-card rounded-[20px] p-5 text-white text-center">
-<p class="text-[12px] tracking-widest opacity-70">CURRENT RANK</p>
-<p id="rankName" class="font-black text-[32px] mt-1">Bronze</p>
-<p id="rankDesc" class="text-[13px] mt-1 opacity-90">Unlock your journey!</p>
-<div class="flex justify-between text-[12px] mt-5"><span id="rankRange">0 - 100 Tk</span><span id="rankPercent">0%</span></div>
-<div class="bg-white/30 h-3 rounded-full mt-2 overflow-hidden"><div id="rankProgress" class="progress-bg h-full rounded-full" style="width:10%"></div></div>
-<p id="rankNeed" class="text-[12px] mt-2 opacity-80">Need <span class="font-bold">100 Tk</span> to unlock Silver</p>
-<div class="bg-white/20 rounded-2xl p-4 mt-6 text-left flex gap-3"><div class="bg-white/20 w-10 h-10 rounded-xl flex items-center justify-center">✨</div><div><p class="font-bold text-sm">Unlock More Premium Products - ULTRA TOP UP BD</p><p class="text-[11px] opacity-80 mt-1">Top up more to increase your Total Spend and Rank.</p></div></div>
+<!-- GG BAZAR LIKE PRODUCT DETAIL PAGE -->
+<div id="tab-product" class="hide">
+<div class="bg-[#f0f4ff] p-2.5">
+<button onclick="switchTab('home')" class="bg-white px-3 py-1.5 rounded-full text-[12px] font-bold border mb-2">← Back to Home</button>
+<div class="bg-gradient-to-r from-[#e8ffe8] to-[#f0fff0] rounded-2xl p-3 flex gap-3 items-center border border-green-100">
+<div id="productIcon" class="w-20 h-20 bg-[#00c853] rounded-xl flex items-center justify-center text-white font-black text-[10px] text-center p-1">FF Like</div>
+<div><p id="productTitle" class="font-black text-lg">FF Like</p><div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px] font-bold mt-1 inline-block">⚡ ২ সেকেন্ডে টপআপ</div></div>
 </div>
 
-<div class="grid grid-cols-2 gap-2.5 mt-3">
-<div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-blue-50 w-10 h-10 rounded-lg flex items-center justify-center">📋</div><div><p class="text-[11px] text-gray-500">ORDERS</p><p id="statOrders" class="font-black text-lg">0</p></div></div>
-<div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-orange-50 w-10 h-10 rounded-lg flex items-center justify-center">$</div><div><p class="text-[11px] text-gray-500">TOTAL SPEND</p><p id="statTotal" class="font-black text-lg">0 Tk</p></div></div>
-<div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-red-50 w-10 h-10 rounded-lg flex items-center justify-center">📅</div><div><p class="text-[11px] text-gray-500">WEEKLY SPEND</p><p id="statWeekly" class="font-black text-lg">0 Tk</p></div></div>
-<div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-green-50 w-10 h-10 rounded-lg flex items-center justify-center">⭐</div><div><p class="text-[11px] text-gray-500">RANK</p><p id="statRank" class="font-black text-lg">Bronze</p></div></div>
+<div id="premiumLock" class="mt-3 rounded-2xl border-2 border-green-400 overflow-hidden">
+<div class="bg-[#00c853] text-white p-2.5 flex items-center gap-2"><span class="bg-white/20 w-6 h-6 rounded-full flex items-center justify-center text-xs">🔒</span><p class="font-bold text-[12px] flex-1">এই প্রোডাক্টটি শুধু বিশেষ ইউজারদের জন্য আনলক হবে</p><span class="bg-[#7b1fa2] text-white text-[9px] px-2 py-1 rounded-full">👑 বিশেষ অফার</span></div>
+<div class="bg-[#fff8e1] p-3">
+<p class="text-[12px]">আপনার একাউন্ট থেকে মোট <span class="bg-orange-100 text-orange-600 font-bold px-2 py-0.5 rounded">৳10000</span> বা তার বেশি টপআপ করলেই এই অফারটি আপনার জন্য স্থায়ীভাবে আনলক হয়ে যাবে।</p>
+<div class="grid grid-cols-2 gap-3 mt-3">
+<div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">আপনার মোট খরচ</p><p class="font-black text-green-600 text-lg" id="lockSpend">৳0</p></div>
+<div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">আনলক টার্গেট</p><p class="font-black text-orange-500 text-lg">৳10000</p></div>
 </div>
-
-<div class="bg-white rounded-xl mt-3 p-4 border">
-<p class="text-[#00c853] font-black text-xs tracking-widest">RANK JOURNEY - ULTRA TOP UP BD</p>
-<div id="rankJourney" class="mt-4 space-y-3"></div>
-</div>
-
-<div class="bg-white rounded-xl mt-3 p-4 border text-center">
-<img id="accPhoto" src="https://i.pravatar.cc/100?img=12" class="w-16 h-16 rounded-full mx-auto"><p class="font-bold mt-2"><span id="accName">User</span> <span class="bg-green-100 text-green-700 text-[9px] px-2 py-0.5 rounded-full">● Verified</span></p><p class="text-[11px] text-gray-500">PIN: <span id="accPin">00000</span></p>
-<div class="bg-gray-50 rounded-xl p-3 mt-3 text-left"><p class="text-xs text-gray-500">Wallet Balance</p><p class="text-2xl font-black">Tk <span id="wallet">5</span></p></div>
-<button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-3">Logout</button>
-</div>
+<div class="flex justify-between mt-3 text-[12px]"><span>অগ্রগতি</span><span class="bg-orange-100 px-2 rounded-full" id="lockPercent">0%</span></div>
+<div class="bg-orange-100 h-2.5 rounded-full mt-1"><div id="lockBar" class="bg-[#00c853] h-full rounded-full" style="width:5%"></div></div>
+<p class="text-[11px] mt-2 bg-orange-50 p-2 rounded-lg">⚠️ আরও <span id="lockNeed">10000</span> টাকার টপআপ করলেই ভিআইপি এক্সেস আনলক হবে!</p>
 </div>
 </div>
 
+<div class="bg-white rounded-xl mt-3 border shadow-sm">
+<div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">1</div><p class="font-black">Select Recharge</p></div>
+<div id="rechargeOptions" class="p-3 grid grid-cols-2 gap-2"></div>
+<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank" class="block p-3 text-[#00c853] font-bold text-sm">🔗 কিভাবে অর্ডার করবেন? →</a>
+</div>
+
+<div class="bg-white rounded-xl mt-3 border shadow-sm">
+<div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">2</div><p class="font-black">Account Info</p></div>
+<div class="p-3">
+<p class="font-bold text-sm text-[#0a1931]">এখানে গেমের আইডি কোড দিন</p>
+<input id="detailUID" type="text" placeholder="এখানে গেমের আইডি কোড দিন" class="w-full border-2 border-blue-200 p-3.5 rounded-xl mt-2 text-sm focus:border-[#00c853] outline-none">
+<div class="mt-3 bg-[#00c853] text-white py-3 rounded-xl font-bold text-center text-sm">আপনার গেম আইডির নাম চেক করুন</div>
+</div>
+</div>
+
+<div class="bg-white rounded-xl mt-3 border shadow-sm mb-24">
+<div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">3</div><p class="font-black">Select one option</p></div>
+<div class="p-3 grid grid-cols-2 gap-3">
+<div onclick="selectPay('wallet')" id="payWallet" class="border-2 border-[#00c853] rounded-xl p-2 relative bg-white"><div class="absolute top-0 right-0 bg-red-600 text-white text-[8px] px-1 rounded-bl">✓</div><div class="h-20 flex items-center justify-center font-black text-sm"><span class="text-[#00c853]">G</span> ULTRA TOP UP BD</div><p class="bg-gray-200 text-[11px] p-1.5 mt-2 rounded font-bold">Wallet Pay</p></div>
+<div onclick="selectPay('instant')" id="payInstant" class="border-2 border-gray-200 rounded-xl p-2 relative bg-white"><div class="h-20 flex flex-col items-center justify-center"><p class="font-bold text-[10px]">bKash | নগদ | রকেট</p><p class="text-[9px] text-gray-500">Instant Pay</p></div><p class="bg-gray-200 text-[11px] p-1.5 mt-2 rounded font-bold">Instant Pay</p></div>
+</div>
+<div class="px-3 pb-3 space-y-2 text-[12px]">
+<p>ⓘ আপনার অ্যাকাউন্ট ব্যালেন্স <span class="text-green-600 font-bold" id="detailBalance">৳ 5.00</span> ↻</p>
+<p>ⓘ প্রোডাক্ট কিনতে আপনার প্রয়োজন <span class="text-green-600 font-bold" id="detailNeed">৳ 50</span> ।</p>
+</div>
+<button onclick="confirmDetailOrder()" class="bg-[#00c853] text-white w-full py-4 rounded-xl font-black text-lg mt-2">Buy Now - ULTRA TOP UP BD</button>
+</div>
+</div>
+</div>
+
+<div id="tab-account" class="hide"><div class="p-2.5"><div class="rank-card rounded-[20px] p-5 text-white text-center"><p class="text-[12px] tracking-widest opacity-70">CURRENT RANK</p><p id="rankName" class="font-black text-[32px] mt-1">Bronze</p><p id="rankDesc" class="text-[13px] mt-1 opacity-90">Unlock your journey!</p><div class="flex justify-between text-[12px] mt-5"><span id="rankRange">0 - 100 Tk</span><span id="rankPercent">0%</span></div><div class="bg-white/30 h-3 rounded-full mt-2 overflow-hidden"><div id="rankProgress" class="progress-bg h-full rounded-full" style="width:10%"></div></div><p id="rankNeed" class="text-[12px] mt-2 opacity-80">Need <span class="font-bold">100 Tk</span> to unlock Silver</p><div class="bg-white/20 rounded-2xl p-4 mt-6 text-left flex gap-3"><div class="bg-white/20 w-10 h-10 rounded-xl flex items-center justify-center">✨</div><div><p class="font-bold text-sm">Unlock More Premium Products - ULTRA TOP UP BD</p><p class="text-[11px] opacity-80 mt-1">Top up more to increase your Total Spend and Rank.</p></div></div></div><div class="grid grid-cols-2 gap-2.5 mt-3"><div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-blue-50 w-10 h-10 rounded-lg flex items-center justify-center">📋</div><div><p class="text-[11px] text-gray-500">ORDERS</p><p id="statOrders" class="font-black text-lg">0</p></div></div><div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-orange-50 w-10 h-10 rounded-lg flex items-center justify-center">$</div><div><p class="text-[11px] text-gray-500">TOTAL SPEND</p><p id="statTotal" class="font-black text-lg">0 Tk</p></div></div><div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-red-50 w-10 h-10 rounded-lg flex items-center justify-center">📅</div><div><p class="text-[11px] text-gray-500">WEEKLY SPEND</p><p id="statWeekly" class="font-black text-lg">0 Tk</p></div></div><div class="bg-white rounded-xl p-3 border flex gap-2 items-center"><div class="bg-green-50 w-10 h-10 rounded-lg flex items-center justify-center">⭐</div><div><p class="text-[11px] text-gray-500">RANK</p><p id="statRank" class="font-black text-lg">Bronze</p></div></div></div><div class="bg-white rounded-xl mt-3 p-4 border"><p class="text-[#00c853] font-black text-xs tracking-widest">RANK JOURNEY - ULTRA TOP UP BD</p><div id="rankJourney" class="mt-4 space-y-3"></div></div><div class="bg-white rounded-xl mt-3 p-4 border text-center"><img id="accPhoto" src="https://i.pravatar.cc/100?img=12" class="w-16 h-16 rounded-full mx-auto"><p class="font-bold mt-2"><span id="accName">User</span> <span class="bg-green-100 text-green-700 text-[9px] px-2 py-0.5 rounded-full">● Verified</span></p><p class="text-[11px] text-gray-500">PIN: <span id="accPin">00000</span></p><div class="bg-gray-50 rounded-xl p-3 mt-3 text-left"><p class="text-xs text-gray-500">Wallet Balance</p><p class="text-2xl font-black">Tk <span id="wallet">5</span></p></div><button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-3">Logout</button></div></div></div>
 <div id="tab-orders" class="hide p-2.5"><p class="font-black text-xl">My Orders - ULTRA TOP UP BD</p><div id="ordersList" class="space-y-3 mt-3"></div></div>
 <div id="tab-addmoney" class="hide p-4"><div class="bg-white rounded-xl p-4 shadow border"><p class="font-black">Add Money - ULTRA TOP UP BD</p><p class="text-xs text-gray-500">Wallet: <span id="amBal">5</span>৳ - <span id="amName">User</span></p><input id="addAmt" type="number" placeholder="Amount" class="w-full border-2 p-3 rounded-xl mt-3"><input id="trxId" type="text" placeholder="TrxID - bKash 01837450067" class="w-full border-2 p-3 rounded-xl mt-2"><button onclick="doAddMoney()" class="bg-[#00c853] text-white w-full py-3 rounded-xl font-black mt-3">Add Money</button></div></div>
 <div id="tab-codes" class="hide p-8 text-center"><div class="bg-white rounded-xl p-8 shadow border"><p class="font-black">My Codes</p><p class="text-sm mt-2">No code data found !</p></div></div>
@@ -115,11 +136,7 @@
 <div id="popupGift" class="fixed inset-0 bg-black/60 z-[70] flex items-center justify-center p-4">
 <div class="bg-white rounded-2xl overflow-hidden w-full max-w-[340px] shadow-2xl">
 <img src="banner.jpg" onerror="this.src='https://i.ibb.co/3yQ6p9h/pubg.jpg'" class="w-full h-52 object-cover">
-<div class="p-4">
-<p class="font-bold text-[14px] leading-tight">ULTRA TOP UP BD - গিভওয়ে ও সকল অফার সম্পর্কে জানতে WhatsApp চ্যানেলে Join করুন</p>
-<p class="text-[11px] text-gray-500 mt-1">Website: ULTRA TOP UP BD | 24H Active</p>
-<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank" class="bg-[#25D366] text-white px-5 py-2.5 rounded-lg mt-3 text-sm font-bold inline-block w-full text-center">✅ ক্লিক করুন - WhatsApp Channel</a>
-</div>
+<div class="p-4"><p class="font-bold text-[14px] leading-tight">ULTRA TOP UP BD - গিভওয়ে ও সকল অফার সম্পর্কে জানতে WhatsApp চ্যানেলে Join করুন</p><p class="text-[11px] text-gray-500 mt-1">Website: ULTRA TOP UP BD | 24H Active</p><a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank" class="bg-[#25D366] text-white px-5 py-2.5 rounded-lg mt-3 text-sm font-bold inline-block w-full text-center">✅ ক্লিক করুন - WhatsApp Channel</a></div>
 <button onclick="document.getElementById('popupGift').style.display='none'" class="bg-[#00c853] text-white px-8 py-2 rounded-full font-black mx-auto block mb-4">X CLOSE</button>
 </div>
 </div>
@@ -131,8 +148,6 @@
 <button onclick="switchTab('codes')" class="flex flex-col items-center text-gray-500" id="btn-codes"><span class="text-[20px]">📄</span><span class="text-[10px]">My Codes</span></button>
 <button onclick="switchTab('account')" class="flex flex-col items-center text-[#00c853]" id="btn-account"><span class="text-[20px]">👤</span><span class="text-[10px] font-bold">My Account</span></button>
 </div>
-
-<a href="https://wa.me/8801837450067" class="fixed bottom-24 right-4 bg-[#00c853] w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg z-40">🎧</a>
 
 <script>
 let deferredPrompt;
@@ -198,23 +213,80 @@ function manualLogin(){
  if(users[email]){currentUser=users[email];} else {currentUser={name:name,email:email,wallet:5,totalSpend:0,weeklySpend:0,orders:[],photo:'https://i.pravatar.cc/150?u='+email,pin:Math.floor(Math.random()*90000)+10000}; users[email]=currentUser;} save();
 }
 function logout(){localStorage.removeItem('ultra_rank_user'); location.reload();}
-function switchTab(t){['home','orders','account','addmoney','codes'].forEach(x=>document.getElementById('tab-'+x).classList.add('hide')); document.getElementById('tab-'+t).classList.remove('hide'); document.querySelectorAll('[id^=btn-]').forEach(b=>b.classList.remove('text-[#00c853]')); document.getElementById('btn-'+t)?.classList.add('text-[#00c853]');}
+function switchTab(t){
+ ['home','orders','account','addmoney','codes','product'].forEach(x=>{
+   let el=document.getElementById('tab-'+x);
+   if(el) el.classList.add('hide');
+ });
+ document.getElementById('tab-'+t).classList.remove('hide');
+ document.querySelectorAll('[id^=btn-]').forEach(b=>b.classList.remove('text-[#00c853]'));
+ document.getElementById('btn-'+t)?.classList.add('text-[#00c853]');
+ if(t=='home') document.getElementById('btn-home')?.classList.add('text-[#00c853]');
+}
 function doAddMoney(){let amt=parseInt(document.getElementById('addAmt').value); let trx=document.getElementById('trxId').value.trim(); if(!amt||!trx) return alert('Amount & TrxID'); currentUser.wallet+=amt; users[currentUser.email].wallet=currentUser.wallet; save(); alert(amt+' Tk Added. Wallet: '+currentUser.wallet+' Tk'); document.getElementById('addAmt').value=''; document.getElementById('trxId').value=''; switchTab('account');}
-function orderNow(name,price){
- let uid=prompt(name+' - Player ID দাও:'); if(!uid) return;
- if(currentUser.wallet<price) return alert('Wallet এ টাকা নেই! Add Money করো। Wallet: '+currentUser.wallet+' Tk');
+
+let currentProduct = null;
+let currentPay = 'wallet';
+function selectPay(type){ currentPay=type; document.getElementById('payWallet').classList.toggle('border-[#00c853]', type=='wallet'); document.getElementById('payWallet').classList.toggle('border-gray-200', type!='wallet'); document.getElementById('payInstant').classList.toggle('border-[#00c853]', type=='instant'); document.getElementById('payInstant').classList.toggle('border-gray-200', type!='instant'); }
+
+const productData = {
+'FF Like': {icon:'👍 FREEFIRE লাইক', packs:[{name:'200 Likes → Instant Delivery', price:25, tag:'BDT 25'}]},
+'Level Up Pass (BD Server)': {icon:'লেভেল আপ পাস', packs:[{name:'LevelUp Package - level 6', price:40},{name:'Level Up Package - level 10', price:75},{name:'Level Up Package - level 15', price:75},{name:'Level Up Package - level 20', price:75},{name:'Level Up Package - level 25', price:75},{name:'Level Up Package - level 30', price:105}]},
+'FF TopUp [BD]': {icon:'আইডি কোড TOPUP', packs:[{name:'Weekly', price:154},{name:'Monthly', price:770},{name:'Weekly Lite', price:39},{name:'115 Diamond', price:77},{name:'240 Diamond', price:154},{name:'610 Diamond', price:395},{name:'1240 Diamond', price:790},{name:'2530 Diamond', price:1580}]},
+'Weekly/Monthly Offer': {icon:'WEEKLY মান্থলি', packs:[{name:'Weekly', price:154},{name:'Monthly', price:770}]},
+'Weekly Lite': {icon:'WEEKLY লাইট', packs:[{name:'Weekly Lite', price:39}]},
+'UNIPIN VOUCHER BD': {icon:'UniPin VOUCHER', packs:[{name:'10 USD Voucher', price:1150},{name:'50 USD Voucher', price:5500}]},
+'Indonesia Server [UID]': {icon:'ইন্দোনেশিয়া TOPUP', packs:[{name:'70 Diamond', price:115},{name:'140 Diamond', price:230}]},
+'PUBG UC': {icon:'PUBG UC', packs:[{name:'60 UC', price:115},{name:'325 UC', price:575}]},
+'FF TopUp [BD]': {icon:'আইডি কোড TOPUP', packs:[{name:'Weekly', price:154},{name:'Monthly', price:770},{name:'Weekly Lite', price:39},{name:'115 Diamond', price:77}]},
+};
+
+function orderNow(name, basePrice){
+ currentProduct = name;
+ document.getElementById('tab-home').classList.add('hide');
+ document.getElementById('tab-product').classList.remove('hide');
+ document.getElementById('productTitle').innerText = name;
+ document.getElementById('productIcon').innerText = productData[name]?.icon || name;
+ let data = productData[name] || {packs:[{name:name, price: basePrice}]};
+ let html='';
+ data.packs.forEach((p,i)=>{
+   html+=`<label class="border-2 ${i==0?'border-[#00c853] bg-green-50':'border-gray-200'} rounded-xl p-3 text-center relative block cursor-pointer"><input type="radio" name="recharge" value="${p.price}" data-name="${p.name}" ${i==0?'checked':''} class="absolute top-2 left-2"><p class="font-bold text-[12px]">${p.name}</p><p class="text-orange-500 font-black text-sm mt-1">${p.price} TK</p></label>`;
+ });
+ document.getElementById('rechargeOptions').innerHTML = html;
+ document.getElementById('detailBalance').innerText = '৳ '+(currentUser?.wallet||5)+'.00';
+ let firstPrice = data.packs[0].price;
+ document.getElementById('detailNeed').innerText = '৳ '+firstPrice;
+ let spend = currentUser?.totalSpend||0;
+ document.getElementById('lockSpend').innerText = '৳'+spend;
+ let pct = Math.min(100, Math.floor((spend/10000)*100));
+ document.getElementById('lockPercent').innerText = pct+'%';
+ document.getElementById('lockBar').style.width = pct+'%';
+ document.getElementById('lockNeed').innerText = (10000-spend);
+ window.scrollTo(0,0);
+}
+
+function confirmDetailOrder(){
+ let uid = document.getElementById('detailUID').value.trim();
+ if(!uid) return alert('Player ID দাও ভাই!');
+ let selected = document.querySelector('input[name="recharge"]:checked');
+ if(!selected) return alert('Package সিলেক্ট করো!');
+ let price = parseInt(selected.value);
+ let pname = selected.dataset.name;
+ if(!currentUser || currentUser.wallet < price) return alert('Wallet এ টাকা নেই! Wallet: '+(currentUser?.wallet||0)+' Tk - Add Money করো');
  currentUser.wallet-=price;
  currentUser.totalSpend=(currentUser.totalSpend||0)+price;
  currentUser.weeklySpend=(currentUser.weeklySpend||0)+price;
  let id=Math.floor(Math.random()*900000)+700000;
- let order={id:id,name:name,price:price,uid:uid,date:new Date().toLocaleString(),status:'Completed'};
+ let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Completed'};
  currentUser.orders=currentUser.orders||[]; currentUser.orders.unshift(order);
  users[currentUser.email]=currentUser; save();
+ alert('Order Success! Order #'+id+' - ULTRA TOP UP BD');
  let div=document.createElement('div'); div.className='bg-white rounded-xl p-4 shadow border';
- div.innerHTML=`<div class="flex justify-between"><p class="font-bold">Order #${id}</p><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">✓ Completed</span></div><div class="grid grid-cols-2 gap-2 mt-3 text-xs"><div><p class="text-gray-500">Order Date</p><p class="font-bold">${order.date}</p></div><div><p class="text-gray-500">Package</p><p class="font-bold">${name}</p></div><div><p class="text-gray-500">Total Price</p><p class="font-bold">৳${price}.00</p></div><div><p class="text-gray-500">Player ID</p><p class="font-bold">${uid}</p></div></div>`;
+ div.innerHTML=`<div class="flex justify-between"><p class="font-bold">Order #${id}</p><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs">✓ Completed</span></div><div class="grid grid-cols-2 gap-2 mt-3 text-xs"><div><p class="text-gray-500">Order Date</p><p class="font-bold">${order.date}</p></div><div><p class="text-gray-500">Package</p><p class="font-bold">${order.name}</p></div><div><p class="text-gray-500">Total Price</p><p class="font-bold">৳${order.price}.00</p></div><div><p class="text-gray-500">Player ID</p><p class="font-bold">${order.uid}</p></div></div>`;
  document.getElementById('ordersList').prepend(div);
  switchTab('orders');
 }
+
 document.getElementById('recentOrders').innerHTML=[['Hasan Rabbi','Level Up Package - level 30 - ৳105'],['Rifat Yt','Monthly - ৳780'],['Itz MURSALIM ALI','Weekly Lite - ৳42']].map(r=>`<div class="flex justify-between items-center border-b pb-2"><div class="flex gap-2 items-center"><img src="https://i.pravatar.cc/100?u=${r[0]}" class="w-9 h-9 rounded-full"><div><p class="font-bold text-[12px]">${r[0]}</p><p class="text-[11px] text-gray-500">${r[1]}</p></div></div><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px]">✓ Done</span></div>`).join('');
 switchTab('home');
 updateUI();
