@@ -2,214 +2,168 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ULTRA TOP UP BD - Google Login Inside</title>
+<title>ULTRA TOP UP BD</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e91e63">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="https://i.ibb.co/3yQ6p9h/pubg.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600;800&display=swap" rel="stylesheet">
-<style>body{font-family:'Hind Siliguri',sans-serif;background:#f1f5f9} .card-green{background:linear-gradient(180deg,#1eff5a 0%,#0a2a12 70%);} .hide{display:none!important}</style>
+<style>body{font-family:'Hind Siliguri',sans-serif;background:#f1f5f9} .hide{display:none!important}</style>
 </head>
 <body class="pb-28">
 
-<!-- HEADER PINK -->
-<div class="bg-[#e91e63] h-12 flex items-center px-3 text-white sticky top-0 z-50"><span class="text-xl">←</span><span class="ml-3 text-sm font-bold">🔒 ULTRA TOP UP BD - Game Top Up</span><span class="ml-auto">•••</span></div>
+<div class="bg-[#e91e63] h-12 flex items-center px-3 text-white sticky top-0 z-50">
+<span class="text-sm font-bold">ULTRA TOP UP BD - Game Top Up</span>
+<button id="installBtn" class="ml-auto bg-white text-[#e91e63] px-3 py-1 rounded-full text-[11px] font-black hide">📲 Install App</button>
+</div>
 
-<!-- TOP BAR - DYNAMIC -->
-<div class="bg-white px-3 py-2.5 flex justify-between items-center shadow sticky top-12 z-40">
-<div class="bg-black px-4 py-2 rounded-xl border-2 border-[#00ff00] text-center">
-<p class="text-[#00ff00] font-black text-[15px] leading-none">ULTRA</p><p class="text-white font-black text-[13px]">TOP UP BD</p><p class="text-[#00ff00] text-[7px]">OFFICIAL STORE</p>
+<div class="bg-white px-3 py-2.5 flex justify-between items-center shadow-sm sticky top-12 z-40">
+<div class="bg-black px-3 py-1.5 rounded-xl border-2 border-[#00ff00] flex items-center gap-1">
+<div class="bg-[#00ff00] text-black font-black w-8 h-8 rounded-full flex items-center justify-center">U</div>
+<div><p class="text-white font-black text-[14px] leading-none">ULTRA</p><p class="text-[#00ff00] font-black text-[10px]">TOP UP BD</p></div>
 </div>
 <div class="flex items-center gap-2">
-<button onclick="switchTab('addmoney')" id="walletBtn" class="bg-[#00c853] text-white px-5 py-2 rounded-full font-black text-sm">🪪 5৳</button>
+<button onclick="switchTab('addmoney')" class="bg-[#00c853] text-white px-5 py-2 rounded-full font-black text-sm">🪪 <span id="walletTop">5৳</span></button>
 <img id="headerPhoto" onclick="switchTab('account')" src="https://i.pravatar.cc/100?img=12" class="w-10 h-10 rounded-full border-2 border-green-400 object-cover">
 </div>
 </div>
 
-<!-- HOME TAB - Tomar Design -->
-<div id="tab-home">
-<div id="noticeBox" class="bg-[#00e676] m-2 rounded p-3 text-white relative">
-<div class="flex justify-between"><b>Notice:</b><button onclick="noticeBox.style.display='none'" class="bg-black/20 w-6 h-6 rounded-full">✕</button></div>
-<p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘন্টাই টপআপ চালু থাকে। সকল টপআপ AI দিয়ে ৩০ সেকেন্ডের ভিতরে দেওয়া হয়। পাচ্ছেন Auto Delivery সুবিধা।</p>
+<div id="loginPage" class="fixed inset-0 bg-white z-[80] overflow-auto">
+<div class="p-6 mt-10">
+<p class="font-black text-[36px] leading-none">Welcome<br><span class="text-[#e91e63]">Back</span></p>
+<p class="text-gray-500 text-[13px] mt-3">ULTRA TOP UP BD - Install App</p>
+<div class="bg-white border rounded-[25px] p-4 mt-8 shadow-sm">
+<div id="g_id_onload" data-client_id="1060371575041-xxxxxxxx.apps.googleusercontent.com" data-context="signin" data-ux_mode="popup" data-callback="handleCredentialResponse" data-auto_prompt="true"></div>
+<div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="continue_with" data-size="large"></div>
+<button onclick="manualLogin()" class="w-full mt-3 border-2 rounded-2xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-white shadow border flex items-center justify-center font-black">G</div><div class="text-left"><p class="font-bold">Continue with Google</p></div></div><div class="bg-[#ffe6ea] w-10 h-10 rounded-xl flex items-center justify-center">→</div>
+</button>
+<button id="installBtn2" class="w-full mt-3 bg-[#e91e63] text-white rounded-2xl p-4 font-black hide">📲 Install ULTRA TOP UP BD App</button>
+</div>
+</div>
 </div>
 
-<div class="mx-2 mt-2 rounded-xl overflow-hidden h-48 bg-black relative border-2 border-[#00ff00]">
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600" class="w-full h-full object-cover opacity-60">
-<div class="absolute inset-0 flex items-center p-4">
-<div class="bg-white rounded-xl p-4 w-44 shadow-2xl">
-<p class="bg-black text-[#00ff00] text-[11px] font-black px-2 py-1 rounded inline">ULTRA TOP UP BD</p>
-<p class="font-black text-[22px] leading-none mt-2">থেকে<br>কীভাবে<br>টপআপ<br>করবেন?</p>
-<p class="text-[10px] font-bold text-green-600 mt-1">ULTRA TOP UP BD OFFICIAL</p>
+<div id="tab-home">
+<div id="noticeBox" class="bg-[#00c853] m-2 rounded-lg p-3 text-white flex gap-2">
+<div class="flex-1">
+<p class="font-black">Notice:</p>
+<p class="text-[12px] mt-1 leading-tight">ULTRA TOP UP BD ২৪ ঘন্টাই টপআপ চালু থাকে। সকল টপআপ AI দিয়ে ৩০ সেকেন্ডের ভিতরে দেওয়া হয়। পাচ্ছেন Auto Delivery সুবিধা।</p>
 </div>
-<div class="ml-auto flex flex-col gap-4">
-<div class="bg-[#00c853] w-12 h-12 rounded-full flex items-center justify-center text-white text-xl shadow-lg">▶</div>
-<div class="bg-[#00c853] w-12 h-12 rounded-full flex items-center justify-center text-white text-xl shadow-lg">▶</div>
+<button onclick="noticeBox.style.display='none'" class="bg-black/20 w-7 h-7 rounded-full flex items-center justify-center">✕</button>
 </div>
+
+<div class="mx-2 mt-2 rounded-xl overflow-hidden h-48 bg-black relative">
+<div class="absolute inset-0 flex items-center p-3"><div class="bg-white rounded-xl p-3 w-[55%]"><p class="bg-black text-[#00ff00] text-[10px] font-black px-2 py-1 rounded inline">ULTRA TOP UP BD</p><p class="font-black text-[22px] leading-[0.95] mt-2">থেকে<br>কীভাবে<br>টপআপ<br>করবেন?</p></div></div>
 </div>
-<div class="absolute top-2 right-2 bg-black border border-[#00ff00] text-[#00ff00] text-[9px] px-2 py-1 rounded font-black text-center">ULTRA<br>TOP UP BD</div>
-<div class="absolute bottom-2 right-2 bg-[#00c853] text-white text-[8px] px-2 py-1 rounded-full font-bold">01837450067</div>
+
+<div class="bg-white mx-2 mt-3 rounded-xl p-3 border shadow-sm flex justify-between items-center">
+<div><p class="font-black text-sm">📲 ULTRA TOP UP BD App Install করুন</p><p class="text-[11px] text-gray-500">Home Screen এ App হিসেবে ব্যবহার করুন</p></div>
+<button onclick="installApp()" class="bg-[#e91e63] text-white px-4 py-2 rounded-full text-xs font-bold">Install</button>
 </div>
 
 <div class="grid grid-cols-3 gap-2 mx-2 mt-4">
-<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" class="bg-[#00e676] rounded-lg p-2 flex items-center gap-2 text-white"><div class="bg-white text-[#00e676] w-8 h-8 rounded-full flex items-center justify-center">✈</div><div class="text-[11px] font-bold leading-none">SUPPORT<br>Telegram</div></a>
-<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" class="bg-[#00e676] rounded-lg p-2 flex items-center gap-2 text-white"><div class="bg-white text-[#00e676] w-8 h-8 rounded-full flex items-center justify-center">👥</div><div class="text-[11px] font-bold leading-none">GROUP<br>Join Group</div></a>
-<a href="https://wa.me/8801837450067" class="bg-[#00e676] rounded-lg p-2 flex items-center gap-2 text-white"><div class="bg-white text-[#00e676] w-8 h-8 rounded-full flex items-center justify-center">💬</div><div class="text-[11px] font-bold leading-none">CHAT<br>WhatsApp</div></a>
+<div class="bg-[#1eff5a] rounded-lg p-2.5 flex items-center gap-2 text-white"><div class="bg-white text-[#00c853] w-8 h-8 rounded-full flex items-center justify-center">✈</div><div class="text-[10px] font-bold">SUPPORT<br>Telegram</div></div>
+<div class="bg-[#1eff5a] rounded-lg p-2.5 flex items-center gap-2 text-white"><div class="bg-white text-[#00c853] w-8 h-8 rounded-full flex items-center justify-center">👥</div><div class="text-[10px] font-bold">GROUP<br>Join Group</div></div>
+<a href="https://wa.me/8801837450067" class="bg-[#1eff5a] rounded-lg p-2.5 flex items-center gap-2 text-white"><div class="bg-white text-[#00c853] w-8 h-8 rounded-full flex items-center justify-center">💬</div><div class="text-[10px] font-bold">CHAT<br>WhatsApp</div></a>
 </div>
 
-<p class="text-center font-black text-[22px] mt-6">Spacial offer</p>
+<p class="text-center font-black text-[20px] mt-8">FF TOPUP</p>
 <div class="grid grid-cols-3 gap-3 mx-2 mt-3">
-<div class="text-center"><div class="card-green rounded-xl h-28 flex flex-col items-center justify-center p-2 border border-green-400"><div class="bg-black/50 rounded-full w-12 h-12 flex items-center justify-center">⭐</div><p class="text-yellow-300 font-black text-[11px] mt-1">প্রিমিয়াম<br>ইউজার অফার</p></div><p class="text-[12px] font-bold mt-2">Premium Users - ULTRA</p></div>
-<div class="text-center"><div class="card-green rounded-xl h-28 flex flex-col items-center justify-center p-2"><div class="bg-black/50 rounded px-2 py-1"><p class="text-yellow-300 font-black text-[11px]">SPECIAL<br>FRIDAY OFFER</p></div></div><p class="text-[12px] font-bold mt-2">Friday Offer - ULTRA</p></div>
-<div class="text-center"><div class="card-green rounded-xl h-28 flex flex-col items-center justify-center p-2"><p class="text-white font-black">GET FREE<br><span class="text-yellow-300 text-2xl">25</span>💎</p></div><p class="text-[12px] font-bold mt-2">Free 25 Diamond - ULTRA</p></div>
+<div onclick="orderNow('FF TopUp [BD]')" class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-[11px]">ID CODE TOPUP</p></div><p class="text-[11px] font-bold mt-2">FF TopUp [BD]</p></div>
+<div onclick="orderNow('Weekly/Monthly')" class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-xs">WEEKLY</p></div><p class="text-[11px] font-bold mt-2">Weekly/Monthly Offer</p></div>
+<div onclick="orderNow('UniPin')" class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-xs">UniPin VOUCHER</p></div><p class="text-[11px] font-bold mt-2">UNIPIN VOUCHER BD</p></div>
+<div onclick="orderNow('Weekly Lite')" class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-xs">WEEKLY LITE</p></div><p class="text-[11px] font-bold mt-2">Weekly Lite</p></div>
+<div onclick="orderNow('Level Up Pass')" class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-xs">Level Up Pass</p></div><p class="text-[11px] font-bold mt-2">Level Up Pass</p></div>
+<div onclick="orderNow('Indonesia')" class="text-center"><div class="bg-[#00c853] rounded-xl h-28 flex items-center justify-center"><p class="text-white font-black text-xs">Indonesia TOPUP</p></div><p class="text-[11px] font-bold mt-2">Indonesia Server [UID]</p></div>
+<div onclick="orderNow('FF Like')" class="text-center"><div class="bg-black rounded-xl h-28 flex items-center justify-center border-2 border-[#00ff00]"><p class="text-white font-black text-xs">FF LIKE</p></div><p class="text-[11px] font-bold mt-2">FF Like</p></div>
 </div>
 
-<p class="text-center font-black text-[22px] mt-8">FF TOPUP - ULTRA TOP UP BD</p>
-<div class="grid grid-cols-3 gap-3 mx-2 mt-3">
-<div onclick="orderNow('FF TopUp [BD] - LAL')" class="text-center"><div class="bg-gradient-to-b from-red-500 to-black rounded-xl h-28 flex items-center justify-center border-2 border-red-400"><p class="text-white font-black text-xs">আইডি কোড<br>TOPUP</p></div><p class="text-[11px] font-bold mt-2">FF TopUp [BD]</p></div>
-<div onclick="orderNow('Weekly/Monthly - SADA')" class="text-center"><div class="bg-gradient-to-b from-yellow-200 to-black rounded-xl h-28 flex items-center justify-center border-2 border-yellow-300"><p class="text-black font-black text-xs bg-white px-2 py-1 rounded">WEEKLY<br>মাস্থলি</p></div><p class="text-[11px] font-bold mt-2 leading-tight">Weekly/Monthly Offer</p></div>
-<div onclick="orderNow('UNIPIN VOUCHER - NIL')" class="text-center"><div class="bg-gradient-to-b from-blue-500 to-black rounded-xl h-28 flex items-center justify-center border-2 border-blue-400"><p class="text-white font-black text-xs">UniPin<br>VOUCHER</p></div><p class="text-[11px] font-bold mt-2">UNIPIN VOUCHER BD</p></div>
-<div onclick="orderNow('Weekly Lite - KALO')" class="text-center"><div class="bg-black rounded-xl h-28 flex items-center justify-center border-2 border-gray-600"><p class="text-yellow-300 font-black text-xs">WEEKLY<br>লাইট</p></div><p class="text-[11px] font-bold mt-2">Weekly Lite</p></div>
-<div onclick="orderNow('Level Up Pass - SOBUJ')" class="text-center"><div class="bg-gradient-to-b from-green-500 to-black rounded-xl h-28 flex items-center justify-center border-2 border-green-400"><p class="text-white font-black text-xs">লেভেল<br>আপ পাস</p></div><p class="text-[11px] font-bold mt-2 leading-tight">Level Up Pass (BD Server)</p></div>
-<div onclick="orderNow('Indonesia Server - BEGUNI')" class="text-center"><div class="bg-gradient-to-b from-purple-600 to-black rounded-xl h-28 flex items-center justify-center border-2 border-purple-400"><p class="text-white font-black text-xs">ইন্দোনেশিয়া<br>TOPUP</p></div><p class="text-[11px] font-bold mt-2 leading-tight">Indonesia Server [UID]</p></div>
-<div onclick="orderNow('FF Like')" class="text-center"><div class="bg-gradient-to-b from-red-500 to-black rounded-xl h-28 flex items-center justify-center border-2 border-red-400"><p class="text-white font-black text-xs">👍 +99999<br>FREEFIRE<br>লাইক</p></div><p class="text-[11px] font-bold mt-2">FF Like</p></div>
+<div class="bg-white mx-2 mt-8 rounded-t-[20px] p-4 shadow border">
+<div class="flex gap-3 items-center"><div class="bg-pink-50 p-2 rounded-xl">👜</div><div><p class="font-black">Recent Orders</p><p class="text-green-600 text-xs font-bold">● Live</p></div></div>
+<div id="recentOrders" class="mt-4 space-y-3"></div>
+</div>
 </div>
 
-<div class="bg-white mx-2 mt-8 rounded-t-[20px] p-4 shadow border"><div class="flex justify-between items-center"><div class="flex gap-3 items-center"><div class="bg-pink-50 p-2 rounded-xl">👜</div><div><p class="font-black text-lg">Recent Orders</p><p class="text-green-600 text-xs font-bold">● Live - ULTRA TOP UP BD</p></div></div></div><div id="recentOrders" class="mt-4 space-y-3"></div></div>
-<div class="bg-[#0a1931] text-white p-6 text-center"><p class="font-black tracking-widest">STAY CONNECTED - ULTRA TOP UP BD</p><p class="text-xs mt-2 opacity-70">01837450067 - WhatsApp Support</p></div>
-</div>
-
-<div id="tab-orders" class="hide p-3"><div class="flex items-center gap-3 mb-4"><div class="bg-white w-10 h-10 rounded-full flex items-center justify-center shadow">☰</div><p class="font-black text-2xl">My Orders - ULTRA TOP UP BD</p></div><div id="ordersList" class="space-y-3"></div></div>
-
-<!-- ACCOUNT PAGE - Amar Nam Number Show Korbe -->
 <div id="tab-account" class="hide">
-<div class="bg-gradient-to-b from-blue-50 to-white m-3 rounded-[25px] p-5 text-center shadow border">
-<img id="accPhoto" src="https://i.pravatar.cc/100?img=12" class="w-20 h-20 rounded-full mx-auto object-cover border-4 border-white shadow">
-<p class="font-black text-xl mt-2"><span id="accName">Md Rana</span> <span class="bg-green-100 text-green-700 text-[10px] px-2 py-1 rounded-full">● Verified</span></p>
-<p class="text-[11px] text-gray-600 mt-1">📧 <span id="accEmail">mdr759664@gmail.com</span></p>
-<p class="text-[11px] text-gray-600">📞 <span id="accPhoneText">01837450067</span></p>
-<p class="text-[11px] text-gray-500 mt-1">🛡️ Support PIN: <span id="accPin">83769</span> ⭐ ULTRA TOP UP BD</p>
-<div class="bg-white rounded-2xl p-4 mt-4 text-left shadow border"><div class="flex justify-between"><p class="text-sm text-gray-500">Wallet Balance - <span id="accName2">Rana</span></p></div><p class="text-3xl font-black mt-1">Tk <span id="wallet">5</span></p><p class="text-xs text-gray-500 mt-1">Gmail Login: <span id="accGmail2">gmail</span></p><button onclick="switchTab('addmoney')" class="bg-gradient-to-r from-[#0a1931] to-[#2a5bd7] text-white w-full py-3 rounded-xl font-black mt-3">Add Money</button></div>
-<button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-4">Logout - Change Gmail</button>
+<div class="bg-white m-3 rounded-[25px] p-5 text-center shadow border">
+<img id="accPhoto" src="https://i.pravatar.cc/100?img=12" class="w-20 h-20 rounded-full mx-auto object-cover">
+<p class="font-black text-xl mt-3"><span id="accName">User</span> <span class="bg-green-100 text-green-700 text-[10px] px-2 py-1 rounded-full">● Verified</span></p>
+<p class="text-[11px] text-gray-500">Support PIN: <span id="accPin">00000</span></p>
+<div class="bg-white rounded-2xl p-4 mt-4 text-left shadow border"><p class="text-sm text-gray-500">Wallet Balance</p><p class="text-3xl font-black mt-1">Tk <span id="wallet">5</span></p><button onclick="switchTab('addmoney')" class="bg-[#0a1931] text-white w-full py-3 rounded-xl font-black mt-3">Add Money</button></div>
+<button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-4">Logout</button>
 </div>
 </div>
 
-<div id="tab-addmoney" class="hide p-4"><div class="bg-white rounded-xl p-4 shadow border"><p class="font-black">Add Money - <span id="addMoneyUser">ULTRA</span></p><p class="text-xs mt-1">Gmail: <span id="amEmail">gmail</span> | Phone: <span id="amPhoneText">phone</span> | Current: <span id="currentBal" class="font-black">5</span>৳</p><input id="addAmt" type="number" placeholder="Amount" class="w-full border-2 p-3 rounded-xl mt-3"><input id="trxInput" placeholder="bKash TrxID - 01837450067" class="w-full border-2 p-3 rounded-xl mt-2"><button onclick="doAddMoney()" class="bg-[#00c853] text-white w-full py-3 rounded-xl font-black mt-3">Add Money - Tomar ID te Jog Hobe</button></div></div>
-<div id="tab-codes" class="hide p-8 text-center"><div class="bg-white rounded-xl p-8 shadow border"><p class="font-black">My Codes - ULTRA TOP UP BD</p><p class="text-sm mt-2">No code data found !</p></div></div>
+<div id="tab-orders" class="hide p-3"><p class="font-black text-2xl">My Orders</p><div id="ordersList" class="space-y-3 mt-3"></div></div>
+<div id="tab-addmoney" class="hide p-4"><div class="bg-white rounded-xl p-4 shadow border"><p class="font-black text-xl">Add Money</p><p class="text-sm text-gray-500">Wallet: <span id="amBal">5</span>৳ - <span id="amName">User</span></p><input id="addAmt" type="number" placeholder="Amount" class="w-full border-2 p-3 rounded-xl mt-3"><input id="trxId" type="text" placeholder="TrxID - bKash 01837450067" class="w-full border-2 p-3 rounded-xl mt-2"><button onclick="doAddMoney()" class="bg-[#00c853] text-white w-full py-3 rounded-xl font-black mt-3">Add Money</button></div></div>
+<div id="tab-codes" class="hide p-8 text-center"><div class="bg-white rounded-xl p-8 shadow border"><p class="font-black">My Codes</p><p class="text-sm mt-2">No code data found !</p></div></div>
 
-<!-- GOOGLE LOGIN PAGE - FFbazar Style - Inside Your Code -->
-<div id="loginModal" class="fixed inset-0 bg-white z-[80] flex flex-col overflow-auto">
-<div class="bg-[#e91e63] h-12 flex items-center px-3 text-white"><span class="text-xl">←</span><span class="ml-3 text-sm font-bold">🔒 ULTRA TOP UP BD - Off...</span><span class="ml-auto">•••</span></div>
-<div class="p-6">
-<p class="text-[#e91e63] text-[11px] font-bold tracking-widest">● SECURE ACCOUNT ACCESS - ULTRA TOP UP BD</p>
-<div class="flex justify-between items-start mt-4">
-<div><p class="font-black text-4xl leading-none">Welcome<br><span class="text-[#e91e63]">Back</span></p><p class="text-gray-500 text-sm mt-3">Fast, secure and simple access to your ULTRA TOP UP BD account.</p></div>
-<div class="relative"><div class="w-20 h-28 border-2 border-[#e91e63] rounded-[18px] flex items-center justify-center bg-white">📱</div></div>
+<div id="popupGift" class="fixed inset-0 bg-black/60 z-[70] flex items-center justify-center p-4">
+<div class="bg-white rounded-2xl overflow-hidden w-full max-w-[340px] shadow-2xl">
+<img src="https://i.ibb.co/3yQ6p9h/pubg.jpg" class="w-full h-44 object-cover" id="giftBanner">
+<div class="p-4 bg-white">
+<p class="font-bold text-[15px] leading-tight">প্রতিদিন ফ্রিতে ডায়মন্ড পেতে আমাদের WhatsApp চ্যানেলে Join করুন</p>
+<a href="https://whatsapp.com/channel/0029Vb9EA3vBPzjRmYT6CE1J" target="_blank" class="bg-[#25D366] text-white px-5 py-2.5 rounded-lg mt-3 text-sm font-bold inline-block">ক্লিক করুন - WhatsApp Channel</a>
 </div>
-<div class="bg-white border rounded-[25px] p-4 mt-8 shadow-sm">
-<div class="bg-[#fff0f3] border rounded-2xl p-4 flex items-center gap-3">
-<div class="bg-[#e91e63] w-12 h-12 rounded-xl flex items-center justify-center text-white">🛡️</div>
-<div><p class="font-black">Sign in to continue</p><p class="text-xs text-gray-500">Access your account securely - ULTRA TOP UP BD</p></div>
-</div>
-<!-- Continue with Google - Tomar Gmail Login -->
-<button onclick="googleLogin()" class="w-full border-2 rounded-2xl p-4 mt-4 flex items-center justify-between hover:bg-gray-50">
-<div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-white shadow border flex items-center justify-center font-black text-blue-500">G</div><div class="text-left"><p class="font-bold">Continue with Google</p><p class="text-xs text-gray-500">Quick and secure sign in - Gmail diye Login</p></div></div><div class="bg-[#ffe6ea] w-10 h-10 rounded-xl flex items-center justify-center text-[#e91e63]">→</div>
-</button>
-<div class="mt-6 p-4 bg-gray-50 rounded-xl">
-<p class="font-bold text-sm">Gmail Login করলে কি হবে?</p>
-<p class="text-xs mt-2">✅ তোমার Gmail, নাম, ফোন নাম্বার Header এ Show করবে<br>✅ তোমার ছবি সবুজ দাগের জায়গায় Show করবে<br>✅ যত টাকা Add করবে তত টাকা Wallet এ Show করবে<br>✅ ULTRA TOP UP BD তে তোমার আলাদা ID হবে</p>
-</div>
-<div class="bg-[#fff0f3] rounded-2xl p-4 mt-4 flex gap-3 items-center"><div class="bg-[#e91e63] w-10 h-10 rounded-xl flex items-center justify-center text-white">✓</div><div><p class="font-bold text-[#e91e63] text-sm">Your data is safe - ULTRA TOP UP BD</p><p class="text-xs text-gray-600">Secure authentication protects your account.</p></div></div>
-</div>
+<button onclick="document.getElementById('popupGift').style.display='none'" class="bg-[#00c853] text-white px-8 py-2 rounded-full font-black mx-auto block mb-4">✕ CLOSE</button>
 </div>
 </div>
 
 <div class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-1.5 z-50">
-<button onclick="switchTab('home')" id="bHome" class="flex flex-col items-center text-[#00c853]"><span class="text-[22px]">🏠</span><span class="text-[11px] font-bold">Home</span></button>
-<button onclick="switchTab('orders')" id="bOrders" class="flex flex-col items-center text-gray-500"><span class="text-[22px]">👜</span><span class="text-[11px]">My Orders</span></button>
-<button onclick="switchTab('addmoney')" class="bg-[#00c853] w-14 h-14 rounded-full flex items-center justify-center text-white text-3xl -mt-5 border-4 border-white shadow-lg">+</button>
-<button onclick="switchTab('codes')" id="bCodes" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">📄</span><span class="text-[11px]">My Codes</span></button>
-<button onclick="switchTab('account')" id="bAccount" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">👤</span><span class="text-[11px]">My Account</span></button>
+<button onclick="switchTab('home')" class="flex flex-col items-center text-[#00c853]"><span class="text-[20px]">🏠</span><span class="text-[10px] font-bold">Home</span></button>
+<button onclick="switchTab('orders')" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">👜</span><span class="text-[10px]">My Orders</span></button>
+<button onclick="switchTab('addmoney')" class="bg-[#00c853] w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl -mt-5 border-4 border-white">+</button>
+<button onclick="switchTab('codes')" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">📄</span><span class="text-[10px]">My Codes</span></button>
+<button onclick="switchTab('account')" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">👤</span><span class="text-[10px]">My Account</span></button>
 </div>
 
 <script>
-let currentUser = JSON.parse(localStorage.getItem('ultra_google_user') || 'null');
-let users = JSON.parse(localStorage.getItem('ultra_google_users') || '{}');
-
-function save(){localStorage.setItem('ultra_google_users', JSON.stringify(users)); localStorage.setItem('ultra_google_user', JSON.stringify(currentUser)); updateUI();}
-
-function updateUI(){
-if(!currentUser){
-document.getElementById('loginModal').classList.remove('hide');
-return;
+// PWA INSTALL LOGIC
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBtn').classList.remove('hide');
+  document.getElementById('installBtn2').classList.remove('hide');
+});
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choice)=>{ if(choice.outcome==='accepted'){ console.log('App Installed'); } deferredPrompt=null; });
+  } else {
+    alert('Browser menu > Add to Home Screen > Install - ULTRA TOP UP BD App Install Hobe!');
+  }
 }
-document.getElementById('loginModal').classList.add('hide');
+document.getElementById('installBtn').addEventListener('click', installApp);
+document.getElementById('installBtn2').addEventListener('click', installApp);
+
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }
+
+let currentUser = JSON.parse(localStorage.getItem('ultra_app_user') || 'null');
+let users = JSON.parse(localStorage.getItem('ultra_app_users') || '{}');
+function save(){localStorage.setItem('ultra_app_users', JSON.stringify(users)); localStorage.setItem('ultra_app_user', JSON.stringify(currentUser)); updateUI();}
+function updateUI(){
+if(!currentUser){document.getElementById('loginPage').classList.remove('hide'); return;}
+document.getElementById('loginPage').classList.add('hide');
 document.getElementById('headerPhoto').src = currentUser.photo;
 document.getElementById('accPhoto').src = currentUser.photo;
 document.getElementById('wallet').innerText = currentUser.wallet;
-document.getElementById('walletBtn').innerText = '🪪 '+currentUser.wallet+'৳';
-document.getElementById('currentBal').innerText = currentUser.wallet;
+document.getElementById('walletTop').innerText = currentUser.wallet+'৳';
+document.getElementById('amBal').innerText = currentUser.wallet;
 document.getElementById('accName').innerText = currentUser.name;
-document.getElementById('accName2').innerText = currentUser.name;
-document.getElementById('addMoneyUser').innerText = currentUser.name;
+document.getElementById('amName').innerText = currentUser.name;
 document.getElementById('accPin').innerText = currentUser.pin;
-document.getElementById('accEmail').innerText = currentUser.email;
-document.getElementById('accPhoneText').innerText = currentUser.phone;
-document.getElementById('accGmail2').innerText = currentUser.email;
-document.getElementById('amEmail').innerText = currentUser.email;
-document.getElementById('amPhoneText').innerText = currentUser.phone;
 }
-
-function googleLogin(){
-let email = prompt('তোমার Gmail দাও - ULTRA TOP UP BD Google Login:\nযেমন: mdr759664@gmail.com');
-if(!email) return;
-if(!email.includes('@')){alert('Valid Gmail দাও!'); return;}
-let name = prompt('তোমার নাম দাও - Header এ Show করবে:\nযেমন: Md Rana');
-if(!name) name = email.split('@')[0];
-let phone = prompt('তোমার Phone Number দাও - Show করবে:\nযেমন: 01837450067');
-if(!phone) phone = '01837450067';
-
-if(users[email]){
-currentUser = users[email];
-currentUser.name = name;
-currentUser.phone = phone;
-} else {
-let pin = Math.floor(Math.random()*90000)+10000;
-currentUser = {name:name, email:email, phone:phone, wallet:5, photo:'https://i.pravatar.cc/150?u='+email, pin:pin};
-users[email] = currentUser;
-}
-save();
-alert('Welcome '+name+'! Gmail Login Success - ULTRA TOP UP BD\nনাম: '+name+'\nGmail: '+email+'\nPhone: '+phone+'\nএখন তোমার ছবি আর টাকা Show করবে!');
-}
-
-function logout(){localStorage.removeItem('ultra_google_user');location.reload();}
-function switchTab(t){
-document.getElementById('tab-home').classList.add('hide');
-document.getElementById('tab-orders').classList.add('hide');
-document.getElementById('tab-account').classList.add('hide');
-document.getElementById('tab-addmoney').classList.add('hide');
-document.getElementById('tab-codes').classList.add('hide');
-document.getElementById('tab-'+t).classList.remove('hide');
-window.scrollTo(0,0);
-}
-function doAddMoney(){
-let amt = parseInt(document.getElementById('addAmt').value);
-let trx = document.getElementById('trxInput').value.trim();
-if(!amt || !trx) return alert('Amount আর TrxID দাও!');
-currentUser.wallet += amt;
-users[currentUser.email].wallet = currentUser.wallet;
-save();
-alert(amt+' Tk Added! '+currentUser.name+' এর Wallet এখন '+currentUser.wallet+' Tk - ULTRA TOP UP BD\nGmail: '+currentUser.email+' Phone: '+currentUser.phone);
-}
-function orderNow(n){
-if(!currentUser) return alert('Login করো!');
-let uid=prompt(n+' - ULTRA TOP UP BD UID দাও:');if(!uid)return;
-let id=Math.floor(Math.random()*900000)+700000;
-let div=document.createElement('div');div.className='bg-white rounded-xl p-4 shadow border';
-div.innerHTML=`<p class="font-black">Order #${id} - ${n} - ULTRA TOP UP BD</p><p class="text-xs mt-1">User: ${currentUser.name} | Gmail: ${currentUser.email} | Phone: ${currentUser.phone} | Wallet: ${currentUser.wallet}Tk</p>`;
-document.getElementById('ordersList').prepend(div);
-switchTab('orders');
-window.open(`https://wa.me/8801837450067?text=ULTRA TOP UP BD User:${currentUser.name} Gmail:${currentUser.email} Phone:${currentUser.phone} Order:${n} UID:${uid} Wallet:${currentUser.wallet}Tk`);
-}
-let recent=[['Hasan Rabbi','Level Up Package - ৳105','Done'],['Rifat Yt','Monthly - ৳780','Done']];
-let recentHtml='';recent.forEach(r=>{recentHtml+=`<div class="flex justify-between items-center border-b border-gray-100 pb-2"><div class="flex gap-2 items-center"><img src="https://i.pravatar.cc/100?u=${r[0]}" class="w-10 h-10 rounded-full"><div><p class="font-bold text-[13px]">${r[0]}</p><p class="text-[11px] text-gray-500">${r[1]}</p></div></div><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px]">✓ Done</span></div>`});
-document.getElementById('recentOrders').innerHTML=recentHtml;
+function handleCredentialResponse(r){try{let d=JSON.parse(atob(r.credential.split('.')[1])); let email=d.email; let name=d.name; let photo=d.picture; let phone=prompt('Phone:'); if(!phone) phone='01837450067'; if(users[email]){currentUser=users[email];} else {currentUser={name:name,email:email,phone:phone,wallet:5,photo:photo,pin:Math.floor(Math.random()*90000)+10000}; users[email]=currentUser;} save();}catch(e){manualLogin();}}
+function manualLogin(){let email=prompt('Gmail:'); if(!email||!email.includes('@')) return; let name=prompt('Name:'); if(!name) name=email.split('@')[0]; let phone=prompt('Phone:'); if(!phone) phone='01837450067'; if(users[email]){currentUser=users[email];} else {currentUser={name:name,email:email,phone:phone,wallet:5,photo:'https://i.pravatar.cc/150?u='+email,pin:Math.floor(Math.random()*90000)+10000}; users[email]=currentUser;} save();}
+function logout(){localStorage.removeItem('ultra_app_user'); location.reload();}
+function switchTab(t){['home','orders','account','addmoney','codes'].forEach(x=>document.getElementById('tab-'+x).classList.add('hide')); document.getElementById('tab-'+t).classList.remove('hide');}
+function doAddMoney(){let amt=parseInt(document.getElementById('addAmt').value); let trx=document.getElementById('trxId').value.trim(); if(!amt||!trx) return alert('Amount & TrxID'); currentUser.wallet+=amt; users[currentUser.email].wallet=currentUser.wallet; save(); alert(amt+' Tk Added. Wallet: '+currentUser.wallet+' Tk'); document.getElementById('addAmt').value=''; document.getElementById('trxId').value=''; switchTab('account');}
+function orderNow(n){let uid=prompt(n+' UID:'); if(!uid) return; let id=Math.floor(Math.random()*900000)+700000; let div=document.createElement('div'); div.className='bg-white rounded-xl p-4 shadow border'; div.innerHTML=`<p class="font-black">Order #${id} - ${n}</p><p class="text-xs">UID: ${uid} | Wallet: ${currentUser.wallet}Tk</p>`; document.getElementById('ordersList').prepend(div); switchTab('orders');}
+document.getElementById('recentOrders').innerHTML=[['Hasan Rabbi','Level Up Package - 105 Tk'],['Rifat Yt','Monthly - 780 Tk']].map(r=>`<div class="flex justify-between items-center border-b pb-2"><div class="flex gap-2 items-center"><img src="https://i.pravatar.cc/100?u=${r[0]}" class="w-10 h-10 rounded-full"><div><p class="font-bold text-[13px]">${r[0]}</p><p class="text-[11px] text-gray-500">${r[1]}</p></div></div><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px]">Done</span></div>`).join('');
 updateUI();
 </script>
 </body>
