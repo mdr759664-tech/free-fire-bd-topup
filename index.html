@@ -1,730 +1,301 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="toIDvIiHnfJHkhbznHAPLBK3No0vzck-ADveEeF_zZA" />
-<title>ULTRA TOP UP BD - Game Top Up - 10% OFF</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#e91e63">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700;800&display=swap" rel="stylesheet">
-<style>
-body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
-.hide{display:none!important}
-.rank-card{background:linear-gradient(135deg,#8b9bb0 0%,#6b7c95 100%)}
-.progress-bg{background:linear-gradient(90deg,#fff8a0 0%,#ff9d00 100%)}
-.prod-card{position:relative; overflow:hidden}
-.prod-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2}
-.prod-fallback{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; font-weight:900; font-size:11px; text-align:center; line-height:1.1; z-index:1}
-.live-dot{animation:blink 1s infinite}
-@keyframes blink{0%{opacity:1}50%{opacity:0.2}100%{opacity:1}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="toIDvIiHnfJHkhbznHAPLBK3No0vzck-ADveEeF_zZA" />
+  <title>ULTRA TOP UP BD - Game Top Up - 10% OFF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e91e63">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
+    .hide{display:none!important}
+    .rank-card{background:linear-gradient(135deg,#8b9bb0 0%,#6b7c95 100%)}
+    .progress-bg{background:linear-gradient(90deg,#fff8a0 0%,#ff9d00 100%)}
+    .prod-card{position:relative; overflow:hidden}
+    .prod-fallback{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; font-weight:900; font-size:11px; text-align:center; line-height:1.1; z-index:1}
+    .live-dot{animation:blink 1s infinite}
+    @keyframes blink{0%{opacity:1}50%{opacity:0.2}100%{opacity:1}}
+  </style>
 </head>
 <body class="pb-28">
-<div class="bg-[#e91e63] h-11 flex items-center px-3 text-white sticky top-0 z-50">
-<span class="text-sm font-bold">ULTRA TOP UP BD - 10% OFF!</span>
-<button id="installBtn" class="ml-auto bg-white text-[#e91e63] px-3 py-1 rounded-full text-[11px] font-black hide">Install</button>
-</div>
-<div class="bg-white px-3 py-2.5 flex justify-between items-center shadow-sm sticky top-11 z-40">
-<div class="flex items-center gap-2">
-<img src="app-logo.jpg" onerror="this.src='https://i.pravatar.cc/100'" class="w-10 h-10 rounded-lg border-2 border-[#00ff00] object-cover">
-<div class="bg-black rounded-lg px-2 py-1 border-2 border-[#00ff00]">
-<p class="text-[#00ff00] font-black text-xs">ULTRA</p>
-<p class="text-white font-black text-[8px]">TOP UP BD</p>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<button onclick="switchTab('addmoney')" class="bg-[#00c853] text-white px-4 py-1.5 rounded-full font-bold text-sm">
-<span id="walletTop">5</span> ৳
-</button>
-<img id="headerPhoto" onclick="openDrawer()" src="https://i.pravatar.cc/100?img=12" class="w-9 h-9 rounded-full border-2 border-green-400">
-</div>
-</div>
-<div id="drawer" class="fixed inset-0 z-[100] hidden">
-<div class="bg-black/50 w-full h-full" onclick="closeDrawer()"></div>
-<div class="bg-white w-[75%] max-w-[320px] h-full absolute right-0 top-0 shadow-2xl overflow-auto">
-<div class="p-4 border-b">
-<div class="flex gap-3 items-center">
-<img id="drawerPhoto" src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full">
-<div>
-<p class="font-bold text-sm" id="drawerName">Hi, User</p>
-<p class="text-[11px] text-gray-500" id="drawerEmail">user@gmail.com</p>
-</div>
-</div>
-<button onclick="logout()" class="bg-[#00ff0a] text-white px-5 py-1.5 rounded-full text-[12px] font-bold mt-3">Logout</button>
-</div>
-<div class="p-2 space-y-1 text-sm font-bold">
-<button onclick="switchTab('account');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Account</button>
-<button onclick="switchTab('orders');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Orders</button>
-<button onclick="switchTab('codes');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Codes</button>
-<button onclick="switchTab('orders');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Transaction</button>
-<button onclick="switchTab('addmoney');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">Add Money</button>
-<button onclick="window.open('https://wa.me/8801837450067')" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">Contact Us</button>
-<a href="https://t.me/+Q6GAbYR_AusxMjE1" target="_blank" class="bg-[#00ff0a] text-white px-6 py-2.5 rounded-full font-bold mt-4 flex items-center justify-center gap-2 mx-3">Support Telegram</a>
-</div>
-</div>
-</div>
-<div id="loginPage" class="fixed inset-0 bg-white z-[80] p-6">
-<p class="font-black text-[32px] leading-none mt-10">Welcome<br><span class="text-[#e91e63]">Back - 10% OFF</span></p>
-<div class="border-2 rounded-[20px] p-4 mt-6">
-<input id="loginEmail" type="email" placeholder="Gmail - example@gmail.com" class="w-full border-2 p-3.5 rounded-xl text-sm">
-<input id="loginName" type="text" placeholder="Name" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm">
-<input id="loginPass" type="password" placeholder="Password - ******" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm">
-<button onclick="manualLogin()" class="w-full mt-4 bg-black text-white rounded-xl py-4 font-black">Continue</button>
-<button onclick="openForgot()" class="w-full mt-3 text-[12px] text-[#e91e63] font-bold underline">🔑 Password ভুলে গেছেন? Forgot Password? Tap Here</button>
-<p class="text-[11px] text-center text-gray-500 mt-3">Same Gmail + Same Password = Same ID, PIN, Wallet - Login কাটবে না! 10% Discount চলছে!</p>
-</div>
-</div>
-<div id="forgotBox" class="fixed inset-0 bg-black/60 z-[90] hidden items-center justify-center p-4">
-<div class="bg-white rounded-[20px] p-5 w-full max-w-[340px] shadow-2xl">
-<p class="font-black text-lg">🔑 Forgot Password</p>
-<p class="font-bold text-[13px] text-[#e91e63]">ULTRA TOP UP BD</p>
-<p class="text-[11px] text-gray-500 mt-2">Gmail দিন, নতুন Password সেট করুন - Same ID, PIN, Wallet থাকবে!</p>
-<input id="forgotEmail" type="email" placeholder="Gmail - example@gmail.com" class="w-full border-2 p-3.5 rounded-xl mt-4 text-sm outline-none focus:border-[#00c853]">
-<input id="forgotNewPass" type="password" placeholder="নতুন Password - New Password" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm outline-none focus:border-[#00c853]">
-<input id="forgotConfirmPass" type="password" placeholder="Confirm নতুন Password" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm outline-none focus:border-[#00c853]">
-<button onclick="doForgot()" class="w-full mt-4 bg-[#00c853] text-white rounded-xl py-4 font-black">নতুন Password সেট করুন</button>
-<button onclick="closeForgot()" class="w-full mt-3 text-[12px] text-gray-500 font-bold">Cancel - বাতিল</button>
-</div>
-</div>
-<div id="tab-home">
-<div id="noticeBox" class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white flex gap-2">
-<div class="flex-1">
-<p class="font-bold text-[13px]">🔥 Notice: 10% OFF চলছে!</p>
-<p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘণ্টাই টপআপ চালু থাকে। সব প্রোডাক্টে 10% ছাড়! সকল টপআপ AI দিয়ে ৩০ সেকেন্ডের ভিতরে দেওয়া হয়।</p>
-</div>
-<button onclick="noticeBox.style.display='none'" class="bg-black/20 w-6 h-6 rounded-full text-xs">X</button>
-</div>
-<div class="mx-2.5 mt-2.5 rounded-xl overflow-hidden h-44 bg-gradient-to-r from-blue-600 to-cyan-500 relative flex items-center justify-center">
-<div class="text-center text-white">
-<p class="font-black text-2xl">FREE FIRE - 10% OFF</p>
-<p class="font-bold">ULTRA TOP UP BD</p>
-</div>
-<div class="absolute bottom-2 left-2 right-2 flex justify-between items-end">
-<span class="text-white text-[9px] bg-black/20 px-2 py-1 rounded-full">Instant • Safe • 24/7 • 10% Discount</span>
-<a href="https://t.me/+Q6GAbYR_AusxMjE1" target="_blank" class="bg-[#0088cc] text-white px-3 py-1 rounded-full text-[10px] font-bold">Telegram Channel</a>
-</div>
-</div>
-<div class="px-2.5 mt-3">
-<p class="font-black text-center text-[18px] mt-6">Spacial offer - 10% OFF</p>
-<div class="grid grid-cols-3 gap-2.5 mt-3">
-<div class="text-center">
-<div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-yellow-600 to-orange-600 border-2 border-[#00ff00]">
-<div class="prod-fallback">PREMIUM<br>USERS<br>10% OFF</div>
-</div>
-<p class="text-[10px] font-bold mt-1">Premium Users - ULTRA</p>
-</div>
-<div class="text-center">
-<div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-700">
-<div class="prod-fallback">FRIDAY<br>OFFER<br>10% OFF</div>
-</div>
-<p class="text-[10px] font-bold mt-1">Friday Offer</p>
-</div>
-<div class="text-center">
-<div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-cyan-500 to-blue-600">
-<div class="prod-fallback">FREE 25<br>DIAMOND<br>10% OFF</div>
-</div>
-<p class="text-[10px] font-bold mt-1">Free 25 Diamond</p>
-</div>
-</div>
-<p class="font-black text-center text-[20px] mt-8">FF TOPUP - 10% DISCOUNT + WEEKLY/MONTHLY + LITE</p>
-<div class="grid grid-cols-3 gap-2.5 mt-3">
-<div onclick="orderNow('FF TopUp [BD]',70)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-blue-600 to-cyan-500">
-<div class="prod-fallback">FF TOPUP<br>[BD]<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">FF TopUp [BD] - 10% OFF</p>
-</div>
-<div onclick="orderNow('Weekly/Monthly Offer',702)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-purple-600 to-pink-500">
-<div class="prod-fallback">WEEKLY/MONTHLY<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">Weekly/Monthly - 10% OFF</p>
-</div>
-<div onclick="orderNow('UNIPIN VOUCHER BD',1035)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-orange-500 to-red-600">
-<div class="prod-fallback">UNIPIN<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">UNIPIN VOUCHER BD - 10% OFF</p>
-</div>
-<div onclick="orderNow('Weekly Lite',37)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-600">
-<div class="prod-fallback">WEEKLY LITE<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">Weekly Lite - 10% OFF</p>
-</div>
-<div onclick="orderNow('Level Up Pass (BD Server)',94)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-yellow-500 to-amber-600">
-<div class="prod-fallback">LEVEL UP PASS<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">Level Up Pass - 10% OFF</p>
-</div>
-<div onclick="orderNow('Indonesia Server [UID]',103)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-red-600 to-orange-500">
-<div class="prod-fallback">INDONESIA<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">Indonesia Server - 10% OFF</p>
-</div>
-<div onclick="orderNow('FF Like',22)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-pink-600 to-rose-500">
-<div class="prod-fallback">FF LIKE<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">FF Like - 10% OFF</p>
-</div>
-</div>
-<p class="font-black text-center text-[20px] mt-8">PUBG Mobile & Premium - 10% OFF</p>
-<div class="grid grid-cols-3 gap-2.5 mt-3 mb-2">
-<div onclick="orderNow('PUBG UC',103)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-gray-800 to-black">
-<div class="prod-fallback">PUBG UC<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">PUBG UC - 10% OFF</p>
-</div>
-<div onclick="orderNow('ChatGPT Plus',449)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-black border-2 border-green-400">
-<div class="prod-fallback">ChatGPT PLUS<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">ChatGPT Plus - 10% OFF</p>
-</div>
-<div onclick="orderNow('TikTok Like-Follow',72)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-black border-2 border-green-400">
-<div class="prod-fallback">TikTok<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">TikTok - 10% OFF</p>
-</div>
-<div onclick="orderNow('YouTube Premium',179)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-red-600">
-<div class="prod-fallback">YOUTUBE<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">YouTube Premium - 10% OFF</p>
-</div>
-<div onclick="orderNow('NETFLIX',315)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-black">
-<div class="prod-fallback" style="color:#e50914;font-size:22px">NETFLIX<br><span style="font-size:10px;color:white">10% OFF</span></div>
-</div>
-<p class="text-[11px] font-bold mt-1">NETFLIX - 10% OFF</p>
-</div>
-<div onclick="orderNow('Canva Pro',108)" class="text-center">
-<div class="rounded-xl h-[125px] overflow-hidden prod-card bg-[#00c4cc]">
-<div class="prod-fallback">Canva PRO<br>10% OFF</div>
-</div>
-<p class="text-[11px] font-bold mt-1">Canva Pro - 10% OFF</p>
-</div>
-</div>
-</div>
-<div class="bg-white rounded-xl mx-2.5 mt-6 border shadow-sm p-3">
-<div class="flex justify-between items-center">
-<div class="flex gap-2 items-center">
-<div class="bg-pink-100 p-2 rounded-full">🛍️</div>
-<div>
-<b>Recent Orders - 10% OFF</b>
-<div class="flex items-center gap-1 text-green-600 text-xs"><span class="w-2 h-2 bg-green-500 rounded-full live-dot"></span> Live ~</div>
-</div>
-</div>
-<button onclick="refreshOrders()" class="w-8 h-8 bg-gray-100 rounded-full active:rotate-180 transition-all duration-500">↻</button>
-</div>
-<div id="recentOrdersList" class="mt-4 space-y-3">
-<div class="flex justify-between items-center border-b pb-2">
-<div class="flex gap-2 items-center">
-<div class="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center font-bold">E</div>
-<div><b class="text-sm">EVAN AHMED Shuvo</b><br><small class="text-gray-500">Weekly - ৳139 (10% OFF)</small></div>
-</div>
-<span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-bold">✓ Done</span>
-</div>
-</div>
-</div>
-<div class="bg-[#0a1931] text-white mt-6 pb-6">
-<div class="p-5">
-<h2 class="font-black text-xl">STAY CONNECTED - 10% OFF চলছে!</h2>
-<p class="text-sm opacity-70 mt-2 leading-6">কোন সমস্যায় পড়লে হোয়াটসঅ্যাপ এ যোগাযোগ করবেন। 10% Discount চলছে!</p>
-<div class="flex gap-3 mt-4">
-<div onclick="window.open('https://facebook.com','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl active:bg-white/20">f</div>
-<div onclick="window.open('https://instagram.com','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl active:bg-white/20">◎</div>
-<div onclick="window.open('https://t.me/+Q6GAbYR_AusxMjE1','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl active:bg-white/20">▶</div>
-<div onclick="window.open('https://wa.me/8801837450067','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl active:bg-white/20">✉</div>
-</div>
-<h2 class="font-black text-lg mt-8">SUPPORT CENTER - 10% OFF</h2>
-<button onclick="window.open('https://wa.me/8801837450067','_blank')" class="w-full border border-white/20 rounded-xl p-3 flex items-center gap-3 mt-4 text-left active:bg-white/10 transition">
-<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">💬</div>
-<div><p class="font-bold text-sm">Help line [9AM-12PM]</p><p class="text-sm">Whatsapp HelpLine - Tap to Chat - 10% OFF</p></div>
-<div class="ml-auto text-green-400">↗</div>
-</button>
-<button onclick="window.open('https://t.me/+Q6GAbYR_AusxMjE1','_blank')" class="w-full border border-white/20 rounded-xl p-3 flex items-center gap-3 mt-3 text-left active:bg-white/10 transition">
-<div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">✈</div>
-<div><p class="font-bold text-sm">Help line [9AM-12PM]</p><p class="text-sm">টেলিগ্রামে সাপোর্ট - Tap to Join - 10% OFF</p></div>
-<div class="ml-auto text-blue-400">↗</div>
-</button>
-<p class="text-center text-sm opacity-80 mt-10 border-t border-white/10 pt-6">© ULTRA TOP UP BD 2026 - 10% OFF | All Rights Reserved | Developed by Team Mahal</p>
-</div>
-</div>
-</div>
-<div id="tab-product" class="hide">
-<div class="bg-[#f0f4ff] p-2.5">
-<button onclick="switchTab('home')" class="bg-white px-3 py-1.5 rounded-full text-[12px] font-bold border mb-2">← Back</button>
-<div class="bg-white rounded-xl p-3 flex gap-3 items-center border">
-<div id="productIcon" class="w-20 h-20 bg-[#00c853] rounded-xl flex items-center justify-center text-white font-black text-[10px] text-center p-1">FF Like</div>
-<div>
-<p id="productTitle" class="font-black text-lg">FF Like</p>
-<div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px] font-bold mt-1 inline-block">✓ 30 সেকেন্ডে ডেলিভারি - 10% OFF</div>
-</div>
-</div>
-<div class="bg-white rounded-xl mt-3 border shadow-sm">
-<div class="p-3 flex items-center gap-2 border-b">
-<div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">1</div>
-<p class="font-black">Select Recharge - 10% OFF</p>
-</div>
-<div id="rechargeOptions" class="p-3 grid grid-cols-2 gap-2"></div>
-<div class="px-3 pb-2">
-<a href="https://t.me/+Q6GAbYR_AusxMjE1" target="_blank" class="text-[#00c853] text-[12px] font-bold">↗ কিভাবে অর্ডার করবেন? Telegram → 10% OFF</a>
-</div>
-</div>
-<div class="bg-white rounded-xl mt-3 border shadow-sm">
-<div class="p-3 flex items-center gap-2 border-b">
-<div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">2</div>
-<p class="font-black">Account Info</p>
-</div>
-<div class="p-3">
-<p class="font-bold text-sm" id="accLabel">এখানে গেমের আইডি কোড দিন</p>
-<input id="detailUID" type="text" placeholder="এখানে গেমের আইডি কোড দিন" class="w-full border-2 border-blue-200 p-3.5 rounded-xl mt-2 text-sm focus:border-[#00c853] outline-none">
-<button onclick="checkUID()" id="checkBtn" class="mt-3 bg-[#00c853] text-white py-3 rounded-xl font-bold text-center text-sm w-full">Check UID</button>
-<div id="uidResult" class="hide mt-3 bg-green-50 border-2 border-green-300 p-3 rounded-xl">
-<p class="font-black text-green-700 text-sm">UID Found</p>
-<p class="text-[11px] text-gray-600 mt-1">UID: <span id="showUID" class="font-bold"></span> | Server: BD - 10% OFF</p>
-</div>
-</div>
-</div>
-<div class="bg-white rounded-xl mt-3 border shadow-sm mb-24">
-<div class="p-3 flex items-center gap-2 border-b">
-<div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">3</div>
-<p class="font-black">Select one option - 10% OFF</p>
-</div>
-<div class="p-3 grid grid-cols-2 gap-3">
-<div onclick="selectPay('wallet')" id="payWallet" class="border-2 border-[#00c853] rounded-xl p-2 bg-white relative">
-<div class="absolute -top-2 -right-2 bg-[#00c853] text-white text-[8px] px-2 py-1 rounded-full">✓</div>
-<div class="h-24 flex flex-col items-center justify-center">
-<p class="font-black text-[18px] text-[#00c853]">ULTRA</p>
-<p class="font-black text-[12px]">TOP UP BD - 10% OFF</p>
-</div>
-<p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Wallet Pay - 10% OFF</p>
-</div>
-<div onclick="selectPay('instant')" id="payInstant" class="border-2 border-gray-200 rounded-xl p-2 bg-white relative">
-<div class="h-24 flex flex-col items-center justify-center gap-1">
-<div class="flex gap-1 items-center">
-<span class="bg-[#e91e63] text-white text-[8px] px-1.5 py-1 rounded font-bold">bKash</span>
-<span class="bg-[#f7941d] text-white text-[8px] px-1.5 py-1 rounded font-bold">নগদ</span>
-<span class="bg-[#8c3494] text-white text-[8px] px-1.5 py-1 rounded font-bold">রকেট</span>
-</div>
-<p class="text-[8px] text-gray-500 mt-1">Instant Payment - 10% OFF</p>
-</div>
-<p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Instant Pay - 10% OFF</p>
-</div>
-</div>
-<div class="px-3 pb-3 space-y-2 text-[12px]">
-<p class="flex items-center gap-2">ⓘ আপনার অ্যাকাউন্ট ব্যালেন্স <span class="text-green-600 font-bold" id="detailBalance">5.00</span> ৳ <button onclick="updateUI()" class="w-5 h-5 bg-gray-100 rounded-full">↻</button></p>
-<p class="flex items-center gap-2">ⓘ প্রোডাক্ট কিনতে আপনার প্রয়োজন <span class="text-green-600 font-bold" id="detailNeed">50</span> ৳ - 10% OFF Applied!</p>
-</div>
-<button onclick="confirmDetailOrder()" class="bg-[#00c853] text-white w-full py-4 rounded-xl font-black text-lg mt-2 flex items-center justify-center gap-2">Buy Now - 10% OFF <span class="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center">🎧</span></button>
-</div>
-</div>
-</div>
-<div id="tab-account" class="hide">
-<div class="p-2.5">
-<div class="rank-card rounded-[20px] p-5 text-white text-center">
-<p class="text-[12px] tracking-widest opacity-70">CURRENT RANK - 10% OFF</p>
-<p id="rankName" class="font-black text-[32px] mt-1">Bronze</p>
-<p id="rankDesc" class="text-[13px] mt-1 opacity-90">Unlock your journey! - 10% OFF</p>
-<div class="flex justify-between text-[12px] mt-5">
-<span id="rankRange">0 - 100 Tk</span><span id="rankPercent">0%</span>
-</div>
-<div class="bg-white/30 h-3 rounded-full mt-2 overflow-hidden">
-<div id="rankProgress" class="progress-bg h-full rounded-full" style="width:10%"></div>
-</div>
-<p id="rankNeed" class="text-[12px] mt-2 opacity-80">Need <span class="font-bold">100 Tk</span> to unlock Silver - 10% OFF</p>
-</div>
-<div class="grid grid-cols-2 gap-2.5 mt-3">
-<div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">ORDERS - 10% OFF</p><p id="statOrders" class="font-black text-lg">0</p></div>
-<div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">TOTAL SPEND</p><p id="statTotal" class="font-black text-lg">0 Tk</p></div>
-<div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">WEEKLY SPEND</p><p id="statWeekly" class="font-black text-lg">0 Tk</p></div>
-<div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">RANK</p><p id="statRank" class="font-black text-lg">Bronze</p></div>
-</div>
-<div class="bg-white rounded-xl mt-3 p-4 border">
-<p class="text-[#00c853] font-black text-xs">RANK JOURNEY - ULTRA TOP UP BD - 10% OFF</p>
-<div id="rankJourney" class="mt-4 space-y-3"></div>
-</div>
-<div class="bg-white rounded-xl mt-3 p-4 border text-center">
-<img id="accPhoto" src="https://i.pravatar.cc/100?img=12" class="w-16 h-16 rounded-full mx-auto">
-<p class="font-bold mt-2"><span id="accName">User</span> <span class="bg-green-100 text-green-700 text-[9px] px-2 py-0.5 rounded-full">Verified - 10% OFF</span></p>
-<p class="text-[11px] text-gray-500">PIN: <span id="accPin">00000</span></p>
-<div class="bg-gray-50 rounded-xl p-3 mt-3 text-left">
-<p class="text-xs text-gray-500">Wallet Balance - 10% OFF Active</p>
-<p class="text-2xl font-black">Tk <span id="wallet">5</span></p>
-</div>
-<button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-3">Logout</button>
-</div>
-</div>
-</div>
-<div id="tab-orders" class="hide p-2.5">
-<p class="font-black text-xl">My Orders - ULTRA TOP UP BD - 10% OFF</p>
-<div id="ordersList" class="space-y-3 mt-3"></div>
-</div>
-<div id="tab-addmoney" class="hide p-0 bg-[#f0f4ff] min-h-screen">
-<div id="addMoneyStep1" class="bg-white p-4">
-<p class="font-black text-lg">Add Money - 10% OFF Active</p>
-<p class="font-bold text-sm mt-4">টাকার পরিমাণ লিখুন - 10% OFF এ কম লাগবে!</p>
-<input id="addAmt" type="number" placeholder="পরিমাণ - 10% OFF" class="w-full border-2 border-[#00c853] p-3.5 rounded-xl mt-2 text-sm outline-none">
-<button onclick="goToPayment()" class="bg-[#00c853] text-white w-full py-3.5 rounded-xl font-black mt-3">টাকা অ্যাড করুন - 10% OFF</button>
-</div>
-<div id="addMoneyStep2" class="hide p-2.5">
-<div class="bg-white rounded-xl p-4 text-center">
-<p class="font-black mt-2">নিরাপদ পেমেন্ট - ULTRA TOP UP BD - 10% OFF</p>
-<p class="text-[12px] text-gray-500 mt-1">মোবাইল ব্যাংকিং সিলেক্ট করুন</p>
-</div>
-<div class="bg-white rounded-xl p-4 mt-2">
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div onclick="selectGateway('bKash')" id="gw-bKash" class="border-2 border-[#e91e63] rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-pink-600 font-bold">bKash - 10% OFF</p></div>
-<div onclick="selectGateway('Nagad')" id="gw-Nagad" class="border-2 border-gray-200 rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-orange-600 font-bold">Nagad - 10% OFF</p></div>
-<div onclick="selectGateway('Rocket')" id="gw-Rocket" class="border-2 border-gray-200 rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-purple-600 font-bold">Rocket - 10% OFF</p></div>
-<div onclick="selectGateway('Upay')" id="gw-Upay" class="border-2 border-gray-200 rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-yellow-600 font-bold">Upay - 10% OFF</p></div>
-</div>
-<button onclick="confirmPayGateway()" class="bg-[#e91e63] text-white w-full py-4 rounded-xl font-black mt-4">Pay <span id="payAmountText">0.00</span> ৳ - 10% OFF</button>
-</div>
-</div>
-<div id="addMoneyStep3" class="hide p-0 bg-[#f0f4ff] min-h-screen">
-<div class="bg-[#e91e63] text-white p-3 flex items-center gap-2">
-<button onclick="resetAddMoney()" class="text-xl">←</button>
-<p class="font-bold text-sm">🔒 নিরাপদ পেমেন্ট - <span id="selectedGwText">bKash</span> - 10% OFF</p>
-</div>
-<div class="bg-white p-4 border-b"><p class="font-bold text-xl">৳ <span id="finalAmount">60</span> - 10% OFF</p></div>
-<div class="bg-[#e91e63] m-2.5 rounded-xl p-4 text-white">
-<p class="font-black text-center text-[18px]">ট্রানজেকশন আইডি দিন - 10% OFF</p>
-<input id="trxId" type="text" placeholder="ট্রানজেকশন আইডি দিন" class="w-full p-3.5 rounded-xl mt-3 text-black text-sm outline-none font-bold">
-<div class="mt-4 space-y-3 text-[13px] leading-6">
-<p>• *247# ডায়াল করে আপনার bKash মেনুতে যান অথবা bKash অ্যাপ খুলুন।</p>
-<p>• Send Money -এ ক্লিক করুন।</p>
-<p class="flex items-center gap-2 flex-wrap">• এই নম্বরে টাকা পাঠান: <span class="font-black text-yellow-300 text-[16px] bg-white/20 px-2 py-1 rounded">01837450067</span> <button onclick="navigator.clipboard.writeText('01837450067');alert('Copied!')" class="bg-black/20 px-2 py-1 rounded text-xs">⎙ কপি</button></p>
-<p>• টাকার পরিমাণঃ <span class="font-black text-yellow-300" id="trxAmount">60</span> ৳ - 10% OFF</p>
-<p>• নিশ্চিত করে এখন আপনার <span id="trxGateway">bKash</span> PIN লিখুন।</p>
-<p>• টাকা পাঠান এবং ট্রানজেকশন আইডি কপি করুন।</p>
-<p>• ট্রানজেকশন আইডি লিখে ভেরিফাই চাপুন।</p>
-</div>
-</div>
-<button onclick="doAddMoneyFinal()" class="bg-[#8b0000] text-white w-full py-4 font-black mt-3 mx-2.5 rounded-xl" style="width: calc(100% - 20px);">ভেরিফাই করুন - 10% OFF</button>
-<button onclick="resetAddMoney()" class="w-full py-3 text-sm text-gray-500">Back - 10% OFF</button>
-</div>
-</div>
-<div id="tab-codes" class="hide p-8 text-center">
-<div class="bg-white rounded-xl p-8 shadow border">
-<p class="font-black">My Codes - ULTRA TOP UP BD - 10% OFF</p>
-<p class="text-sm mt-2">No code data found ! 10% OFF Active</p>
-</div>
-</div>
-<div id="popupGift" class="fixed inset-0 bg-black/60 z-[70] flex items-center justify-center p-4">
-<div class="bg-white rounded-2xl overflow-hidden w-full max-w-[340px] shadow-2xl">
-<div class="bg-gradient-to-br from-[#1a237e] to-[#4a148c] p-4 text-center text-white relative">
-<p class="font-black text-[28px] leading-none text-yellow-300">গিভওয়ে ও</p>
-<p class="font-black text-[28px] leading-none text-yellow-300">সকল অফার - 10% OFF</p>
-<p class="text-sm mt-2">সম্পর্কে জানতে</p>
-<p class="bg-[#00c853] inline-block px-3 py-1 rounded-full text-sm font-bold mt-1">📢 টেলিগ্রাম চ্যানেলে যোগাযোগ করুন - 10% OFF</p>
-</div>
-<div class="p-4">
-<p class="font-bold text-[14px] text-center">প্রতিদিন ফ্রিতে ডায়মন্ড পেতে আমাদের Telegram চ্যানেলে Join করুন - এখন 10% OFF!</p>
-<a href="https://t.me/+Q6GAbYR_AusxMjE1" target="_blank" class="bg-[#0088cc] text-white px-5 py-2.5 rounded-lg mt-3 text-sm font-bold inline-block w-full text-center">📲 ক্লিক করুন - Telegram Channel - 10% OFF</a>
-</div>
-<button onclick="document.getElementById('popupGift').style.display='none'" class="bg-[#00c853] text-white px-8 py-2 rounded-full font-black mx-auto block mb-4">X CLOSE - 10% OFF</button>
-</div>
-</div>
-<div class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-2 z-50">
-<button onclick="switchTab('home')" class="flex flex-col items-center text-[#00c853]" id="btn-home"><span class="text-[20px]">⌂</span><span class="text-[10px] font-bold">Home - 10% OFF</span></button>
-<button onclick="switchTab('orders')" class="flex flex-col items-center text-gray-500" id="btn-orders"><span class="text-[20px]">📦</span><span class="text-[10px]">My Orders</span></button>
-<button onclick="switchTab('addmoney')" class="bg-[#00c853] w-14 h-14 rounded-full flex items-center justify-center text-white text-3xl -mt-6 border-4 border-white shadow font-bold">+</button>
-<button onclick="switchTab('codes')" class="flex flex-col items-center text-gray-500" id="btn-codes"><span class="text-[20px]">🎟️</span><span class="text-[10px]">My Codes</span></button>
-<button onclick="switchTab('account')" class="flex flex-col items-center text-gray-500" id="btn-account"><span class="text-[20px]">👤</span><span class="text-[10px]">My Account</span></button>
-</div>
+  <div class="bg-[#e91e63] h-11 flex items-center px-3 text-white sticky top-0 z-50">
+    <span class="text-sm font-bold">ULTRA TOP UP BD - 10% OFF!</span>
+    <button id="installBtn" class="ml-auto bg-white text-[#e91e63] px-3 py-1 rounded-full text-[11px] font-black hide">Install</button>
+  </div>
+  <div class="bg-white px-3 py-2.5 flex justify-between items-center shadow-sm sticky top-11 z-40">
+    <div class="flex items-center gap-2">
+      <img src="app-logo.jpg" onerror="this.src='https://i.pravatar.cc/100'" class="w-10 h-10 rounded-lg border-2 border-[#00ff00] object-cover">
+      <div class="bg-black rounded-lg px-2 py-1 border-2 border-[#00ff00]">
+        <p class="text-[#00ff00] font-black text-xs">ULTRA</p>
+        <p class="text-white font-black text-[8px]">TOP UP BD</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="switchTab('addmoney')" class="bg-[#00c853] text-white px-4 py-1.5 rounded-full font-bold text-sm"><span id="walletTop">5</span> ৳</button>
+      <img id="headerPhoto" onclick="openDrawer()" src="https://i.pravatar.cc/100?img=12" class="w-9 h-9 rounded-full border-2 border-green-400">
+    </div>
+  </div>
+  <div id="drawer" class="fixed inset-0 z-[100] hidden">
+    <div class="bg-black/50 w-full h-full" onclick="closeDrawer()"></div>
+    <div class="bg-white w-[75%] max-w-[320px] h-full absolute right-0 top-0 shadow-2xl overflow-auto">
+      <div class="p-4 border-b">
+        <div class="flex gap-3 items-center">
+          <img id="drawerPhoto" src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full">
+          <div>
+            <p class="font-bold text-sm" id="drawerName">Hi, User</p>
+            <p class="text-[11px] text-gray-500" id="drawerEmail">user@gmail.com</p>
+          </div>
+        </div>
+        <button onclick="logout()" class="bg-[#00ff0a] text-white px-5 py-1.5 rounded-full text-[12px] font-bold mt-3">Logout</button>
+      </div>
+      <div class="p-2 space-y-1 text-sm font-bold">
+        <button onclick="switchTab('account');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Account</button>
+        <button onclick="switchTab('orders');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Orders</button>
+        <button onclick="switchTab('codes');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Codes</button>
+        <button onclick="switchTab('addmoney');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">Add Money</button>
+        <button onclick="window.open('https://wa.me/8801837450067')" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">Contact Us</button>
+        <a href="https://t.me/+Q6GAbYR_AusxMjE1" target="_blank" class="bg-[#00ff0a] text-white px-6 py-2.5 rounded-full font-bold mt-4 flex items-center justify-center gap-2 mx-3">Support Telegram</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="loginPage" class="fixed inset-0 bg-white z-[80] p-6 overflow-auto">
+    <p class="font-black text-[32px] leading-none mt-6">Welcome<br><span class="text-[#e91e63]">Back - 10% OFF</span></p>
+    <div class="border-2 rounded-[20px] p-4 mt-6">
+      <input id="loginEmail" type="email" placeholder="Gmail - example@gmail.com" class="w-full border-2 p-3.5 rounded-xl text-sm">
+      <input id="loginName" type="text" placeholder="Name" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm">
+      <input id="loginPass" type="password" placeholder="Password - ******" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm">
+      <button onclick="manualLogin()" class="w-full mt-4 bg-black text-white rounded-xl py-4 font-black">Continue</button>
+      <div class="grid grid-cols-2 gap-3 mt-3">
+        <button onclick="manualLogin()" class="w-full bg-[#00c853] text-white rounded-xl py-3.5 font-black text-sm">Login</button>
+        <button onclick="manualLogin()" class="w-full bg-[#e91e63] text-white rounded-xl py-3.5 font-black text-sm">Sign Up</button>
+      </div>
+      <button onclick="openForgot()" class="w-full mt-4 bg-yellow-50 border-2 border-[#e91e63] text-[#e91e63] rounded-xl py-3.5 font-black text-[13px]">🔑 Forgot Password? - পাসওয়ার্ড ভুলে গেছেন?</button>
+      <p class="text-[11px] text-center text-gray-500 mt-3">Same Gmail + Same Password = Same ID, PIN, Wallet, Orders - Login কাটবে না! 10% OFF!</p>
+    </div>
+  </div>
+
+  <div id="forgotBox" class="fixed inset-0 bg-black/60 z-[90] hidden items-center justify-center p-4">
+    <div class="bg-white rounded-[20px] p-5 w-full max-w-[340px] shadow-2xl">
+      <p class="font-black text-lg">🔑 Forgot Password</p>
+      <p class="font-bold text-[13px] text-[#e91e63]">ULTRA TOP UP BD</p>
+      <p class="text-[11px] text-gray-500 mt-2">Gmail দিন, নতুন Password সেট করুন - Same ID, PIN, Wallet থাকবে!</p>
+      <input id="forgotEmail" type="email" placeholder="Gmail - example@gmail.com" class="w-full border-2 p-3.5 rounded-xl mt-4 text-sm outline-none focus:border-[#00c853]">
+      <input id="forgotNewPass" type="password" placeholder="নতুন Password - New Password" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm outline-none focus:border-[#00c853]">
+      <input id="forgotConfirmPass" type="password" placeholder="Confirm নতুন Password" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm outline-none focus:border-[#00c853]">
+      <button onclick="doForgot()" class="w-full mt-4 bg-[#00c853] text-white rounded-xl py-4 font-black">নতুন Password সেট করুন</button>
+      <button onclick="closeForgot()" class="w-full mt-3 text-[12px] text-gray-500 font-bold">Cancel - বাতিল</button>
+    </div>
+  </div>
+
+  <div id="tab-home">
+    <div id="noticeBox" class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white flex gap-2">
+      <div class="flex-1">
+        <p class="font-bold text-[13px]">🔥 Notice: 10% OFF চলছে!</p>
+        <p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘণ্টাই টপআপ চালু থাকে। সব প্রোডাক্টে 10% ছাড়!</p>
+      </div>
+      <button onclick="noticeBox.style.display='none'" class="bg-black/20 w-6 h-6 rounded-full text-xs">X</button>
+    </div>
+    <div class="mx-2.5 mt-2.5 rounded-xl overflow-hidden h-44 bg-gradient-to-r from-blue-600 to-cyan-500 relative flex items-center justify-center">
+      <div class="text-center text-white">
+        <p class="font-black text-2xl">FREE FIRE - 10% OFF</p>
+        <p class="font-bold">ULTRA TOP UP BD</p>
+      </div>
+      <div class="absolute bottom-2 left-2 right-2 flex justify-between items-end">
+        <span class="text-white text-[9px] bg-black/20 px-2 py-1 rounded-full">Instant • Safe • 24/7 - 10% OFF</span>
+        <a href="https://t.me/+Q6GAbYR_AusxMjE1" target="_blank" class="bg-[#0088cc] text-white px-3 py-1 rounded-full text-[10px] font-bold">Telegram Channel</a>
+      </div>
+    </div>
+    <div class="px-2.5 mt-3">
+      <p class="font-black text-center text-[18px] mt-6">Spacial offer - 10% OFF</p>
+      <div class="grid grid-cols-3 gap-2.5 mt-3">
+        <div class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-yellow-600 to-orange-600 border-2 border-[#00ff00]"><div class="prod-fallback">PREMIUM<br>USERS<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Premium Users - ULTRA</p></div>
+        <div class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-700"><div class="prod-fallback">FRIDAY<br>OFFER<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Friday Offer</p></div>
+        <div class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-cyan-500 to-blue-600"><div class="prod-fallback">FREE 25<br>DIAMOND<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Free 25 Diamond</p></div>
+      </div>
+      <p class="font-black text-center text-[20px] mt-8">FF TOPUP - 10% DISCOUNT + WEEKLY/MONTHLY + LITE</p>
+      <div class="grid grid-cols-3 gap-2.5 mt-3">
+        <div onclick="orderNow('FF TopUp [BD]',70)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-blue-600 to-cyan-500"><div class="prod-fallback">FF TOPUP<br>[BD]<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">FF TopUp [BD] - 10% OFF</p></div>
+        <div onclick="orderNow('Weekly/Monthly Offer',702)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-purple-600 to-pink-500"><div class="prod-fallback">WEEKLY/MONTHLY<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Weekly/Monthly - 10% OFF</p></div>
+        <div onclick="orderNow('UNIPIN VOUCHER BD',1035)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-orange-500 to-red-600"><div class="prod-fallback">UNIPIN<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">UNIPIN VOUCHER BD - 10% OFF</p></div>
+        <div onclick="orderNow('Weekly Lite',37)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-600"><div class="prod-fallback">WEEKLY LITE<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Weekly Lite - 10% OFF</p></div>
+        <div onclick="orderNow('Level Up Pass (BD Server)',94)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-yellow-500 to-amber-600"><div class="prod-fallback">LEVEL UP PASS<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Level Up Pass - 10% OFF</p></div>
+        <div onclick="orderNow('Indonesia Server [UID]',103)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-red-600 to-orange-500"><div class="prod-fallback">INDONESIA<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Indonesia Server - 10% OFF</p></div>
+        <div onclick="orderNow('FF Like',22)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-pink-600 to-rose-500"><div class="prod-fallback">FF LIKE<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">FF Like - 10% OFF</p></div>
+      </div>
+      <p class="font-black text-center text-[20px] mt-8">PUBG Mobile & Premium - 10% OFF</p>
+      <div class="grid grid-cols-3 gap-2.5 mt-3 mb-2">
+        <div onclick="orderNow('PUBG UC',103)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-gray-800 to-black"><div class="prod-fallback">PUBG UC<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">PUBG UC - 10% OFF</p></div>
+        <div onclick="orderNow('ChatGPT Plus',449)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-black border-2 border-green-400"><div class="prod-fallback">ChatGPT PLUS<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">ChatGPT Plus - 10% OFF</p></div>
+        <div onclick="orderNow('TikTok Like-Follow',72)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-black border-2 border-green-400"><div class="prod-fallback">TikTok<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">TikTok - 10% OFF</p></div>
+        <div onclick="orderNow('YouTube Premium',179)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-red-600"><div class="prod-fallback">YOUTUBE<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">YouTube Premium - 10% OFF</p></div>
+        <div onclick="orderNow('NETFLIX',315)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-black"><div class="prod-fallback" style="color:#e50914;font-size:22px">NETFLIX<br><span style="font-size:10px;color:white">10% OFF</span></div></div><p class="text-[11px] font-bold mt-1">NETFLIX - 10% OFF</p></div>
+        <div onclick="orderNow('Canva Pro',108)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-[#00c4cc]"><div class="prod-fallback">Canva PRO<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Canva Pro - 10% OFF</p></div>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl mx-2.5 mt-6 border shadow-sm p-3">
+      <div class="flex justify-between items-center">
+        <div class="flex gap-2 items-center">
+          <div class="bg-pink-100 p-2 rounded-full">🛍️</div>
+          <div><b>Recent Orders - 10% OFF</b><div class="flex items-center gap-1 text-green-600 text-xs"><span class="w-2 h-2 bg-green-500 rounded-full live-dot"></span> Live ~</div></div>
+        </div>
+        <button onclick="refreshOrders()" class="w-8 h-8 bg-gray-100 rounded-full">↻</button>
+      </div>
+      <div id="recentOrdersList" class="mt-4 space-y-3">
+        <div class="flex justify-between items-center border-b pb-2">
+          <div class="flex gap-2 items-center"><div class="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center font-bold">E</div><div><b class="text-sm">EVAN AHMED Shuvo</b><br><small class="text-gray-500">Weekly - ৳139 (10% OFF)</small></div></div>
+          <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-bold">✓ Done</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-[#0a1931] text-white mt-6 pb-6">
+      <div class="p-5">
+        <h2 class="font-black text-xl">STAY CONNECTED - 10% OFF চলছে!</h2>
+        <p class="text-sm opacity-70 mt-2 leading-6">কোন সমস্যায় পড়লে হোয়াটসঅ্যাপ এ যোগাযোগ করবেন। 10% Discount চলছে!</p>
+        <div class="flex gap-3 mt-4">
+          <div onclick="window.open('https://facebook.com','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl">f</div>
+          <div onclick="window.open('https://instagram.com','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl">◎</div>
+          <div onclick="window.open('https://t.me/+Q6GAbYR_AusxMjE1','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl">▶</div>
+          <div onclick="window.open('https://wa.me/8801837450067','_blank')" class="w-12 h-12 border border-white/30 rounded-xl flex items-center justify-center text-xl">✉</div>
+        </div>
+        <h2 class="font-black text-lg mt-8">SUPPORT CENTER - 10% OFF</h2>
+        <button onclick="window.open('https://wa.me/8801837450067','_blank')" class="w-full border border-white/20 rounded-xl p-3 flex items-center gap-3 mt-4 text-left"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">💬</div><div><p class="font-bold text-sm">Help line [9AM-12PM]</p><p class="text-sm">Whatsapp HelpLine - Tap to Chat - 10% OFF</p></div></button>
+        <button onclick="window.open('https://t.me/+Q6GAbYR_AusxMjE1','_blank')" class="w-full border border-white/20 rounded-xl p-3 flex items-center gap-3 mt-3 text-left"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">✈</div><div><p class="font-bold text-sm">Help line [9AM-12PM]</p><p class="text-sm">টেলিগ্রামে সাপোর্ট - Tap to Join - 10% OFF</p></div></button>
+        <p class="text-center text-sm opacity-80 mt-10 border-t border-white/10 pt-6">© ULTRA TOP UP BD 2026 - 10% OFF | All Rights Reserved | Developed by Team Mahal</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-product" class="hide">
+    <div class="bg-[#f0f4ff] p-2.5">
+      <button onclick="switchTab('home')" class="bg-white px-3 py-1.5 rounded-full text-[12px] font-bold border mb-2">← Back</button>
+      <div class="bg-white rounded-xl p-3 flex gap-3 items-center border">
+        <div id="productIcon" class="w-20 h-20 bg-[#00c853] rounded-xl flex items-center justify-center text-white font-black text-[10px] text-center p-1">FF Like</div>
+        <div>
+          <p id="productTitle" class="font-black text-lg">FF Like</p>
+          <div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px] font-bold mt-1 inline-block">✓ 30 সেকেন্ডে ডেলিভারি - 10% OFF</div>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl mt-3 border shadow-sm">
+        <div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">1</div><p class="font-black">Select Recharge - 10% OFF</p></div>
+        <div id="rechargeOptions" class="p-3 grid grid-cols-2 gap-2"></div>
+      </div>
+      <div class="bg-white rounded-xl mt-3 border shadow-sm">
+        <div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">2</div><p class="font-black">Account Info</p></div>
+        <div class="p-3">
+          <p class="font-bold text-sm" id="accLabel">এখানে গেমের আইডি কোড দিন</p>
+          <input id="detailUID" type="text" placeholder="এখানে গেমের আইডি কোড দিন" class="w-full border-2 border-blue-200 p-3.5 rounded-xl mt-2 text-sm focus:border-[#00c853] outline-none">
+          <button onclick="checkUID()" id="checkBtn" class="mt-3 bg-[#00c853] text-white py-3 rounded-xl font-bold text-center text-sm w-full">Check UID</button>
+          <div id="uidResult" class="hide mt-3 bg-green-50 border-2 border-green-300 p-3 rounded-xl">
+            <p class="font-black text-green-700 text-sm">UID Found</p>
+            <p class="text-[11px] text-gray-600 mt-1">UID: <span id="showUID" class="font-bold"></span> | Server: BD - 10% OFF</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl mt-3 border shadow-sm mb-24">
+        <div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">3</div><p class="font-black">Select one option - 10% OFF</p></div>
+        <div class="p-3 grid grid-cols-2 gap-3">
+          <div onclick="selectPay('wallet')" id="payWallet" class="border-2 border-[#00c853] rounded-xl p-2 bg-white relative"><div class="absolute -top-2 -right-2 bg-[#00c853] text-white text-[8px] px-2 py-1 rounded-full">✓</div><div class="h-24 flex flex-col items-center justify-center"><p class="font-black text-[18px] text-[#00c853]">ULTRA</p><p class="font-black text-[12px]">TOP UP BD - 10% OFF</p></div><p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Wallet Pay - 10% OFF</p></div>
+          <div onclick="selectPay('instant')" id="payInstant" class="border-2 border-gray-200 rounded-xl p-2 bg-white relative"><div class="h-24 flex flex-col items-center justify-center gap-1"><div class="flex gap-1 items-center"><span class="bg-[#e91e63] text-white text-[8px] px-1.5 py-1 rounded font-bold">bKash</span><span class="bg-[#f7941d] text-white text-[8px] px-1.5 py-1 rounded font-bold">নগদ</span><span class="bg-[#8c3494] text-white text-[8px] px-1.5 py-1 rounded font-bold">রকেট</span></div><p class="text-[8px] text-gray-500 mt-1">Instant Payment - 10% OFF</p></div><p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Instant Pay - 10% OFF</p></div>
+        </div>
+        <div class="px-3 pb-3 space-y-2 text-[12px]">
+          <p class="flex items-center gap-2">ⓘ আপনার অ্যাকাউন্ট ব্যালেন্স <span class="text-green-600 font-bold" id="detailBalance">5.00</span> ৳</p>
+          <p class="flex items-center gap-2">ⓘ প্রোডাক্ট কিনতে আপনার প্রয়োজন <span class="text-green-600 font-bold" id="detailNeed">50</span> ৳ - 10% OFF Applied!</p>
+        </div>
+        <button onclick="confirmDetailOrder()" class="bg-[#00c853] text-white w-full py-4 rounded-xl font-black text-lg mt-2 flex items-center justify-center gap-2">Buy Now - 10% OFF</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-account" class="hide">
+    <div class="p-2.5">
+      <div class="rank-card rounded-[20px] p-5 text-white text-center">
+        <p class="text-[12px] tracking-widest opacity-70">CURRENT RANK - 10% OFF</p>
+        <p id="rankName" class="font-black text-[32px] mt-1">Bronze</p>
+        <p id="rankDesc" class="text-[13px] mt-1 opacity-90">Unlock your journey! - 10% OFF</p>
+        <div class="flex justify-between text-[12px] mt-5"><span id="rankRange">0 - 100 Tk</span><span id="rankPercent">0%</span></div>
+        <div class="bg-white/30 h-3 rounded-full mt-2 overflow-hidden"><div id="rankProgress" class="progress-bg h-full rounded-full" style="width:10%"></div></div>
+        <p id="rankNeed" class="text-[12px] mt-2 opacity-80">Need <span class="font-bold">100 Tk</span> to unlock Silver - 10% OFF</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2.5 mt-3">
+        <div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">ORDERS - 10% OFF</p><p id="statOrders" class="font-black text-lg">0</p></div>
+        <div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">TOTAL SPEND</p><p id="statTotal" class="font-black text-lg">0 Tk</p></div>
+        <div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">WEEKLY SPEND</p><p id="statWeekly" class="font-black text-lg">0 Tk</p></div>
+        <div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">RANK</p><p id="statRank" class="font-black text-lg">Bronze</p></div>
+      </div>
+      <div class="bg-white rounded-xl mt-3 p-4 border"><p class="text-[#00c853] font-black text-xs">RANK JOURNEY - ULTRA TOP UP BD - 10% OFF</p><div id="rankJourney" class="mt-4 space-y-3"></div></div>
+      <div class="bg-white rounded-xl mt-3 p-4 border text-center">
+        <img id="accPhoto" src="https://i.pravatar.cc/100?img=12" class="w-16 h-16 rounded-full mx-auto">
+        <p class="font-bold mt-2"><span id="accName">User</span> <span class="bg-green-100 text-green-700 text-[9px] px-2 py-0.5 rounded-full">Verified - 10% OFF</span></p>
+        <p class="text-[11px] text-gray-500">PIN: <span id="accPin">00000</span></p>
+        <div class="bg-gray-50 rounded-xl p-3 mt-3 text-left"><p class="text-xs text-gray-500">Wallet Balance - 10% OFF Active</p><p class="text-2xl font-black">Tk <span id="wallet">5</span></p></div>
+        <button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-3">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-orders" class="hide p-2.5"><p class="font-black text-xl">My Orders - ULTRA TOP UP BD - 10% OFF</p><div id="ordersList" class="space-y-3 mt-3"></div></div>
+  <div id="tab-addmoney" class="hide p-0 bg-[#f0f4ff] min-h-screen">
+    <div id="addMoneyStep1" class="bg-white p-4"><p class="font-black text-lg">Add Money - 10% OFF Active</p><p class="font-bold text-sm mt-4">টাকার পরিমাণ লিখুন - 10% OFF এ কম লাগবে!</p><input id="addAmt" type="number" placeholder="পরিমাণ - 10% OFF" class="w-full border-2 border-[#00c853] p-3.5 rounded-xl mt-2 text-sm outline-none"><button onclick="goToPayment()" class="bg-[#00c853] text-white w-full py-3.5 rounded-xl font-black mt-3">টাকা অ্যাড করুন - 10% OFF</button></div>
+    <div id="addMoneyStep2" class="hide p-2.5"><div class="bg-white rounded-xl p-4 text-center"><p class="font-black mt-2">নিরাপদ পেমেন্ট - ULTRA TOP UP BD - 10% OFF</p><p class="text-[12px] text-gray-500 mt-1">মোবাইল ব্যাংকিং সিলেক্ট করুন</p></div><div class="bg-white rounded-xl p-4 mt-2"><div class="grid grid-cols-2 gap-3 mt-2"><div onclick="selectGateway('bKash')" id="gw-bKash" class="border-2 border-[#e91e63] rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-pink-600 font-bold">bKash - 10% OFF</p></div><div onclick="selectGateway('Nagad')" id="gw-Nagad" class="border-2 border-gray-200 rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-orange-600 font-bold">Nagad - 10% OFF</p></div><div onclick="selectGateway('Rocket')" id="gw-Rocket" class="border-2 border-gray-200 rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-purple-600 font-bold">Rocket - 10% OFF</p></div><div onclick="selectGateway('Upay')" id="gw-Upay" class="border-2 border-gray-200 rounded-xl p-3 h-20 flex items-center justify-center bg-white"><p class="text-yellow-600 font-bold">Upay - 10% OFF</p></div></div><button onclick="confirmPayGateway()" class="bg-[#e91e63] text-white w-full py-4 rounded-xl font-black mt-4">Pay <span id="payAmountText">0.00</span> ৳ - 10% OFF</button></div></div>
+    <div id="addMoneyStep3" class="hide p-0 bg-[#f0f4ff] min-h-screen"><div class="bg-[#e91e63] text-white p-3 flex items-center gap-2"><button onclick="resetAddMoney()" class="text-xl">←</button><p class="font-bold text-sm">🔒 নিরাপদ পেমেন্ট - <span id="selectedGwText">bKash</span> - 10% OFF</p></div><div class="bg-white p-4 border-b"><p class="font-bold text-xl">৳ <span id="finalAmount">60</span> - 10% OFF</p></div><div class="bg-[#e91e63] m-2.5 rounded-xl p-4 text-white"><p class="font-black text-center text-[18px]">ট্রানজেকশন আইডি দিন - 10% OFF</p><input id="trxId" type="text" placeholder="ট্রানজেকশন আইডি দিন" class="w-full p-3.5 rounded-xl mt-3 text-black text-sm outline-none font-bold"><div class="mt-4 space-y-3 text-[13px] leading-6"><p>• এই নম্বরে টাকা পাঠান: <span class="font-black text-yellow-300 text-[16px] bg-white/20 px-2 py-1 rounded">01837450067</span></p><p>• টাকার পরিমাণঃ <span class="font-black text-yellow-300" id="trxAmount">60</span> ৳ - 10% OFF</p></div></div><button onclick="doAddMoneyFinal()" class="bg-[#8b0000] text-white w-full py-4 font-black mt-3 mx-2.5 rounded-xl" style="width: calc(100% - 20px);">ভেরিফাই করুন - 10% OFF</button></div>
+  </div>
+  <div id="tab-codes" class="hide p-8 text-center"><div class="bg-white rounded-xl p-8 shadow border"><p class="font-black">My Codes - ULTRA TOP UP BD - 10% OFF</p><p class="text-sm mt-2">No code data found ! 10% OFF Active</p></div></div>
+  <div id="popupGift" class="fixed inset-0 bg-black/60 z-[70] flex items-center justify-center p-4"><div class="bg-white rounded-2xl overflow-hidden w-full max-w-[340px] shadow-2xl"><div class="bg-gradient-to-br from-[#1a237e] to-[#4a148c] p-4 text-center text-white"><p class="font-black text-[28px] leading-none text-yellow-300">গিভওয়ে ও</p><p class="font-black text-[28px] leading-none text-yellow-300">সকল অফার - 10% OFF</p><p class="text-sm mt-2">সম্পর্কে জানতে</p><p class="bg-[#00c853] inline-block px-3 py-1 rounded-full text-sm font-bold mt-1">📢 টেলিগ্রাম চ্যানেলে যোগাযোগ করুন - 10% OFF</p></div><div class="p-4"><p class="font-bold text-[14px] text-center">প্রতিদিন ফ্রিতে ডায়মন্ড পেতে আমাদের Telegram চ্যানেলে Join করুন - এখন 10% OFF!</p><a href="https://t.me/+Q6GAbYR_AusxMjE1" target="_blank" class="bg-[#0088cc] text-white px-5 py-2.5 rounded-lg mt-3 text-sm font-bold inline-block w-full text-center">📲 ক্লিক করুন - Telegram Channel - 10% OFF</a></div><button onclick="document.getElementById('popupGift').style.display='none'" class="bg-[#00c853] text-white px-8 py-2 rounded-full font-black mx-auto block mb-4">X CLOSE - 10% OFF</button></div></div>
+  <div class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-2 z-50">
+    <button onclick="switchTab('home')" class="flex flex-col items-center text-[#00c853]" id="btn-home"><span class="text-[20px]">⌂</span><span class="text-[10px] font-bold">Home - 10% OFF</span></button>
+    <button onclick="switchTab('orders')" class="flex flex-col items-center text-gray-500" id="btn-orders"><span class="text-[20px]">📦</span><span class="text-[10px]">My Orders</span></button>
+    <button onclick="switchTab('addmoney')" class="bg-[#00c853] w-14 h-14 rounded-full flex items-center justify-center text-white text-3xl -mt-6 border-4 border-white shadow font-bold">+</button>
+    <button onclick="switchTab('codes')" class="flex flex-col items-center text-gray-500" id="btn-codes"><span class="text-[20px]">🎟️</span><span class="text-[10px]">My Codes</span></button>
+    <button onclick="switchTab('account')" class="flex flex-col items-center text-gray-500" id="btn-account"><span class="text-[20px]">👤</span><span class="text-[10px]">My Account</span></button>
+  </div>
+
 <script>
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-e.preventDefault();
-deferredPrompt = e;
-document.getElementById('installBtn').classList.remove('hide');
-});
-const ranks=[
-{name:"Bronze",min:0,max:100},
-{name:"Silver",min:101,max:1000},
-{name:"Gold",min:1001,max:5000},
-{name:"Platinum",min:5001,max:10000},
-{name:"Diamond",min:10001,max:25000},
-{name:"Heroic",min:25001,max:50000},
-{name:"Master",min:50001,max:100000},
-{name:"Grand Master",min:100001,max:9999999}
-];
+let deferredPrompt; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; document.getElementById('installBtn').classList.remove('hide'); });
+const ranks=[{name:"Bronze",min:0,max:100},{name:"Silver",min:101,max:1000},{name:"Gold",min:1001,max:5000},{name:"Platinum",min:5001,max:10000},{name:"Diamond",min:10001,max:25000},{name:"Heroic",min:25001,max:50000},{name:"Master",min:50001,max:100000},{name:"Grand Master",min:100001,max:9999999}];
 let currentUser = JSON.parse(localStorage.getItem('ultra_rank_user') || 'null');
 let users = JSON.parse(localStorage.getItem('ultra_rank_users') || '{}');
-try{
-let saved = localStorage.getItem('ultra_rank_user');
-if(saved){
-let parsed = JSON.parse(saved);
-if(parsed && parsed.email && users[parsed.email]){
-currentUser = users[parsed.email];
-}
-}
-}catch(e){}
-function getRank(spend){
-for(let i=ranks.length-1;i>=0;i--){
-if(spend>=ranks[i].min) return ranks[i];
-}
-return ranks[0];
-}
-function save(){
-if(currentUser){
-localStorage.setItem('ultra_rank_users', JSON.stringify(users));
-localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser));
-localStorage.setItem('ultra_last_email', currentUser.email);
-}
-updateUI();
-}
+try{let saved=localStorage.getItem('ultra_rank_user');if(saved){let parsed=JSON.parse(saved);if(parsed&&parsed.email&&users[parsed.email]){currentUser=users[parsed.email];}}}catch(e){}
+function getRank(spend){ for(let i=ranks.length-1;i>=0;i--){ if(spend>=ranks[i].min) return ranks[i]; } return ranks[0]; }
+function save(){if(currentUser){localStorage.setItem('ultra_rank_users', JSON.stringify(users)); localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser)); localStorage.setItem('ultra_last_email', currentUser.email);}updateUI();}
 function updateUI(){
-if(!currentUser){
-let lastEmail = localStorage.getItem('ultra_last_email');
-if(lastEmail && users[lastEmail]){
-let em = document.getElementById('loginEmail');
-let ps = document.getElementById('loginPass');
-if(em) em.value = lastEmail;
-if(ps) ps.value = users[lastEmail].password || '';
+ if(!currentUser){let lastEmail=localStorage.getItem('ultra_last_email');if(lastEmail&&users[lastEmail]){let em=document.getElementById('loginEmail');let ps=document.getElementById('loginPass');if(em) em.value=lastEmail;if(ps) ps.value=users[lastEmail].password||'';}let lp=document.getElementById('loginPage');if(lp) lp.classList.remove('hide'); return;}
+ let lp2=document.getElementById('loginPage');if(lp2) lp2.classList.add('hide');
+ document.getElementById('headerPhoto').src=currentUser.photo;document.getElementById('drawerPhoto').src=currentUser.photo;document.getElementById('accPhoto').src=currentUser.photo;
+ document.getElementById('wallet').innerText=currentUser.wallet;document.getElementById('walletTop').innerText=currentUser.wallet;
+ document.getElementById('accName').innerText=currentUser.name;document.getElementById('drawerName').innerText='Hi, '+currentUser.name;document.getElementById('drawerEmail').innerText=currentUser.email;
+ document.getElementById('accPin').innerText=currentUser.pin;
+ let spend=currentUser.totalSpend||0;let rank=getRank(spend);let nextRank=ranks[ranks.indexOf(rank)+1];
+ document.getElementById('rankName').innerText=rank.name;document.getElementById('rankDesc').innerText=rank.name==='Bronze'?'Start your journey! - 10% OFF ULTRA TOP UP BD':rank.name+' unlocked! - 10% OFF';
+ document.getElementById('rankRange').innerText=rank.min+' - '+(rank.max===9999999?'∞':rank.max.toLocaleString())+' Tk';
+ let pct=0; if(nextRank){ let range=nextRank.min-rank.min; pct=Math.min(100,Math.max(0,((spend-rank.min)/range)*100)); } else pct=100;
+ document.getElementById('rankPercent').innerText=Math.floor(pct)+'%';document.getElementById('rankProgress').style.width=pct+'%';
+ if(nextRank){ document.getElementById('rankNeed').innerHTML='Need only <b>'+(nextRank.min-spend)+' Tk</b> to unlock '+nextRank.name+' - 10% OFF'; } else { document.getElementById('rankNeed').innerHTML='You are Grand Master! 10% OFF'; }
+ document.getElementById('statOrders').innerText=currentUser.orders?currentUser.orders.length:0;document.getElementById('statTotal').innerText=spend+' Tk';document.getElementById('statWeekly').innerText=(currentUser.weeklySpend||0)+' Tk';document.getElementById('statRank').innerText=rank.name;
+ let journeyHTML=''; ranks.forEach(r=>{let status='Locked'; let btnClass='bg-gray-100';if(spend>=r.min&&spend<=r.max){ status='Current'; btnClass='bg-blue-100 text-blue-600'; }else if(spend>r.max){ status='Unlocked'; btnClass='bg-green-50 text-green-700'; }journeyHTML+='<div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">🏆</div><div><p class="font-bold text-sm">'+r.name+'</p><p class="text-[11px] text-gray-500">'+r.min+' - '+(r.max===9999999?'∞':r.max.toLocaleString())+' Tk</p></div></div><span class="text-[11px] px-3 py-1 rounded-full border '+btnClass+'">'+status+'</span></div>';});
+ let jr=document.getElementById('rankJourney'); if(jr) jr.innerHTML=journeyHTML;
+ let ol=document.getElementById('ordersList');if(ol){if(!currentUser.orders||currentUser.orders.length==0){ol.innerHTML='<p class="text-center py-8 text-gray-500">No orders yet! 10% OFF</p>';}else{let h='';currentUser.orders.forEach(o=>{h+=`<div class="bg-white rounded-xl p-3 border flex justify-between items-center"><div><p class="font-bold text-sm">#${o.id} - ${o.name}</p><p class="text-[11px] text-gray-500">UID: ${o.uid} | ${o.date} - 10% OFF</p></div><div class="text-right"><p class="font-black text-sm">${o.price} TK - 10% OFF</p><span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-[10px]">${o.status}</span></div></div>`;});ol.innerHTML=h;}}
 }
-let lp = document.getElementById('loginPage');
-if(lp) lp.classList.remove('hide');
-return;
-}
-let lp2 = document.getElementById('loginPage');
-if(lp2) lp2.classList.add('hide');
-document.getElementById('headerPhoto').src = currentUser.photo;
-document.getElementById('drawerPhoto').src = currentUser.photo;
-document.getElementById('accPhoto').src = currentUser.photo;
-document.getElementById('wallet').innerText = currentUser.wallet;
-document.getElementById('walletTop').innerText = currentUser.wallet;
-document.getElementById('accName').innerText = currentUser.name;
-document.getElementById('drawerName').innerText = 'Hi, '+currentUser.name;
-document.getElementById('drawerEmail').innerText = currentUser.email;
-document.getElementById('accPin').innerText = currentUser.pin;
-let spend = currentUser.totalSpend || 0;
-let rank = getRank(spend);
-let nextRank = ranks[ranks.indexOf(rank)+1];
-document.getElementById('rankName').innerText = rank.name;
-document.getElementById('rankDesc').innerText = rank.name==='Bronze' ? 'Start your journey! - 10% OFF ULTRA TOP UP BD' : rank.name+' unlocked! - 10% OFF';
-document.getElementById('rankRange').innerText = rank.min+' - '+(rank.max===9999999?'∞':rank.max.toLocaleString())+' Tk';
-let pct=0;
-if(nextRank){
-let range = nextRank.min - rank.min;
-pct = Math.min(100,Math.max(0,((spend-rank.min)/range)*100));
-} else pct=100;
-document.getElementById('rankPercent').innerText = Math.floor(pct)+'%';
-document.getElementById('rankProgress').style.width = pct+'%';
-if(nextRank){
-document.getElementById('rankNeed').innerHTML = 'Need only <b>'+(nextRank.min-spend)+' Tk</b> to unlock '+nextRank.name+' - 10% OFF';
-} else {
-document.getElementById('rankNeed').innerHTML = 'You are Grand Master! 10% OFF';
-}
-document.getElementById('statOrders').innerText = currentUser.orders ? currentUser.orders.length : 0;
-document.getElementById('statTotal').innerText = spend+' Tk';
-document.getElementById('statWeekly').innerText = (currentUser.weeklySpend||0)+' Tk';
-document.getElementById('statRank').innerText = rank.name;
-let journeyHTML='';
-ranks.forEach(r=>{
-let status='Locked';
-let btnClass='bg-gray-100';
-if(spend>=r.min && spend<=r.max){
-status='Current';
-btnClass='bg-blue-100 text-blue-600';
-} else if(spend>r.max){
-status='Unlocked';
-btnClass='bg-green-50 text-green-700';
-}
-journeyHTML+='<div class="flex items-center justify-between"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">🏆</div><div><p class="font-bold text-sm">'+r.name+'</p><p class="text-[11px] text-gray-500">'+r.min+' - '+(r.max===9999999?'∞':r.max.toLocaleString())+' Tk</p></div></div><span class="text-[11px] px-3 py-1 rounded-full border '+btnClass+'">'+status+'</span></div>';
-});
-let jr=document.getElementById('rankJourney');
-if(jr) jr.innerHTML=journeyHTML;
-let ol=document.getElementById('ordersList');
-if(ol){
-if(!currentUser.orders || currentUser.orders.length==0){
-ol.innerHTML='<p class="text-center py-8 text-gray-500">No orders yet! 10% OFF</p>';
-} else {
-let h='';
-currentUser.orders.forEach(o=>{
-h+=`<div class="bg-white rounded-xl p-3 border flex justify-between items-center"><div><p class="font-bold text-sm">#${o.id} - ${o.name}</p><p class="text-[11px] text-gray-500">UID: ${o.uid} | ${o.date} - 10% OFF</p></div><div class="text-right"><p class="font-black text-sm">${o.price} TK - 10% OFF</p><span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-[10px]">${o.status}</span></div></div>`;
-});
-ol.innerHTML=h;
-}
-}
-}
-function openForgot(){
-let em = document.getElementById('loginEmail').value.trim();
-if(em) document.getElementById('forgotEmail').value = em;
-let fb = document.getElementById('forgotBox');
-if(fb){
-fb.classList.remove('hidden');
-fb.classList.add('flex');
-}
-}
-function closeForgot(){
-let fb = document.getElementById('forgotBox');
-if(fb){
-fb.classList.add('hidden');
-fb.classList.remove('flex');
-}
-document.getElementById('forgotNewPass').value='';
-document.getElementById('forgotConfirmPass').value='';
-}
-function doForgot(){
-let email = document.getElementById('forgotEmail').value.trim().toLowerCase();
-let newPass = document.getElementById('forgotNewPass').value.trim();
-let confirmPass = document.getElementById('forgotConfirmPass').value.trim();
-if(!email || !email.includes('@')) return alert('Valid Gmail দিন!');
-if(!users[email]) return alert('এই Gmail এ কোন Account নাই! আগে Account খুলুন - '+email);
-if(!newPass || newPass.length<4) return alert('নতুন Password দিন! Minimum 4 অক্ষর');
-if(newPass!==confirmPass) return alert('Password মিলে নাই! Confirm Password ঠিক দিন - 2 টা একই দিন');
-users[email].password = newPass;
-currentUser = users[email];
-localStorage.setItem('ultra_rank_users', JSON.stringify(users));
-localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser));
-localStorage.setItem('ultra_last_email', email);
-alert('✅ Password Reset Success! নতুন Password: '+newPass+' - Same PIN: '+currentUser.pin+' , Wallet: '+currentUser.wallet+' Tk থাকবে! Auto Login হলো! - 10% OFF');
-closeForgot();
-let lp = document.getElementById('loginPage');
-if(lp) lp.classList.add('hide');
-updateUI();
-}
-function manualLogin(){
-let email=document.getElementById('loginEmail').value.trim().toLowerCase();
-let name=document.getElementById('loginName').value.trim();
-let pass=document.getElementById('loginPass').value.trim();
-if(!email||!email.includes('@')) return alert('Valid Gmail দিন!');
-if(!name) name=email.split('@')[0];
-if(!pass||pass.length<4) return alert('Password দিন! Minimum 4 অক্ষর');
-if(users[email]){
-if(users[email].password && users[email].password!==pass){
-return alert('ভুল Password! আগের Password দিন, অথবা Forgot Password এ Tap করুন - 10% OFF');
-}
-currentUser=users[email];
-currentUser.name=name||currentUser.name;
-users[email].name=currentUser.name;
-users[email].password=pass;
-localStorage.setItem('ultra_last_email', email);
-} else {
-currentUser={name:name,email:email,password:pass,wallet:5,totalSpend:0,weeklySpend:0,orders:[],photo:'https://i.pravatar.cc/150?u='+email,pin:Math.floor(Math.random()*90000)+10000};
-users[email]=currentUser;
-localStorage.setItem('ultra_last_email', email);
-}
-save();
-document.getElementById('loginPage').classList.add('hide');
-updateUI();
-}
-function logout(){
-if(confirm('Logout করতে চাও? 10% OFF চলছে!')){
-localStorage.removeItem('ultra_rank_user');
-location.reload();
-}
-}
-function switchTab(t){
-['home','orders','account','addmoney','codes','product'].forEach(x=>{
-let el=document.getElementById('tab-'+x);
-if(el) el.classList.add('hide');
-});
-let target=document.getElementById('tab-'+t);
-if(target) target.classList.remove('hide');
-document.querySelectorAll('[id^=btn-]').forEach(b=>b.classList.remove('text-[#00c853]'));
-let btn=document.getElementById('btn-'+t);
-if(btn) btn.classList.add('text-[#00c853]');
-if(t=='home'){
-let bh=document.getElementById('btn-home');
-if(bh) bh.classList.add('text-[#00c853]');
-}
-if(t=='addmoney'){ resetAddMoney(); }
-}
+function openForgot(){let em=document.getElementById('loginEmail').value.trim();if(em) document.getElementById('forgotEmail').value=em;let fb=document.getElementById('forgotBox');if(fb){fb.classList.remove('hidden');fb.classList.add('flex');}}
+function closeForgot(){let fb=document.getElementById('forgotBox');if(fb){fb.classList.add('hidden');fb.classList.remove('flex');}document.getElementById('forgotNewPass').value='';document.getElementById('forgotConfirmPass').value='';}
+function doForgot(){let email=document.getElementById('forgotEmail').value.trim().toLowerCase();let newPass=document.getElementById('forgotNewPass').value.trim();let confirmPass=document.getElementById('forgotConfirmPass').value.trim();if(!email||!email.includes('@')) return alert('Valid Gmail দিন!');if(!users[email]) return alert('এই Gmail এ কোন Account নাই! আগে Account খুলুন - '+email);if(!newPass||newPass.length<4) return alert('নতুন Password দিন! Minimum 4 অক্ষর');if(newPass!==confirmPass) return alert('Password মিলে নাই! Confirm Password ঠিক দিন - 2 টা একই দিন');users[email].password=newPass;currentUser=users[email];localStorage.setItem('ultra_rank_users', JSON.stringify(users));localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser));localStorage.setItem('ultra_last_email', email);alert('✅ Password Reset Success! নতুন Password: '+newPass+' - Same PIN: '+currentUser.pin+' , Wallet: '+currentUser.wallet+' Tk থাকবে! Auto Login হলো! - 10% OFF');closeForgot();let lp=document.getElementById('loginPage');if(lp) lp.classList.add('hide');updateUI();}
+function manualLogin(){let email=document.getElementById('loginEmail').value.trim().toLowerCase();let name=document.getElementById('loginName').value.trim();let pass=document.getElementById('loginPass').value.trim();if(!email||!email.includes('@')) return alert('Valid Gmail দিন!');if(!name) name=email.split('@')[0];if(!pass||pass.length<4) return alert('Password দিন! Minimum 4 অক্ষর');if(users[email]){if(users[email].password&&users[email].password!==pass){return alert('ভুল Password! আগের Password দিন, অথবা Forgot Password এ Tap করুন - 10% OFF');}currentUser=users[email];currentUser.name=name||currentUser.name;users[email].name=currentUser.name;users[email].password=pass;localStorage.setItem('ultra_last_email', email);}else{currentUser={name:name,email:email,password:pass,wallet:5,totalSpend:0,weeklySpend:0,orders:[],photo:'https://i.pravatar.cc/150?u='+email,pin:Math.floor(Math.random()*90000)+10000}; users[email]=currentUser;localStorage.setItem('ultra_last_email', email);}save();document.getElementById('loginPage').classList.add('hide');updateUI();}
+function logout(){if(confirm('Logout করতে চাও? 10% OFF চলছে!')){localStorage.removeItem('ultra_rank_user');location.reload();}}
+function switchTab(t){['home','orders','account','addmoney','codes','product'].forEach(x=>{let el=document.getElementById('tab-'+x); if(el) el.classList.add('hide');});let target=document.getElementById('tab-'+t); if(target) target.classList.remove('hide');document.querySelectorAll('[id^=btn-]').forEach(b=>b.classList.remove('text-[#00c853]'));let btn=document.getElementById('btn-'+t); if(btn) btn.classList.add('text-[#00c853]');if(t=='home'){ let bh=document.getElementById('btn-home'); if(bh) bh.classList.add('text-[#00c853]'); }if(t=='addmoney'){ resetAddMoney(); }}
 function openDrawer(){document.getElementById('drawer').classList.remove('hidden');}
 function closeDrawer(){document.getElementById('drawer').classList.add('hidden');}
-let selectedGateway='bKash';
-let pendingAmount=0;
-function resetAddMoney(){
-let s1=document.getElementById('addMoneyStep1');
-if(s1) s1.classList.remove('hide');
-let s2=document.getElementById('addMoneyStep2');
-if(s2) s2.classList.add('hide');
-let s3=document.getElementById('addMoneyStep3');
-if(s3) s3.classList.add('hide');
-}
-function goToPayment(){
-let amt=parseInt(document.getElementById('addAmt').value);
-if(!amt || amt<10) return alert('Amount required! Minimum 10 Tk');
-pendingAmount=amt;
-let s1=document.getElementById('addMoneyStep1');
-if(s1) s1.classList.add('hide');
-let s2=document.getElementById('addMoneyStep2');
-if(s2) s2.classList.remove('hide');
-let pat=document.getElementById('payAmountText');
-if(pat) pat.innerText=amt+'.00';
-let fa=document.getElementById('finalAmount');
-if(fa) fa.innerText=amt;
-let ta=document.getElementById('trxAmount');
-if(ta) ta.innerText=amt;
-}
-function selectGateway(g){
-selectedGateway=g;
-let sgt=document.getElementById('selectedGwText');
-if(sgt) sgt.innerText=g;
-let tgw=document.getElementById('trxGateway');
-if(tgw) tgw.innerText=g;
-['bKash','Nagad','Rocket','Upay'].forEach(x=>{
-let el=document.getElementById('gw-'+x);
-if(el){
-el.classList.toggle('border-[#e91e63]', x==g);
-el.classList.toggle('border-gray-200', x!=g);
-}
-});
-}
-function confirmPayGateway(){
-let s2=document.getElementById('addMoneyStep2');
-if(s2) s2.classList.add('hide');
-let s3=document.getElementById('addMoneyStep3');
-if(s3) s3.classList.remove('hide');
-}
-function doAddMoneyFinal(){
-let trx=document.getElementById('trxId').value.trim();
-if(!trx) return alert('ট্রানজেকশন আইডি দিন!');
-currentUser.wallet+=pendingAmount;
-users[currentUser.email].wallet=currentUser.wallet;
-save();
-alert(pendingAmount+' Tk Added! - ULTRA TOP UP BD - 10% OFF');
-resetAddMoney();
-let av=document.getElementById('addAmt');
-if(av) av.value='';
-let tv=document.getElementById('trxId');
-if(tv) tv.value='';
-switchTab('account');
-}
-let currentProduct=null;
-let currentPay='wallet';
-function selectPay(type){
-currentPay=type;
-let pw=document.getElementById('payWallet');
-let pi=document.getElementById('payInstant');
-if(pw && pi){
-pw.classList.toggle('border-[#00c853]', type=='wallet');
-pw.classList.toggle('border-gray-200', type!='wallet');
-pi.classList.toggle('border-[#00c853]', type=='instant');
-pi.classList.toggle('border-gray-200', type!='instant');
-}
-}
-function checkUID(){
-let uid=document.getElementById('detailUID').value.trim();
-let btn=document.getElementById('checkBtn');
-let result=document.getElementById('uidResult');
-if(!uid){ return alert('UID দিন!'); }
-if(uid.length<6){ return alert('Valid UID 6+ required'); }
-btn.innerText='UID: '+uid+' Verified ✓ - 10% OFF';
-document.getElementById('showUID').innerText=uid;
-result.classList.remove('hide');
-}
+let selectedGateway='bKash'; let pendingAmount=0;
+function resetAddMoney(){ let s1=document.getElementById('addMoneyStep1'); if(s1) s1.classList.remove('hide'); let s2=document.getElementById('addMoneyStep2'); if(s2) s2.classList.add('hide'); let s3=document.getElementById('addMoneyStep3'); if(s3) s3.classList.add('hide'); }
+function goToPayment(){ let amt=parseInt(document.getElementById('addAmt').value); if(!amt || amt<10) return alert('Amount required! Minimum 10 Tk'); pendingAmount=amt; let s1=document.getElementById('addMoneyStep1'); if(s1) s1.classList.add('hide'); let s2=document.getElementById('addMoneyStep2'); if(s2) s2.classList.remove('hide'); let pat=document.getElementById('payAmountText'); if(pat) pat.innerText=amt+'.00'; let fa=document.getElementById('finalAmount'); if(fa) fa.innerText=amt; let ta=document.getElementById('trxAmount'); if(ta) ta.innerText=amt; }
+function selectGateway(g){ selectedGateway=g; let sgt=document.getElementById('selectedGwText'); if(sgt) sgt.innerText=g; let tgw=document.getElementById('trxGateway'); if(tgw) tgw.innerText=g; ['bKash','Nagad','Rocket','Upay'].forEach(x=>{ let el=document.getElementById('gw-'+x); if(el){ el.classList.toggle('border-[#e91e63]', x==g); el.classList.toggle('border-gray-200', x!=g); } }); }
+function confirmPayGateway(){ let s2=document.getElementById('addMoneyStep2'); if(s2) s2.classList.add('hide'); let s3=document.getElementById('addMoneyStep3'); if(s3) s3.classList.remove('hide'); }
+function doAddMoneyFinal(){ let trx=document.getElementById('trxId').value.trim(); if(!trx) return alert('ট্রানজেকশন আইডি দিন!'); currentUser.wallet+=pendingAmount; users[currentUser.email].wallet=currentUser.wallet; save(); alert(pendingAmount+' Tk Added! - ULTRA TOP UP BD - 10% OFF'); resetAddMoney(); let av=document.getElementById('addAmt'); if(av) av.value=''; let tv=document.getElementById('trxId'); if(tv) tv.value=''; switchTab('account'); }
+let currentProduct=null; let currentPay='wallet';
+function selectPay(type){ currentPay=type; let pw=document.getElementById('payWallet'); let pi=document.getElementById('payInstant'); if(pw && pi){ pw.classList.toggle('border-[#00c853]', type=='wallet'); pw.classList.toggle('border-gray-200', type!='wallet'); pi.classList.toggle('border-[#00c853]', type=='instant'); pi.classList.toggle('border-gray-200', type!='instant'); } }
+function checkUID(){let uid=document.getElementById('detailUID').value.trim();let btn=document.getElementById('checkBtn');let result=document.getElementById('uidResult');if(!uid){ return alert('UID দিন!'); }if(uid.length<6){ return alert('Valid UID 6+ required'); }btn.innerText='UID: '+uid+' Verified ✓ - 10% OFF';document.getElementById('showUID').innerText=uid;result.classList.remove('hide');}
 const productData = {
 'Level Up Pass (BD Server)': {icon:'Level Up Pass', packs:[{name:'LevelUp - level 6', price:36},{name:'LevelUp - level 10', price:67},{name:'LevelUp - level 15', price:67},{name:'LevelUp - level 20', price:67},{name:'LevelUp - level 25', price:67},{name:'LevelUp - level 30', price:94}]},
 'FF TopUp [BD]': {icon:'ID Code TOPUP', label:'এখানে গেমের আইডি কোড দিন', packs:[{name:'Weekly', price:139},{name:'2X Weekly', price:279},{name:'3X Weekly', price:418},{name:'5X Weekly', price:702},{name:'Monthly', price:702},{name:'2X Monthly', price:1404},{name:'1Weekly+1Monthly', price:841},{name:'4Weekly+1Monthly', price:1263},{name:'25 Diamond', price:18},{name:'50 Diamond', price:32},{name:'115 Diamond', price:70},{name:'240 Diamond', price:140},{name:'355 Diamond', price:210},{name:'505 Diamond', price:299},{name:'610 Diamond', price:360},{name:'850 Diamond', price:502},{name:'1090 Diamond', price:640},{name:'1240 Diamond', price:738},{name:'1720 Diamond', price:1018},{name:'2090 Diamond', price:1238},{name:'2530 Diamond', price:1440},{name:'5060 Diamond', price:2898},{name:'10120 Diamond', price:5796},{name:'Weekly Lite', price:37},{name:'2x Weekly Lite', price:75},{name:'3x Weekly Lite', price:113},{name:'4x Weekly Lite', price:151},{name:'5x Weekly Lite', price:189}]},
@@ -740,75 +311,10 @@ const productData = {
 'NETFLIX': {icon:'NETFLIX', label:'Email দিন', packs:[{name:'NETFLIX 1M', price:315},{name:'NETFLIX 3M', price:810}]},
 'Canva Pro': {icon:'Canva Pro', label:'Email দিন', packs:[{name:'Canva Pro 1M', price:108},{name:'Canva Pro 1 Year', price:719}]},
 };
-function orderNow(name, basePrice){
-currentProduct=name;
-document.getElementById('tab-home').classList.add('hide');
-document.getElementById('tab-product').classList.remove('hide');
-document.getElementById('productTitle').innerText=name;
-let pi=document.getElementById('productIcon');
-if(pi) pi.innerText=productData[name]?.icon||name;
-let data=productData[name]||{packs:[{name:name, price:basePrice}], label:'এখানে গেমের আইডি কোড দিন'};
-document.getElementById('accLabel').innerText=data.label||'এখানে গেমের আইডি কোড দিন';
-document.getElementById('detailUID').placeholder=data.label||'এখানে গেমের আইডি কোড দিন';
-let html='';
-data.packs.forEach((p,i)=>{
-html+='<label class="border-2 '+(i==0?'border-[#00c853] bg-green-50':'border-gray-200')+' rounded-xl p-3 text-center relative block"><input type="radio" name="recharge" value="'+p.price+'" data-name="'+p.name+'" '+(i==0?'checked':'')+' class="absolute top-2 left-2"><p class="font-bold text-[12px]">'+p.name+'</p><p class="text-orange-500 font-black text-sm mt-1">'+p.price+' TK - 10% OFF</p></label>';
-});
-let ro=document.getElementById('rechargeOptions');
-if(ro) ro.innerHTML=html;
-let db=document.getElementById('detailBalance');
-if(db) db.innerText=' '+ (currentUser?.wallet||5)+'.00';
-let dn=document.getElementById('detailNeed');
-if(dn) dn.innerText=' '+data.packs[0].price;
-let ur=document.getElementById('uidResult');
-if(ur) ur.classList.add('hide');
-let cb=document.getElementById('checkBtn');
-if(cb){ cb.innerText='Check UID - গেমের আইডি চেক করুন - 10% OFF'; }
-window.scrollTo(0,0);
-}
-function confirmDetailOrder(){
-let uid=document.getElementById('detailUID').value.trim();
-if(!uid) return alert('Player ID দিন!');
-let selected=document.querySelector('input[name="recharge"]:checked');
-if(!selected) return alert('Select package!');
-let price=parseInt(selected.value);
-let pname=selected.dataset.name;
-if(!currentUser||currentUser.wallet<price) return alert('ব্যালেন্স কম! Wallet: '+(currentUser?.wallet||0)+' Tk - Add Money করুন - 10% OFF');
-currentUser.wallet-=price;
-currentUser.totalSpend=(currentUser.totalSpend||0)+price;
-currentUser.weeklySpend=(currentUser.weeklySpend||0)+price;
-let id=Math.floor(Math.random()*900000)+700000;
-let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Completed'};
-currentUser.orders=currentUser.orders||[];
-currentUser.orders.unshift(order);
-users[currentUser.email]=currentUser;
-save();
-alert('Order Success! ID: '+id+' - 10% OFF Applied!');
-switchTab('orders');
-}
-function refreshOrders(){
-const list=document.getElementById('recentOrdersList');
-if(!list) return;
-list.innerHTML='<p class="text-center py-4 text-sm">🔄 Loading... 10% OFF</p>';
-setTimeout(()=>{
-const names=[
-{n:'EVAN AHMED Shuvo', p:'Weekly - ৳139 (10% OFF)', c:'bg-green-200'},
-{n:'Tanjidur Rahaman', p:'Weekly Lite - ৳37 (10% OFF)', c:'bg-gray-700 text-white'},
-{n:'Shanto', p:'Weekly - ৳139 (10% OFF)', c:'bg-green-100'},
-{n:'Rakib Hasan', p:'Monthly - ৳702 (10% OFF)', c:'bg-blue-200'},
-{n:'Sakib Al Hasan', p:'115 Diamond - ৳70 (10% OFF)', c:'bg-yellow-200'},
-{n:'Mehedi Hasan', p:'PUBG 60 UC - ৳103 (10% OFF)', c:'bg-red-200'}
-];
-names.sort(()=>0.5-Math.random());
-let html='';
-names.slice(0,4).forEach(u=>{
-html+=`<div class="flex justify-between items-center border-b pb-2"><div class="flex gap-2 items-center"><div class="w-8 h-8 ${u.c} rounded-full flex items-center justify-center font-bold text-sm">${u.n[0]}</div><div><b class="text-sm">${u.n}</b><br><small class="text-gray-500">${u.p}</small></div></div><span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-bold">✓ Done - 10% OFF</span></div>`;
-});
-list.innerHTML=html;
-},700);
-}
-switchTab('home');
-updateUI();
+function orderNow(name, basePrice){currentProduct=name;document.getElementById('tab-home').classList.add('hide');document.getElementById('tab-product').classList.remove('hide');document.getElementById('productTitle').innerText=name;let pi=document.getElementById('productIcon'); if(pi) pi.innerText=productData[name]?.icon||name;let data=productData[name]||{packs:[{name:name, price:basePrice}], label:'এখানে গেমের আইডি কোড দিন'};document.getElementById('accLabel').innerText=data.label||'এখানে গেমের আইডি কোড দিন';document.getElementById('detailUID').placeholder=data.label||'এখানে গেমের আইডি কোড দিন';let html=''; data.packs.forEach((p,i)=>{html+='<label class="border-2 '+(i==0?'border-[#00c853] bg-green-50':'border-gray-200')+' rounded-xl p-3 text-center relative block"><input type="radio" name="recharge" value="'+p.price+'" data-name="'+p.name+'" '+(i==0?'checked':'')+' class="absolute top-2 left-2"><p class="font-bold text-[12px]">'+p.name+'</p><p class="text-orange-500 font-black text-sm mt-1">'+p.price+' TK - 10% OFF</p></label>';});let ro=document.getElementById('rechargeOptions'); if(ro) ro.innerHTML=html;let db=document.getElementById('detailBalance'); if(db) db.innerText=' '+ (currentUser?.wallet||5)+'.00';let dn=document.getElementById('detailNeed'); if(dn) dn.innerText=' '+data.packs[0].price;let ur=document.getElementById('uidResult'); if(ur) ur.classList.add('hide');let cb=document.getElementById('checkBtn'); if(cb){ cb.innerText='Check UID - গেমের আইডি চেক করুন - 10% OFF'; }window.scrollTo(0,0);}
+function confirmDetailOrder(){let uid=document.getElementById('detailUID').value.trim();if(!uid) return alert('Player ID দিন!');let selected=document.querySelector('input[name="recharge"]:checked');if(!selected) return alert('Select package!');let price=parseInt(selected.value); let pname=selected.dataset.name;if(!currentUser||currentUser.wallet<price) return alert('ব্যালেন্স কম! Wallet: '+(currentUser?.wallet||0)+' Tk - Add Money করুন - 10% OFF');currentUser.wallet-=price; currentUser.totalSpend=(currentUser.totalSpend||0)+price; currentUser.weeklySpend=(currentUser.weeklySpend||0)+price;let id=Math.floor(Math.random()*900000)+700000;let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Completed'};currentUser.orders=currentUser.orders||[]; currentUser.orders.unshift(order);users[currentUser.email]=currentUser; save();alert('Order Success! ID: '+id+' - 10% OFF Applied!');switchTab('orders');}
+function refreshOrders(){const list=document.getElementById('recentOrdersList');if(!list) return;list.innerHTML='<p class="text-center py-4 text-sm">🔄 Loading... 10% OFF</p>';setTimeout(()=>{const names=[{n:'EVAN AHMED Shuvo', p:'Weekly - ৳139 (10% OFF)', c:'bg-green-200'},{n:'Tanjidur Rahaman', p:'Weekly Lite - ৳37 (10% OFF)', c:'bg-gray-700 text-white'},{n:'Shanto', p:'Weekly - ৳139 (10% OFF)', c:'bg-green-100'},{n:'Rakib Hasan', p:'Monthly - ৳702 (10% OFF)', c:'bg-blue-200'},{n:'Sakib Al Hasan', p:'115 Diamond - ৳70 (10% OFF)', c:'bg-yellow-200'},{n:'Mehedi Hasan', p:'PUBG 60 UC - ৳103 (10% OFF)', c:'bg-red-200'}];names.sort(()=>0.5-Math.random());let html='';names.slice(0,4).forEach(u=>{html+=`<div class="flex justify-between items-center border-b pb-2"><div class="flex gap-2 items-center"><div class="w-8 h-8 ${u.c} rounded-full flex items-center justify-center font-bold text-sm">${u.n[0]}</div><div><b class="text-sm">${u.n}</b><br><small class="text-gray-500">${u.p}</small></div></div><span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-bold">✓ Done - 10% OFF</span></div>`;});list.innerHTML=html;},700);}
+switchTab('home');updateUI();
 </script>
 </body>
-  </html>
+</html>
