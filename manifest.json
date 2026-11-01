@@ -1,20 +1,57 @@
 {
-  "name": "ULTRA TOP UP BD - Game Top Up",
-  "short_name": "ULTRA TOP UP BD",
+  "name": "ULTRA TOP UP BD - 10% OFF - 0 Taka Start - Refer & Rank - Real - Dark Neon - BD Rate Real",
+  "short_name": "ULTRA TOP UP BD - 0 Taka",
+  "description": "ULTRA TOP UP BD - 10% OFF - 0 Taka Start - 5 Taka Kata - Auto Add Money - Refer & Rank - Real BD Rate - No Fake - Robot Verify - bKash Nagad Auto Add - YouTube Premium, CapCut Premium, TikTok Coins, Facebook, Instagram, TikTok - All SMM & Premium Real - BD Rate Real - 10% OFF Fake Display",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#e91e63",
-  "theme_color": "#e91e63",
+  "orientation": "portrait",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "scope": "/",
   "icons": [
     {
-      "src": "https://i.ibb.co/3yQ6p9h/pubg.jpg",
+      "src": "app-logo.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     },
     {
-      "src": "https://i.ibb.co/3yQ6p9h/pubg.jpg",
+      "src": "app-logo.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "0 Taka Start - Add Money Auto Add",
+      "short_name": "Add Money - Auto Add",
+      "description": "5 Taka Kata - 0 Taka Start - Add Money Auto Add - Real BD Rate - Robot Verify",
+      "url": "/?action=addmoney",
+      "icons": [{"src": "app-logo.jpg","sizes": "192x192"}]
+    },
+    {
+      "name": "Refer & Earn - 10 Taka - Real",
+      "short_name": "Refer - 10 Taka Earn",
+      "description": "Refer Link Share - 10 Taka Earn - Real - No Fake - Auto Add - 0 Taka Start",
+      "url": "/?action=refer",
+      "icons": [{"src": "app-logo.jpg","sizes": "192x192"}]
+    },
+    {
+      "name": "FF TopUp BD - Real BD Rate",
+      "short_name": "FF TopUp - Real Rate",
+      "description": "25 Diamond 25 Taka, 115 Diamond 80 Taka, 610 Diamond 390 Taka - Real BD Rate - No Fake - 10% OFF Fake Display - 0 Taka Start",
+      "url": "/?action=topup",
+      "icons": [{"src": "app-logo.jpg","sizes": "192x192"}]
+    }
+  ],
+  "categories": ["games", "entertainment", "shopping"],
+  "screenshots": [
+    {
+      "src": "app-logo.jpg",
+      "sizes": "540x720",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
     }
   ]
 }
