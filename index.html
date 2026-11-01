@@ -93,9 +93,10 @@
     <button onclick="switchTab('account')" class="flex flex-col items-center text-gray-500" id="btn-account"><span class="text-[20px]">👤</span><span class="text-[10px]">My Account</span></button>
   </div>
 <script>
-// 🔥🔥🔥 ULTRA TOP UP BD - API INTEGRATION - FULL FILE - NO LINE MISSING 🔥🔥🔥
+// ✅✅✅ FULL FIXED - ULTRA TOP UP BD - ROBOT API INSIDE SAME SITE ✅✅✅
 const ULTRA_API_KEY = "ULTRA_JWSPDES3PI_864178";
-const ULTRA_API_URL = "https://ultra-top-up-bd-api.vercel.app/api/robot/deliver";
+const ULTRA_API_URL = "/api/robot/deliver";
+
 async function callUltraAPI(uid, packageName, price){
   try{
     const res = await fetch(ULTRA_API_URL,{
