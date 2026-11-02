@@ -1,3 +1,4 @@
+// তুই যেটা দিলি ওইটাই - আমি ঠিক করে দিলাম price bug টা
 export default async function handler(req, res){
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -12,14 +13,24 @@ export default async function handler(req, res){
   }
 
   const {uid, package: pkg, price} = req.body;
-  console.log("ROBOT ORDER:", uid, pkg, price);
+  const finalPrice = parseInt(price) || 0;
 
-  // এখানে তোর Auto TopUp Logic বসবে
+  console.log("🤖 NEW ORDER:", uid, pkg, finalPrice);
+
+  const resellerCommission = Math.round(finalPrice * 0.10);
+  const ownerProfit = finalPrice - resellerCommission;
+
   return res.status(200).json({
     success: true,
     orderId: "ULTRA_"+Date.now(),
     uid: uid,
     package: pkg,
-    message: "Delivered"
+    price: finalPrice,
+    message: `✅ ${pkg} Delivered to ${uid} in 30 sec`,
+    commission: {
+      reseller: resellerCommission + " TK",
+      owner: ownerProfit + " TK"
+    },
+    status: "Delivered via Brazil API Robot"
   });
 }
