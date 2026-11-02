@@ -1,19 +1,28 @@
-<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ULTRA ADMIN</title><script src="https://cdn.tailwindcss.com"></script></head>
-<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
-<div class="bg-white rounded-2xl p-6 w-full max-w-md">
-<h1 class="text-2xl font-black text-center">ULTRA ADMIN 💰</h1>
-<input id="email" value="test@ultra.com" class="border-2 border-black p-3 w-full rounded-xl font-bold mt-6">
-<input id="amount" type="number" value="1000" class="border-2 border-black p-3 w-full rounded-xl font-bold mt-2 text-xl">
-<button onclick="addWallet()" class="bg-green-600 text-white w-full py-4 rounded-xl mt-6 font-black text-xl">✅ ADD WALLET</button>
-<button onclick="checkWallet()" class="bg-gray-800 text-white w-full py-3 rounded-xl mt-3 font-bold">👁️ Check Wallet</button>
-<a href="/" class="block text-center mt-4 bg-black text-white py-3 rounded-xl">← Go to Main Site</a>
-<p id="msg" class="mt-4 font-black text-center"></p><div id="current" class="mt-4 bg-yellow-100 p-3 rounded-xl text-sm"></div>
-</div>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <script>
-let pass=prompt("Admin Password?"); if(pass!=="ultra12345" && pass!=="1234"){document.body.innerHTML="<h1 style='text-align:center;margin-top:100px'>Wrong! Pass: ultra12345</h1>";}
-function loadUsers(){return JSON.parse(localStorage.getItem('ultra_rank_users')||'{}');}
-function checkWallet(){let users=loadUsers();let email=document.getElementById('email').value;let user=users[email];let cur=JSON.parse(localStorage.getItem('ultra_rank_user')||'null');if(user){document.getElementById('current').innerHTML=`Wallet: ${user.wallet}৳`;document.getElementById('msg').innerText=`Current: ${user.wallet} TK`;}else{document.getElementById('current').innerText="New user - will create";} if(cur){document.getElementById('current').innerHTML+=`<br>Logged: ${cur.email} - ${cur.wallet}৳`;}}
-function addWallet(){let em=document.getElementById('email').value.trim()||'test@ultra.com';let amt=parseInt(document.getElementById('amount').value)||1000;let users=loadUsers();let user=users[em]||{email:em,wallet:0,totalSpend:0,orders:[]};user.wallet=(user.wallet||0)+amt;users[em]=user;localStorage.setItem('ultra_rank_users',JSON.stringify(users));let cur=JSON.parse(localStorage.getItem('ultra_rank_user')||'null');if(cur && cur.email===em){cur.wallet=user.wallet;localStorage.setItem('ultra_rank_user',JSON.stringify(cur));} if(!cur){localStorage.setItem('ultra_rank_user',JSON.stringify(user));} document.getElementById('msg').innerHTML=`✅ ${amt} TK Added!<br>New: ${user.wallet} TK`; checkWallet();}
-window.onload=checkWallet;
-</script></body></html>
+// AIP SECURED - ultratupup@gmail.com - ENV Check - Churi Block
+(async function(){
+  try{
+    const check = await fetch('/api/admin-auth', { method: 'GET', credentials: 'include' });
+    const data = await check.json();
+    if(data.authenticated) return;
+    
+    let email = prompt('📧 Admin Gmail:');
+    if(!email) throw new Error('no email');
+    let p = prompt('🔒 Password for '+email+':');
+    if(!p) throw new Error('no pass');
+    
+    const login = await fetch('/api/admin-auth', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({email: email, password: p})
+    });
+    const res = await login.json();
+    if(!res.ok){
+      document.documentElement.innerHTML='<h1 style="text-align:center;margin-top:100px">⛔ Wrong Gmail/Password - Private AIP - Churi Block!</h1>';
+      throw new Error('Blocked');
+    }
+  }catch(e){}
+})();
+</script>
