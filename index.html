@@ -56,7 +56,7 @@
       <p class="font-black text-center text-[20px] mt-8">FF TOPUP - 10% DISCOUNT + WEEKLY/MONTHLY + LITE</p>
       <div class="grid grid-cols-3 gap-2.5 mt-3">
         <div onclick="orderNow('FF TopUp [BD]',70)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-blue-600 to-cyan-500"><div class="prod-fallback">FF TOPUP<br>[BD]<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">FF TopUp [BD]</p></div>
-        <div onclick="orderNow('Weekly/Monthly Offer',702)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-purple-600 to-pink-500"><div class="prod-fallback">WEEKLY/MONTHLY<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Weekly/Monthly</p></div>
+        <div onclick="orderNow('Weekly/Monthly Offer',770)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-purple-600 to-pink-500"><div class="prod-fallback">WEEKLY/MONTHLY<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Weekly/Monthly</p></div>
         <div onclick="orderNow('UNIPIN VOUCHER BD',1035)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-orange-500 to-red-600"><div class="prod-fallback">UNIPIN<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">UNIPIN BD</p></div>
         <div onclick="orderNow('Weekly Lite',37)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-600"><div class="prod-fallback">WEEKLY LITE<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Weekly Lite - 37 TK</p></div>
         <div onclick="orderNow('Level Up Pass (BD Server)',94)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-yellow-500 to-amber-600"><div class="prod-fallback">LEVEL UP PASS<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Level Up Pass</p></div>
@@ -103,7 +103,31 @@ function renderOrders(){
 let currentProduct=null;
 function selectPay(type){ currentProduct=type; }
 function checkUID(){let uid=document.getElementById('detailUID').value.trim();if(!uid)return alert('UID দিন!'); document.getElementById('showUID').innerText=uid;document.getElementById('uidResult').classList.remove('hide');}
-const productData = {'FF TopUp [BD]':{packs:[{name:'25 Diamond',price:18},{name:'50 Diamond',price:32},{name:'115 Diamond',price:70},{name:'240 Diamond',price:140},{name:'Weekly',price:139},{name:'Monthly',price:702}]},'Weekly/Monthly Offer':{packs:[{name:'Weekly',price:139},{name:'Monthly',price:702}]},'Weekly Lite':{packs:[{name:'Weekly Lite',price:37}]},'UNIPIN VOUCHER BD':{packs:[{name:'10 USD',price:1035}]},'Indonesia Server [UID]':{packs:[{name:'70 Diamond',price:103}]},'FF Like':{packs:[{name:'100 Likes',price:22}]},'Level Up Pass (BD Server)':{packs:[{name:'LevelUp - level 30',price:94}]}};
+const productData = {
+  'FF TopUp [BD]':{
+    packs:[
+      {name:'25 Diamond',price:18},
+      {name:'50 Diamond',price:32},
+      {name:'115 Diamond',price:70},
+      {name:'240 Diamond',price:140},
+      {name:'355 Diamond',price:210},
+      {name:'480 Diamond',price:280},
+      {name:'610 Diamond',price:360},
+      {name:'850 Diamond',price:495},
+      {name:'1090 Diamond',price:640},
+      {name:'1240 Diamond',price:730},
+      {name:'2530 Diamond',price:1480},
+      {name:'Weekly',price:170},
+      {name:'Monthly',price:770}
+    ]
+  },
+  'Weekly/Monthly Offer':{packs:[{name:'Weekly',price:170},{name:'Monthly',price:770},{name:'Weekly Lite',price:37}]},
+  'Weekly Lite':{packs:[{name:'Weekly Lite',price:37}]},
+  'UNIPIN VOUCHER BD':{packs:[{name:'10 USD',price:1035}]},
+  'Indonesia Server [UID]':{packs:[{name:'70 Diamond',price:103},{name:'140 Diamond',price:205}]},
+  'FF Like':{packs:[{name:'100 Likes',price:22},{name:'200 Likes',price:38},{name:'500 Likes',price:85}]},
+  'Level Up Pass (BD Server)':{packs:[{name:'LevelUp - level 30',price:94},{name:'LevelUp Pass Premium',price:185}]}
+};
 function orderNow(name, basePrice){currentProduct=name; document.getElementById('tab-home').classList.add('hide'); document.getElementById('tab-product').classList.remove('hide'); document.getElementById('productTitle').innerText=name; let data=productData[name]||{packs:[{name:name, price:basePrice}]}; let html=''; data.packs.forEach((p,i)=>{html+='<label class="border-2 '+(i==0?'border-[#00c853] bg-green-50':'border-gray-200')+' rounded-xl p-3 text-center relative block"><input type="radio" name="recharge" value="'+p.price+'" data-name="'+p.name+'" '+(i==0?'checked':'')+' class="absolute top-2 left-2"><p class="font-bold text-[12px]">'+p.name+'</p><p class="text-orange-500 font-black text-sm mt-1">'+p.price+' TK</p></label>';}); document.getElementById('rechargeOptions').innerHTML=html; document.getElementById('detailBalance').innerText=' '+(currentUser?.wallet||0)+'.00'; document.getElementById('detailNeed').innerText=' '+data.packs[0].price;}
 async function confirmDetailOrder(){
   let uid=document.getElementById('detailUID').value.trim(); 
@@ -120,17 +144,13 @@ async function confirmDetailOrder(){
   currentUser.orders.unshift(order);
   users[currentUser.email]=currentUser; 
   save();
-  
   switchTab('orders');
-  
   let ordersHtml = '<div class="bg-green-100 border-2 border-green-500 p-3 rounded-xl text-center font-black text-green-700 mb-3">✅ Order Confirm! ID: '+id+'<br>💎 Diamond পাঠানো হচ্ছে... 30 Sec এ পাবে!</div>';
   currentUser.orders.forEach(o=>{
     ordersHtml += '<div class="bg-white p-3 rounded-xl border flex justify-between mb-2"><div><p class="font-bold text-sm">'+o.name+'</p><p class="text-[11px] text-gray-500">ID: '+o.id+' | UID: '+o.uid+'</p><p class="text-[10px] text-gray-400">'+o.date+'</p></div><div class="text-right"><p class="font-black text-green-600 text-sm">'+o.price+' ৳</p><p class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded-full mt-1">'+o.status+'</p></div></div>';
   });
   document.getElementById('ordersList').innerHTML = ordersHtml;
-  
   const apiResult = await callUltraAPI(uid, pname, price);
-  
   order.status='Completed - 💎 Diamond চলে গেছে ✓';
   currentUser.orders[0]=order; 
   users[currentUser.email]=currentUser; 
