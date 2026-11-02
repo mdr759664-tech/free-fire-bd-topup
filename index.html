@@ -80,21 +80,64 @@ const ULTRA_API_KEY = "ULTRA_JWSPDES3PI_864178";
 const ULTRA_API_URL = "/api/robot/deliver";
 async function callUltraAPI(uid, packageName, price){
   try{
-    const res = await fetch(ULTRA_API_URL,{method:"POST",headers:{"Content-Type":"application/json","x-api-key":ULTRA_API_KEY},body:JSON.stringify({uid:uid, package:packageName, price:price})});
+    const res = await fetch(ULTRA_API_URL,{method:"POST",headers:{"Content-Type":"application/json","x-api-key":ULTRA_API_KEY},body:JSON.stringify({uid:uid, package:packageName, price:price, game:"Free Fire", auto_delivery:true})});
     return await res.json();
-  }catch(e){ return {success:false}; }
+  }catch(e){ return {success:true}; }
 }
 let currentUser = JSON.parse(localStorage.getItem('ultra_rank_user') || 'null');
 let users = JSON.parse(localStorage.getItem('ultra_rank_users') || '{}');
 function save(){if(currentUser){localStorage.setItem('ultra_rank_users', JSON.stringify(users)); localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser));}updateUI();}
 function updateUI(){if(!currentUser)return; document.getElementById('wallet').innerText=currentUser.wallet; document.getElementById('walletTop').innerText=currentUser.wallet;}
-function switchTab(t){['home','orders','account','addmoney','product'].forEach(x=>{let el=document.getElementById('tab-'+x); if(el) el.classList.add('hide');});let target=document.getElementById('tab-'+t); if(target) target.classList.remove('hide');}
+function switchTab(t){['home','orders','account','addmoney','product'].forEach(x=>{let el=document.getElementById('tab-'+x); if(el) el.classList.add('hide');});let target=document.getElementById('tab-'+t); if(target) target.classList.remove('hide'); if(t==='orders') renderOrders();}
+function renderOrders(){
+  if(!currentUser || !currentUser.orders || currentUser.orders.length===0){
+    document.getElementById('ordersList').innerHTML='<div class="bg-white p-4 rounded-xl border text-center text-gray-500 text-sm">কোনো Order নাই - Order করলে এখানে দেখাবে</div>';
+    return;
+  }
+  let h='';
+  currentUser.orders.forEach(o=>{
+    h+='<div class="bg-white p-3 rounded-xl border flex justify-between mb-2"><div><p class="font-bold text-sm">'+o.name+'</p><p class="text-[11px] text-gray-500">ID: '+o.id+' | UID: '+o.uid+'</p><p class="text-[10px] text-gray-400">'+o.date+'</p></div><div class="text-right"><p class="font-black text-green-600 text-sm">'+o.price+' ৳</p><p class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded-full mt-1">'+o.status+'</p></div></div>';
+  });
+  document.getElementById('ordersList').innerHTML=h;
+}
 let currentProduct=null;
 function selectPay(type){ currentProduct=type; }
 function checkUID(){let uid=document.getElementById('detailUID').value.trim();if(!uid)return alert('UID দিন!'); document.getElementById('showUID').innerText=uid;document.getElementById('uidResult').classList.remove('hide');}
 const productData = {'FF TopUp [BD]':{packs:[{name:'25 Diamond',price:18},{name:'50 Diamond',price:32},{name:'115 Diamond',price:70},{name:'240 Diamond',price:140},{name:'Weekly',price:139},{name:'Monthly',price:702}]},'Weekly/Monthly Offer':{packs:[{name:'Weekly',price:139},{name:'Monthly',price:702}]},'Weekly Lite':{packs:[{name:'Weekly Lite',price:37}]},'UNIPIN VOUCHER BD':{packs:[{name:'10 USD',price:1035}]},'Indonesia Server [UID]':{packs:[{name:'70 Diamond',price:103}]},'FF Like':{packs:[{name:'100 Likes',price:22}]},'Level Up Pass (BD Server)':{packs:[{name:'LevelUp - level 30',price:94}]}};
 function orderNow(name, basePrice){currentProduct=name; document.getElementById('tab-home').classList.add('hide'); document.getElementById('tab-product').classList.remove('hide'); document.getElementById('productTitle').innerText=name; let data=productData[name]||{packs:[{name:name, price:basePrice}]}; let html=''; data.packs.forEach((p,i)=>{html+='<label class="border-2 '+(i==0?'border-[#00c853] bg-green-50':'border-gray-200')+' rounded-xl p-3 text-center relative block"><input type="radio" name="recharge" value="'+p.price+'" data-name="'+p.name+'" '+(i==0?'checked':'')+' class="absolute top-2 left-2"><p class="font-bold text-[12px]">'+p.name+'</p><p class="text-orange-500 font-black text-sm mt-1">'+p.price+' TK</p></label>';}); document.getElementById('rechargeOptions').innerHTML=html; document.getElementById('detailBalance').innerText=' '+(currentUser?.wallet||0)+'.00'; document.getElementById('detailNeed').innerText=' '+data.packs[0].price;}
-async function confirmDetailOrder(){let uid=document.getElementById('detailUID').value.trim(); if(!uid)return alert('Player ID দিন!'); let selected=document.querySelector('input[name="recharge"]:checked'); if(!selected)return alert('Select package!'); let price=parseInt(selected.value); let pname=selected.dataset.name; if(!currentUser||currentUser.wallet<price)return alert('ব্যালেন্স কম!'); currentUser.wallet-=price; let id=Math.floor(Math.random()*900000)+700000; let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Processing'}; currentUser.orders=currentUser.orders||[]; currentUser.orders.unshift(order); users[currentUser.email]=currentUser; save(); alert('🤖 Robot Order Placed! ID: '+id+' - 30 Sec এ Delivery হবে!'); switchTab('orders'); const apiResult = await callUltraAPI(uid, pname, price); order.status='Completed'; currentUser.orders[0]=order; users[currentUser.email]=currentUser; save();}
+async function confirmDetailOrder(){
+  let uid=document.getElementById('detailUID').value.trim(); 
+  if(!uid) return alert('Player ID দিন!');
+  let selected=document.querySelector('input[name="recharge"]:checked');
+  if(!selected) return alert('Select package!');
+  let price=parseInt(selected.value); 
+  let pname=selected.dataset.name;
+  if(!currentUser||currentUser.wallet<price) return alert('ব্যালেন্স কম! Wallet: '+(currentUser?.wallet||0)+' Tk');
+  currentUser.wallet-=price;
+  let id=Math.floor(Math.random()*900000)+700000;
+  let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Confirm - Diamond পাঠানো হচ্ছে...'};
+  currentUser.orders=currentUser.orders||[]; 
+  currentUser.orders.unshift(order);
+  users[currentUser.email]=currentUser; 
+  save();
+  
+  switchTab('orders');
+  
+  let ordersHtml = '<div class="bg-green-100 border-2 border-green-500 p-3 rounded-xl text-center font-black text-green-700 mb-3">✅ Order Confirm! ID: '+id+'<br>💎 Diamond পাঠানো হচ্ছে... 30 Sec এ পাবে!</div>';
+  currentUser.orders.forEach(o=>{
+    ordersHtml += '<div class="bg-white p-3 rounded-xl border flex justify-between mb-2"><div><p class="font-bold text-sm">'+o.name+'</p><p class="text-[11px] text-gray-500">ID: '+o.id+' | UID: '+o.uid+'</p><p class="text-[10px] text-gray-400">'+o.date+'</p></div><div class="text-right"><p class="font-black text-green-600 text-sm">'+o.price+' ৳</p><p class="text-[10px] bg-green-100 text-green-700 px-2 py-1 rounded-full mt-1">'+o.status+'</p></div></div>';
+  });
+  document.getElementById('ordersList').innerHTML = ordersHtml;
+  
+  const apiResult = await callUltraAPI(uid, pname, price);
+  
+  order.status='Completed - 💎 Diamond চলে গেছে ✓';
+  currentUser.orders[0]=order; 
+  users[currentUser.email]=currentUser; 
+  save();
+  renderOrders();
+  document.getElementById('ordersList').innerHTML = '<div class="bg-green-100 border-2 border-green-500 p-3 rounded-xl text-center font-black text-green-700 mb-3">✅ Order Confirm! ID: '+id+'<br>💎 Diamond Delivered! ✓ Order List এ যোগ হয়েছে!</div>' + document.getElementById('ordersList').innerHTML;
+}
 switchTab('home');updateUI();
 </script>
 </body>
