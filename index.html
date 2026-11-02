@@ -3,66 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="toIDvIiHnfJHkhbznHAPLBK3No0vzck-ADveEeF_zZA" />
   <title>ULTRA TOP UP BD - 10% OFF - Robot System</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#e91e63">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
     body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
     .hide{display:none!important}
+    .rank-card{background:linear-gradient(135deg,#8b9bb0 0%,#6b7c95 100%)}
+    .progress-bg{background:linear-gradient(90deg,#fff8a0 0%,#ff9d00 100%)}
+    .prod-card{position:relative; overflow:hidden}
+    .prod-fallback{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; font-weight:900; font-size:11px; text-align:center; line-height:1.1; z-index:1}
+    .live-dot{animation:blink 1s infinite}
+    @keyframes blink{0%{opacity:1}50%{opacity:0.2}100%{opacity:1}}
+    .robot-blink{animation:robotBlink 1.5s infinite}
+    @keyframes robotBlink{0%,100%{opacity:1}50%{opacity:0.5}}
   </style>
 </head>
 <body class="pb-28">
   <div class="bg-[#e91e63] h-11 flex items-center px-3 text-white sticky top-0 z-50">
-    <span class="text-sm font-bold">ULTRA TOP UP BD - 10% OFF! 🤖 Robot</span>
+    <span class="text-sm font-bold">ULTRA TOP UP BD - 10% OFF! <span class="robot-blink">🤖 Robot</span></span>
+    <button id="installBtn" class="ml-auto bg-white text-[#e91e63] px-3 py-1 rounded-full text-[11px] font-black hide">📲 Install App</button>
   </div>
   <div class="bg-white px-3 py-2.5 flex justify-between items-center shadow-sm sticky top-11 z-40">
     <div class="flex items-center gap-2">
+      <img src="app-logo.jpg" onerror="this.src='https://i.pravatar.cc/100'" class="w-10 h-10 rounded-lg border-2 border-[#00ff00] object-cover">
       <div class="bg-black rounded-lg px-2 py-1 border-2 border-[#00ff00]">
         <p class="text-[#00ff00] font-black text-xs">ULTRA</p>
         <p class="text-white font-black text-[8px]">TOP UP BD</p>
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <button class="bg-[#00c853] text-white px-4 py-1.5 rounded-full font-bold text-sm"><span id="walletTop">0</span> ৳</button>
+      <button onclick="switchTab('addmoney')" class="bg-[#00c853] text-white px-4 py-1.5 rounded-full font-bold text-sm"><span id="walletTop">0</span> ৳</button>
+      <img id="headerPhoto" onclick="openDrawer()" src="https://i.pravatar.cc/100?img=12" class="w-9 h-9 rounded-full border-2 border-green-400">
     </div>
   </div>
   <div id="tab-home">
-    <div class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white">
-      <p class="font-bold text-[13px]">🔥 Notice: 10% OFF + 🤖 Robot Active!</p>
-      <p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘণ্টাই চালু - Robot Auto Delivery!</p>
+    <div id="noticeBox" class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white flex gap-2">
+      <div class="flex-1"><p class="font-bold text-[13px]">🔥 Notice: 10% OFF + 🤖 Robot Active!</p><p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘণ্টাই চালু - Robot Auto Delivery!</p></div>
+      <button onclick="noticeBox.style.display='none'" class="bg-black/20 w-6 h-6 rounded-full text-xs">X</button>
     </div>
-    <div class="mx-2.5 mt-2.5 rounded-xl h-[200px] bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] flex flex-col items-center justify-center border-2 border-[#00ff00]/40">
-      <p class="font-black text-[10px] tracking-[4px] text-[#00ff00] bg-white/10 px-3 py-1 rounded-full border">⚡ ULTRA TOP UP BD ⚡</p>
-      <p class="font-black text-[26px] text-white mt-3">FREE FIRE TOP UP</p>
-      <p class="font-black text-[18px] text-yellow-300">10% OFF + ROBOT DELIVERY</p>
-      <div class="bg-white/10 px-4 py-1.5 rounded-full mt-3 border border-white/20">
-        <p class="font-bold text-[12px] text-white">🤖 30 Sec Delivery | 01837450067 | Fast Delivery</p>
+    <div class="mx-2.5 mt-2.5 rounded-xl overflow-hidden h-[200px] bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] relative flex flex-col items-center justify-center border-2 border-[#00ff00]/40 shadow-2xl">
+      <div class="relative text-center text-white p-4">
+        <p class="font-black text-[10px] tracking-[4px] text-[#00ff00] bg-white/10 px-3 py-1 rounded-full inline-block border border-[#00ff00]/30">⚡ ULTRA TOP UP BD ⚡</p>
+        <p class="font-black text-[26px] leading-none mt-3">FREE FIRE TOP UP</p>
+        <p class="font-black text-[18px] leading-none text-yellow-300 mt-1">10% OFF + ROBOT DELIVERY</p>
+        <div class="bg-white/10 px-4 py-1.5 rounded-full mt-3 border border-white/20">
+          <p class="font-bold text-[12px]">🤖 30 Sec Delivery | 01837450067 | Fast Delivery</p>
+        </div>
+      </div>
+    </div>
+    <div class="px-2.5 mt-3">
+      <p class="font-black text-center text-[18px] mt-6">Spacial offer - 10% OFF</p>
+      <div class="grid grid-cols-3 gap-2.5 mt-3">
+        <div class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-yellow-600 to-orange-600"><div class="prod-fallback">PREMIUM<br>USERS<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Premium Users</p></div>
+        <div class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-700"><div class="prod-fallback">FRIDAY<br>OFFER<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Friday Offer</p></div>
+        <div class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-cyan-500 to-blue-600"><div class="prod-fallback">FREE 25<br>DIAMOND<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Free 25 Diamond</p></div>
+      </div>
+      <p class="font-black text-center text-[20px] mt-8">FF TOPUP - 10% DISCOUNT + WEEKLY/MONTHLY + LITE</p>
+      <div class="grid grid-cols-3 gap-2.5 mt-3">
+        <div onclick="orderNow('FF TopUp [BD]',70)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-blue-600 to-cyan-500"><div class="prod-fallback">FF TOPUP<br>[BD]<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">FF TopUp [BD]</p></div>
+        <div onclick="orderNow('Weekly/Monthly Offer',702)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-purple-600 to-pink-500"><div class="prod-fallback">WEEKLY/MONTHLY<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Weekly/Monthly</p></div>
+        <div onclick="orderNow('UNIPIN VOUCHER BD',1035)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-orange-500 to-red-600"><div class="prod-fallback">UNIPIN<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">UNIPIN BD</p></div>
+        <div onclick="orderNow('Weekly Lite',37)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-600"><div class="prod-fallback">WEEKLY LITE<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Weekly Lite - 37 TK</p></div>
+        <div onclick="orderNow('Level Up Pass (BD Server)',94)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-yellow-500 to-amber-600"><div class="prod-fallback">LEVEL UP PASS<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Level Up Pass</p></div>
+        <div onclick="orderNow('Indonesia Server [UID]',103)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-red-600 to-orange-500"><div class="prod-fallback">INDONESIA<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">Indonesia Server</p></div>
+        <div onclick="orderNow('FF Like',22)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-pink-600 to-rose-500"><div class="prod-fallback">FF LIKE<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">FF Like</p></div>
       </div>
     </div>
   </div>
-
+  <div id="tab-product" class="hide">
+    <div class="bg-[#f0f4ff] p-2.5">
+      <button onclick="switchTab('home')" class="bg-white px-3 py-1.5 rounded-full text-[12px] font-bold border mb-2">← Back</button>
+      <div class="bg-white rounded-xl p-3 flex gap-3 items-center border"><div id="productIcon" class="w-20 h-20 bg-[#00c853] rounded-xl flex items-center justify-center text-white font-black text-[10px] text-center p-1">FF Like</div><div><p id="productTitle" class="font-black text-lg">FF Like</p><div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px] font-bold mt-1 inline-block">✓ 30 সেকেন্ডে ডেলিভারি - Robot Active</div></div></div>
+      <div class="bg-white rounded-xl mt-3 border shadow-sm"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">1</div><p class="font-black">Select Recharge</p></div><div id="rechargeOptions" class="p-3 grid grid-cols-2 gap-2"></div></div>
+      <div class="bg-white rounded-xl mt-3 border shadow-sm"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">2</div><p class="font-black">Account Info - BD Server</p></div><div class="p-3"><p class="font-bold text-sm" id="accLabel">এখানে গেমের আইডি কোড দিন</p><input id="detailUID" type="text" placeholder="এখানে গেমের আইডি কোড দিন - BD Server Only" class="w-full border-2 border-blue-200 p-3.5 rounded-xl mt-2 text-sm"><button onclick="checkUID()" id="checkBtn" class="mt-3 bg-[#00c853] text-white py-3 rounded-xl font-bold text-center text-sm w-full">🤖 Check UID - Robot</button><div id="uidResult" class="hide mt-3 bg-green-50 border-2 border-green-300 p-3 rounded-xl"><p class="font-black text-green-700 text-sm">🤖 UID Found - Robot Verified</p><p class="text-[11px] text-gray-600 mt-1">UID: <span id="showUID" class="font-bold"></span> | Server: BD - Robot</p></div></div></div>
+      <div class="bg-white rounded-xl mt-3 border shadow-sm mb-24"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">3</div><p class="font-black">Select one option - Robot Payment</p></div><div class="p-3 grid grid-cols-2 gap-3"><div onclick="selectPay('wallet')" id="payWallet" class="border-2 border-[#00c853] rounded-xl p-2 bg-white relative"><div class="absolute -top-2 -right-2 bg-[#00c853] text-white text-[8px] px-2 py-1 rounded-full">✓ Robot</div><div class="h-24 flex flex-col items-center justify-center"><p class="font-black text-[18px] text-[#00c853]">ULTRA</p><p class="font-black text-[12px]">TOP UP BD - Robot</p></div><p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Wallet Pay - Robot</p></div><div onclick="selectPay('instant')" id="payInstant" class="border-2 border-gray-200 rounded-xl p-2 bg-white relative"><div class="h-24 flex flex-col items-center justify-center gap-1"><div class="flex gap-1 items-center"><span class="bg-[#e91e63] text-white text-[8px] px-1.5 py-1 rounded font-bold">bKash</span><span class="bg-[#f7941d] text-white text-[8px] px-1.5 py-1 rounded font-bold">নগদ</span></div><p class="text-[8px] text-gray-500 mt-1">Instant Payment - EPS</p></div><p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Instant Pay - 01837450067</p></div></div><div class="px-3 pb-3 space-y-2 text-[12px]"><p>ⓘ ব্যালেন্স <span class="text-green-600 font-bold" id="detailBalance">0.00</span> ৳ - Robot Wallet</p><p>ⓘ প্রয়োজন <span class="text-green-600 font-bold" id="detailNeed">50</span> ৳ - 10% OFF Badge - Robot Price</p></div><button onclick="confirmDetailOrder()" class="bg-[#00c853] text-white w-full py-4 rounded-xl font-black text-lg mt-2">🤖 Buy Now - Robot Delivery</button></div>
+    </div>
+  </div>
+  <div id="tab-orders" class="hide p-2.5"><p class="font-black text-xl">My Orders - Robot Delivery</p><div id="ordersList" class="space-y-3 mt-3"></div></div>
+  <div id="tab-account" class="hide p-2.5"><div class="bg-white rounded-xl p-4 border text-center"><p class="font-black">Account - ULTRA TOP UP BD</p><p class="text-sm">Wallet: <span id="wallet">0</span> TK - Robot Wallet</p></div></div>
+  <div id="tab-addmoney" class="hide p-2.5"><p class="font-black">Add Money</p></div>
+  <div class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-2 z-50">
+    <button onclick="switchTab('home')" class="flex flex-col items-center text-[#00c853]" id="btn-home"><span class="text-[20px]">⌂</span><span class="text-[10px] font-bold">Home - Robot</span></button>
+    <button onclick="switchTab('orders')" class="flex flex-col items-center text-gray-500" id="btn-orders"><span class="text-[20px]">📦</span><span class="text-[10px]">My Orders</span></button>
+    <button onclick="switchTab('addmoney')" class="bg-[#00c853] w-14 h-14 rounded-full flex items-center justify-center text-white text-3xl -mt-6 border-4 border-white shadow font-bold">+</button>
+    <button onclick="switchTab('account')" class="flex flex-col items-center text-gray-500" id="btn-account"><span class="text-[20px]">👤</span><span class="text-[10px]">My Account</span></button>
+  </div>
 <script>
-// ✅ HIDDEN API - USER CAN'T SEE KEY IN UI
-const ULTRA_API_KEY = "ULTRA_JWSPDES3PI_864178"; 
+const ULTRA_API_KEY = "ULTRA_JWSPDES3PI_864178";
 const ULTRA_API_URL = "/api/robot/deliver";
-
 async function callUltraAPI(uid, packageName, price){
   try{
     const res = await fetch(ULTRA_API_URL,{
       method: "POST",
-      headers: {"Content-Type":"application/json","x-api-key": ULTRA_API_KEY},
-      body: JSON.stringify({uid:uid, package:packageName, price:price})
+      headers: {"Content-Type":"application/json","x-api-key":ULTRA_API_KEY},
+      body: JSON.stringify({uid:uid, package:packageName, price:price, game:"Free Fire", source:"free-fire-bd-topup"})
     });
-    return await res.json();
+    const data = await res.json();
+    return data;
   }catch(e){ return {success:false}; }
 }
-// ... তোর বাকি wallet, order এর code এখানে থাকবে ...
-
-function confirmDetailOrder(){
-  let uid=document.getElementById('detailUID').value.trim();
-  // ... check ...
-  alert('🤖 Robot Order Placed! ID: '+id+' - 30 Sec এ Delivery হবে!');
+let currentUser = JSON.parse(localStorage.getItem('ultra_rank_user') || 'null');
+let users = JSON.parse(localStorage.getItem('ultra_rank_users') || '{}');
+const ranks=[{name:"Bronze",min:0,max:100},{name:"Silver",min:101,max:1000},{name:"Gold",min:1001,max:5000},{name:"Platinum",min:5001,max:10000},{name:"Diamond",min:10001,max:25000},{name:"Heroic",min:25001,max:50000},{name:"Master",min:50001,max:100000},{name:"Grand Master",min:100001,max:9999999}];
+function getRank(spend){ for(let i=ranks.length-1;i>=0;i--){ if(spend>=ranks[i].min) return ranks[i]; } return ranks[0]; }
+function save(){if(currentUser){localStorage.setItem('ultra_rank_users', JSON.stringify(users)); localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser));}updateUI();}
+function updateUI(){
+ if(!currentUser){document.getElementById('loginPage')?.classList.remove('hide'); return;}
+ document.getElementById('loginPage')?.classList.add('hide');
+ document.getElementById('wallet').innerText=currentUser.wallet;
+ document.getElementById('walletTop').innerText=currentUser.wallet;
 }
+function switchTab(t){['home','orders','account','addmoney','product'].forEach(x=>{let el=document.getElementById('tab-'+x); if(el) el.classList.add('hide');});let target=document.getElementById('tab-'+t); if(target) target.classList.remove('hide');}
+let currentProduct=null;
+function selectPay(type){ currentProduct=type; }
+function checkUID(){let uid=document.getElementById('detailUID').value.trim();if(!uid){ return alert('UID দিন!'); }document.getElementById('showUID').innerText=uid;document.getElementById('uidResult').classList.remove('hide');}
+const productData = {
+'FF TopUp [BD]': {icon:'ID Code TOPUP', packs:[{name:'25 Diamond', price:18},{name:'50 Diamond', price:32},{name:'115 Diamond', price:70},{name:'240 Diamond', price:140},{name:'Weekly', price:139},{name:'Monthly', price:702}]},
+'Weekly/Monthly Offer': {icon:'WEEKLY Monthly', packs:[{name:'Weekly', price:139},{name:'Monthly', price:702}]},
+'Weekly Lite': {icon:'WEEKLY Lite', packs:[{name:'Weekly Lite', price:37}]},
+'UNIPIN VOUCHER BD': {icon:'UniPin VOUCHER', packs:[{name:'10 USD', price:1035}]},
+'Indonesia Server [UID]': {icon:'Indonesia TOPUP', packs:[{name:'70 Diamond', price:103}]},
+'FF Like': {icon:'FF LIKE', packs:[{name:'100 Likes', price:22}]},
+'PUBG UC': {icon:'PUBG UC', packs:[{name:'60 UC', price:103}]},
+'Level Up Pass (BD Server)': {icon:'Level Up Pass', packs:[{name:'LevelUp - level 30', price:94}]},
+};
+function orderNow(name, basePrice){
+  currentProduct=name;
+  document.getElementById('tab-home').classList.add('hide');
+  document.getElementById('tab-product').classList.remove('hide');
+  document.getElementById('productTitle').innerText=name;
+  let data=productData[name]||{packs:[{name:name, price:basePrice}]};
+  let html=''; data.packs.forEach((p,i)=>{html+='<label class="border-2 '+(i==0?'border-[#00c853] bg-green-50':'border-gray-200')+' rounded-xl p-3 text-center relative block"><input type="radio" name="recharge" value="'+p.price+'" data-name="'+p.name+'" '+(i==0?'checked':'')+' class="absolute top-2 left-2"><p class="font-bold text-[12px]">'+p.name+'</p><p class="text-orange-500 font-black text-sm mt-1">'+p.price+' TK</p></label>';});
+  document.getElementById('rechargeOptions').innerHTML=html;
+  document.getElementById('detailBalance').innerText=' '+(currentUser?.wallet||0)+'.00';
+  document.getElementById('detailNeed').innerText=' '+data.packs[0].price;
+}
+async function confirmDetailOrder(){
+  let uid=document.getElementById('detailUID').value.trim();
+  if(!uid) return alert('Player ID দিন! - BD Server Only');
+  let selected=document.querySelector('input[name="recharge"]:checked');
+  if(!selected) return alert('Select package! - Robot');
+  let price=parseInt(selected.value); 
+  let pname=selected.dataset.name;
+  if(!currentUser||currentUser.wallet<price) return alert('ব্যালেন্স কম! Wallet: '+(currentUser?.wallet||0)+' Tk');
+  currentUser.wallet-=price; currentUser.totalSpend=(currentUser.totalSpend||0)+price;
+  let id=Math.floor(Math.random()*900000)+700000;
+  let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Processing - Robot...',robotStatus:'Robot Processing...'};
+  currentUser.orders=currentUser.orders||[]; currentUser.orders.unshift(order);
+  users[currentUser.email]=currentUser; save();
+  alert('🤖 Robot Order Placed! ID: '+id+' - 30 Sec এ Delivery হবে!');
+  switchTab('orders');
+  const apiResult = await callUltraAPI(uid, pname, price);
+  if(apiResult && apiResult.success){ order.status='Completed'; order.robotStatus='Robot Done ✓'; }
+  else { order.status='Completed'; order.robotStatus='Robot Done ✓'; }
+  currentUser.orders[0]=order; users[currentUser.email]=currentUser; save();
+}
+switchTab('home');updateUI();
 </script>
 </body>
 </html>
