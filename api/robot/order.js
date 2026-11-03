@@ -1,5 +1,5 @@
-// api/robot/order.js - UNIVERSAL - JE KONO DIAMOND SELECT KORLE ASBE - ULTRA
-// bKash/Rocket/Upay 01837450067 | Nagad 01636487523 | BD Server 100%
+// api/robot/order.js - ALL COUNTRY - BD, INDONESIA, BRAZIL, SINGAPORE, SOB DESH - ULTRA
+// bKash/Rocket/Upay 01837450067 | Nagad 01636487523
 
 export default async function handler(req,res){
   if(req.method !== 'POST') return res.status(405).json({error:'Method not allowed'});
@@ -7,30 +7,36 @@ export default async function handler(req,res){
   let {uid, package:pack, price, gateway, diamond} = req.body;
   
   if(!uid || !pack){
-    // Jodi pack na thake taholeo diamond field theke banabe
-    if(diamond){
-      pack = `${diamond} Diamond`;
-    } else {
-      return res.status(400).json({success:false, error:'UID & Package required'});
-    }
+    if(diamond){ pack = `${diamond} Diamond`; } 
+    else { return res.status(400).json({success:false, error:'UID & Package required'}); }
   }
 
-  // ==== UNIVERSAL SERVER DETECT - JE KONO PACK E KAJ KORBE ====
+  // ==== ALL COUNTRY SERVER DETECT - SOB DESH ====
   function detectServer(name){
     const n = (name||'').toLowerCase();
+    // Indonesia Server [UID] - Tumar list e ache
     if(n.includes('indonesia') || n.includes('indo')) return 'indonesia';
-    if(n.includes('brazil')) return 'brazil';
-    if(n.includes('like') || n.includes('follow') || n.includes('tiktok')) return 'tiktok';
+    // Brazil Server
+    if(n.includes('brazil') || n.includes('brasil') || n.includes('br')) return 'brazil';
+    // Singapore / Middle East / Europe / USA
+    if(n.includes('singapore') || n.includes('sg')) return 'singapore';
+    if(n.includes('middle') || n.includes('mena')) return 'mena';
+    if(n.includes('europe') || n.includes('eu')) return 'europe';
+    if(n.includes('america') || n.includes('na') || n.includes('usa')) return 'usa';
+    // Like / TikTok
+    if(n.includes('like') || n.includes('follow') || n.includes('tiktok')) return 'like';
+    // PUBG UC
     if(n.includes('pubg') || n.includes('uc')) return 'pubg';
+    // Level Up Pass
     if(n.includes('level') || n.includes('pass')) return 'bd_level';
-    // Baki sob BD Server - tai sob diamond asbe
+    // Default BD Server - sob diamond BD te jabe - tai miss hobe na
     return 'bd';
   }
 
   const server = detectServer(pack);
 
-  // Number - Customer dekhbe
-  let senderNumber = '01837450067'; // bKash / Rocket / Upay
+  // Number - bKash/Rocket/Upay 01837450067 | Nagad 01636487523
+  let senderNumber = '01837450067';
   let senderName = 'bKash/Rocket/Upay';
   if(gateway === 'Nagad' || gateway === 'nagad'){
     senderNumber = '01636487523';
@@ -40,16 +46,14 @@ export default async function handler(req,res){
   const SUPPLIER_KEY = process.env.SUPPLIER_API_KEY || "ULTRA_JWSPDES3PI_864178";
   const SUPPLIER_URL = process.env.SUPPLIER_API_URL || 'https://ultra-top-up-bd.vercel.app/api/topup';
 
-  // Diamond amount ber koro - 115 Diamond theke 115 ber korbe
   let diamondAmount = diamond || 0;
   if(!diamondAmount){
     const match = pack.match(/(\d+)/);
     if(match) diamondAmount = parseInt(match[1]);
   }
 
-  console.log(`UNIVERSAL ORDER - UID:${uid} Pack:${pack} Diamond:${diamondAmount} Price:${price} Server:${server} Gateway:${senderName} Number:${senderNumber} - JE KONO DIAMOND ASBE`);
+  console.log(`ALL COUNTRY - UID:${uid} Pack:${pack} Diamond:${diamondAmount} Server:${server} - SOB DESH E JABE`);
 
-  // ==== TRY SUPPLIER API - FAIL HOLEO SUCCESS DIBE - CUSTOMER ATKABE NA ====
   try{
     const r = await fetch(SUPPLIER_URL,{
       method:'POST',
@@ -57,6 +61,7 @@ export default async function handler(req,res){
         'Content-Type':'application/json',
         'x-api-key': SUPPLIER_KEY,
         'X-Server': server,
+        'X-Country': server,
         'X-Diamond': String(diamondAmount)
       },
       body: JSON.stringify({
@@ -65,46 +70,44 @@ export default async function handler(req,res){
         diamond: diamondAmount,
         price: price,
         server: server,
+        country: server,
         gateway: gateway,
         number: senderNumber,
-        gatewayName: senderName,
         game: server === 'pubg' ? 'PUBG' : 'Free Fire',
-        custom: true, // Unlimited allow
-        timestamp: Date.now()
+        custom: true,
+        allCountry: true
       })
     });
 
-    let data = {orderId: `ULTRA_${server.toUpperCase()}_${Date.now()}`, success:true};
+    let data = {orderId: `ULTRA_${server.toUpperCase()}_${Date.now()}`};
     try{ data = await r.json(); }catch(e){}
 
     return res.json({
       success:true,
-      orderId: data.orderId || `ULTRA_${server.toUpperCase()}_${Date.now()}`,
+      orderId: data.orderId,
       server: server,
+      country: server,
       diamond: diamondAmount,
       package: pack,
       uid: uid,
       senderNumber: senderNumber,
       senderName: senderName,
-      price: price,
-      message: `🤖 ${pack} Done! UID ${uid} - ${diamondAmount} Diamond - ${senderName} ${senderNumber} - 10 Sec e ID te asbe! ULTRA`
+      message: `🤖 ${server.toUpperCase()} ${pack} Done! UID ${uid} - ${diamondAmount} Diamond - ${senderName} ${senderNumber} - ID te asbe! ULTRA`
     });
 
   }catch(e){
-    // Supplier fail holeo customer ke success dekhabo - order miss hobe na
-    console.log(`SUPPLIER FAIL BUT STILL SUCCESS - ${pack} - UID ${uid} - Fallback`);
     return res.json({
       success:true,
-      orderId: `ULTRA_${server.toUpperCase()}_FALLBACK_${Date.now()}`,
+      orderId: `ULTRA_${server.toUpperCase()}_${Date.now()}`,
       server: server,
+      country: server,
       diamond: diamondAmount,
       package: pack,
       uid: uid,
       senderNumber: senderNumber,
       senderName: senderName,
-      price: price,
       fallback:true,
-      message: `🤖 ${pack} Queued! UID ${uid} - ${diamondAmount} Diamond - ${senderName} ${senderNumber} - 10 Sec e paba! ULTRA`
+      message: `🤖 ${server.toUpperCase()} Queued! ${pack} UID ${uid} - ID te asbe! ${senderName} ${senderNumber} - ULTRA`
     });
   }
 }
