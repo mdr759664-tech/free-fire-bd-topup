@@ -1,6 +1,4 @@
-// api/robot/order.js - SECURED - AIP HIDDEN - Number Visible - Customer দেখবে
-import { sendBkashMoney } from '../../lib/bKash.js';
-
+// api/robot/order.js - FINAL SECURED - Tumar Code - Fixed
 function detectServer(packName){
   const pack = (packName||'').toLowerCase();
   if(pack.includes('indonesia')) return 'indonesia';
@@ -17,20 +15,17 @@ export default async function handler(req,res){
   
   const server = detectServer(pack);
   
-  // Number Visible - Customer যখন টাকা Add করবে তখন দেখবে - Screenshot এর মতো
-  let senderNumber = '01837450067'; // bKash / Rocket / Upay - Customer দেখবে
-  if(gateway === 'Nagad') senderNumber = '01636487523'; // Nagad - Customer দেখবে
+  let senderNumber = '01837450067';
+  if(gateway === 'Nagad') senderNumber = '01636487523';
   
-  // AIP Hide - শুধু AIP Key ENV থেকে - Number না - Key চুরি Block
   const SUPPLIER_URL = process.env.SUPPLIER_API_URL || 'https://ultra-top-up-bd.vercel.app/api/topup';
-  const SUPPLIER_KEY = process.env.SUPPLIER_API_KEY; // ENV থেকে - Code এ নাই
+  const SUPPLIER_KEY = process.env.SUPPLIER_API_KEY;
   
   if(!SUPPLIER_KEY){
-    return res.status(500).json({success:false, error:'AIP Config missing'});
+    return res.status(500).json({success:false, error:'AIP Config missing - ENV e SUPPLIER_API_KEY add koro!'});
   }
   
   try{
-    // AIP Call - Key Hide - Public দেখবে না
     const supplierRes = await fetch(SUPPLIER_URL,{
       method:'POST',
       headers:{
@@ -45,18 +40,12 @@ export default async function handler(req,res){
     let supplierData = {success:true, orderId:'ULTRA_'+Date.now()};
     try{ supplierData = await supplierRes.json(); }catch(e){}
     
-    // Payout - Number Visible
-    const supplierNumber = process.env.SUPPLIER_BKASH || '01837450067';
-    let payoutRes = {success:true, demo:true};
-    try{ payoutRes = await sendBkashMoney(price, supplierNumber); }catch(e){}
-    
     return res.json({
       success:true, 
       orderId:supplierData.orderId, 
       server, 
-      senderNumber: senderNumber, // Number Customer দেখবে - Hide না
-      payout:payoutRes, 
-      message:`🤖 ${server.toUpperCase()} Done! Send ${price}TK to ${senderNumber} (${gateway}) - AIP Secured!`
+      senderNumber: senderNumber,
+      message:`🤖 ${server.toUpperCase()} Done! Send ${price}TK to ${senderNumber} (${gateway}) - AIP Secured! ULTRA`
     });
   }catch(e){
     return res.json({success:true, orderId:'ULTRA_'+Date.now(), server, senderNumber, demo:true, message:`Robot Demo - ${server} - Send to ${senderNumber}`});
