@@ -3,46 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ULTRA TOP UP BD - 10% OFF - Robot System</title>
+  <title>ULTRA TOP UP BD - FIXED - 0 WALLET</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700;800&display=swap" rel="stylesheet">
   <style>
     body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
     .hide{display:none!important}
     .rank-card{background:linear-gradient(135deg,#8b9bb0 0%,#6b7c95 100%)}
+    .progress-bg{background:linear-gradient(90deg,#fff8a0 0%,#ff9d00 100%)}
     .prod-card{position:relative; overflow:hidden}
     .prod-fallback{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; font-weight:900; font-size:11px; text-align:center; line-height:1.1; z-index:1}
     .live-dot{animation:blink 1s infinite}
     @keyframes blink{0%{opacity:1}50%{opacity:0.2}100%{opacity:1}}
-    .robot-blink{animation:robotBlink 1.5s infinite}
-    @keyframes robotBlink{0%,100%{opacity:1}50%{opacity:0.5}}
   </style>
 </head>
 <body class="pb-28">
-  <!-- তোমার ডিজাইন একটুও ভাঙি নাই - Part 2 এর ডিজাইন হুবহু থাকবে -->
-
   <div class="bg-[#e91e63] h-11 flex items-center px-3 text-white sticky top-0 z-50">
-    <span class="text-sm font-bold">ULTRA TOP UP BD - 10% OFF! <span class="robot-blink">🤖 Robot</span></span>
+    <span class="text-sm font-bold">ULTRA TOP UP BD - 10% OFF! 🤖 Robot</span>
   </div>
+  <div class="bg-white px-3 py-2.5 flex justify-between items-center shadow-sm sticky top-11 z-40">
+    <div class="flex items-center gap-2">
+      <div class="bg-black rounded-lg px-2 py-1 border-2 border-[#00ff00]"><p class="text-[#00ff00] font-black text-xs">ULTRA</p><p class="text-white font-black text-[8px]">TOP UP BD</p></div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="switchTab('addmoney')" class="bg-[#00c853] text-white px-4 py-1.5 rounded-full font-bold text-sm"><span id="walletTop">0</span> ৳</button>
+      <img id="headerPhoto" onclick="openDrawer()" src="https://i.pravatar.cc/100?img=12" class="w-9 h-9 rounded-full border-2 border-green-400">
+    </div>
+  </div>
+
+  <div id="loginPage" class="fixed inset-0 bg-white z-[80] p-6 overflow-auto">
+    <p class="font-black text-[32px] leading-none mt-6">Welcome<br><span class="text-[#e91e63]">Back - 10% OFF</span></p>
+    <div class="border-2 rounded-[20px] p-4 mt-6">
+      <input id="loginEmail" type="email" placeholder="Gmail" class="w-full border-2 p-3.5 rounded-xl text-sm">
+      <input id="loginName" type="text" placeholder="User Name" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm">
+      <input id="loginPass" type="password" placeholder="Password" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm">
+      <button onclick="manualLogin()" class="w-full mt-4 bg-black text-white rounded-xl py-4 font-black">Login</button>
+      <button onclick="manualLogin()" class="w-full mt-3 bg-white border-2 border-black text-black rounded-xl py-3.5 font-black text-[13px]">📝 Sign Up - New Account</button>
+      <button onclick="openForgot()" class="w-full mt-3 bg-yellow-50 border-2 border-[#e91e63] text-[#e91e63] rounded-xl py-3.5 font-black text-[13px]">🔑 Forgot Password?</button>
+      <p class="text-[11px] text-center text-gray-500 mt-3">ভুল পাসওয়ার্ড দিলে Login হবে না - সঠিক পাসওয়ার্ড লাগবে!</p>
+    </div>
+  </div>
+
+  <div id="forgotBox" class="fixed inset-0 bg-black/60 z-[90] hidden items-center justify-center p-4"><div class="bg-white rounded-[20px] p-5 w-full max-w-[340px]"><p class="font-black">🔑 Forgot Password</p><input id="forgotEmail" type="email" placeholder="Gmail" class="w-full border-2 p-3.5 rounded-xl mt-4 text-sm"><input id="forgotNewPass" type="password" placeholder="নতুন Password" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><input id="forgotConfirmPass" type="password" placeholder="Confirm Password" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><button onclick="doForgot()" class="w-full mt-4 bg-[#00c853] text-white rounded-xl py-4 font-black">Password Set</button><button onclick="closeForgot()" class="w-full mt-3 text-[12px] text-gray-500 font-bold">Cancel</button></div></div>
 
   <div id="tab-home">
-    <div class="px-2.5 mt-6"><p class="font-black text-center text-[18px]">Spacial offer - 10% OFF - ULTRA</p></div>
+    <div class="px-2.5 mt-6"><p class="font-black text-center text-[18px]">Spacial offer - 10% OFF</p><div class="grid grid-cols-3 gap-2.5 mt-3"><div class="text-center"><div class="rounded-xl h-28 bg-gradient-to-br from-yellow-600 to-orange-600 border-2 border-[#00ff00] flex items-center justify-center text-white font-black text-[11px]">PREMIUM<br>USERS</div><p class="text-[10px] font-bold mt-1">Premium Users</p></div><div class="text-center"><div class="rounded-xl h-28 bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center text-white font-black text-[11px]">FRIDAY<br>OFFER</div><p class="text-[10px] font-bold mt-1">Friday Offer</p></div><div class="text-center"><div class="rounded-xl h-28 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-[11px]">FREE 25<br>DIAMOND</div><p class="text-[10px] font-bold mt-1">Free 25 Diamond</p></div></div>
+      <p class="font-black text-center text-[20px] mt-8">FF TOPUP - FULL DIAMOND LIST - ULTRA</p>
+      <div class="grid grid-cols-3 gap-2.5 mt-3">
+        <div onclick="orderNow('FF TopUp [BD]',155)" class="text-center"><div class="rounded-xl h-[125px] bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-white font-black text-[11px]">FF TOPUP [BD]</div><p class="text-[11px] font-bold mt-1">FF TopUp [BD]</p></div>
+        <div onclick="orderNow('Weekly/Monthly Offer',155)" class="text-center"><div class="rounded-xl h-[125px] bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center text-white font-black text-[11px]">WEEKLY/MONTHLY</div><p class="text-[11px] font-bold mt-1">Weekly/Monthly</p></div>
+        <div onclick="orderNow('Weekly Lite',42)" class="text-center"><div class="rounded-xl h-[125px] bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-black text-[11px]">WEEKLY LITE</div><p class="text-[11px] font-bold mt-1">Weekly Lite</p></div>
+        <div onclick="orderNow('Level Up Pass (BD Server)',40)" class="text-center"><div class="rounded-xl h-[125px] bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center text-white font-black text-[11px]">LEVEL UP PASS</div><p class="text-[11px] font-bold mt-1">Level Up Pass</p></div>
+        <div onclick="orderNow('Indonesia Server [UID]',115)" class="text-center"><div class="rounded-xl h-[125px] bg-gradient-to-br from-red-600 to-orange-500 flex items-center justify-center text-white font-black text-[11px]">INDONESIA</div><p class="text-[11px] font-bold mt-1">Indonesia Server</p></div>
+        <div onclick="orderNow('PUBG UC',115)" class="text-center"><div class="rounded-xl h-[125px] bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white font-black text-[11px]">PUBG UC</div><p class="text-[11px] font-bold mt-1">PUBG UC</p></div>
+        <div onclick="orderNow('TikTok Like-Follow',80)" class="text-center"><div class="rounded-xl h-[125px] bg-black border-2 border-green-400 flex items-center justify-center text-white font-black text-[11px]">TikTok</div><p class="text-[11px] font-bold mt-1">TikTok</p></div>
+        <div onclick="orderNow('FF Like',20)" class="text-center"><div class="rounded-xl h-[125px] bg-gradient-to-br from-pink-600 to-rose-500 flex items-center justify-center text-white font-black text-[11px]">FF LIKE</div><p class="text-[11px] font-bold mt-1">FF Like</p></div>
+      </div>
+    </div>
   </div>
 
-<script>
-// ===== PART 1 FIXED - TUMAR PIC THEKE 100% SAME - RANK SYSTEM =====
-const ranks=[
-  {name:"Bronze",min:0,max:100},
-  {name:"Silver",min:101,max:1000},
-  {name:"Gold",min:1001,max:5000},
-  {name:"Platinum",min:5001,max:10000},
-  {name:"Diamond",min:10001,max:25000},
-  {name:"Heroic",min:25001,max:50000},
-  {name:"Master",min:50001,max:100000},
-  {name:"Grand Master",min:100001,max:9999999}
-];
+  <div id="tab-product" class="hide"><div class="bg-[#f0f4ff] p-2.5"><button onclick="switchTab('home')" class="bg-white px-3 py-1.5 rounded-full text-[12px] font-bold border mb-2">← Back</button><div class="bg-white rounded-xl p-3 flex gap-3 items-center border"><div id="productIcon" class="w-20 h-20 bg-[#00c853] rounded-xl flex items-center justify-center text-white font-black text-[10px]">FF</div><div><p id="productTitle" class="font-black text-lg">FF TopUp</p></div></div><div class="bg-white rounded-xl mt-3 border"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">1</div><p class="font-black">Select Recharge</p></div><div id="rechargeOptions" class="p-3 grid grid-cols-2 gap-2"></div></div><div class="bg-white rounded-xl mt-3 border"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">2</div><p class="font-black">Account Info</p></div><div class="p-3"><input id="detailUID" type="text" placeholder="এখানে গেমের আইডি কোড দিন" class="w-full border-2 border-blue-200 p-3.5 rounded-xl mt-2 text-sm"><button onclick="checkUID()" class="mt-3 bg-[#00c853] text-white py-3 rounded-xl font-bold text-center text-sm w-full">Check UID</button><div id="uidResult" class="hide mt-3 bg-green-50 border-2 border-green-300 p-3 rounded-xl"><p class="font-black text-green-700 text-sm">UID Found</p><p class="text-[11px]">UID: <span id="showUID" class="font-bold"></span></p></div></div></div><div class="bg-white rounded-xl mt-3 border mb-24"><div class="p-3"><p>ⓘ ব্যালেন্স <span class="text-green-600 font-bold" id="detailBalance">0.00</span> ৳</p><p>ⓘ প্রয়োজন <span class="text-green-600 font-bold" id="detailNeed">0</span> ৳</p></div><button onclick="confirmDetailOrder()" class="bg-[#00c853] text-white w-full py-4 rounded-xl font-black text-lg mt-2">Buy Now</button></div></div></div>
 
-// ===== PART 1 FIXED - DIAMOND LIST - TUMAR SOB PIC THEKE - EKTAO BAAD NAI - ALL COUNTRY =====
+  <div id="tab-account" class="hide"><div class="p-2.5"><div class="bg-white rounded-xl mt-3 p-4 border text-center"><p class="font-bold"><span id="accName">ULTRA User</span></p><p class="text-[11px] text-gray-500">PIN: <span id="accPin">00000</span></p><div class="bg-gray-50 rounded-xl p-3 mt-3 text-left"><p class="text-xs">Wallet Balance</p><p class="text-2xl font-black">Tk <span id="wallet">0</span></p><p class="text-[11px] text-gray-500">Fake Refer: <span id="fakeWallet">0</span> TK (এটা দিয়ে কেনা যাবে না)</p></div><button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-3">Logout</button></div></div></div>
+  <div id="tab-orders" class="hide p-2.5"><p class="font-black text-xl">My Orders</p><div id="ordersList" class="space-y-3 mt-3"></div></div>
+  <div id="tab-addmoney" class="hide p-4 bg-white"><p class="font-black">Add Money</p><input id="addAmt" type="number" placeholder="পরিমাণ 10-50000" class="w-full border-2 border-[#00c853] p-3.5 rounded-xl mt-4 text-sm"><button onclick="doAddMoneyFinal()" class="bg-[#00c853] text-white w-full py-3 rounded-xl font-black mt-3">Add Money - Wallet এ ঢুকবে</button><input id="trxId" type="hidden" value="DEMO123"></div>
+
+<script>
+const ranks=[{name:"Bronze",min:0,max:100},{name:"Silver",min:101,max:1000},{name:"Gold",min:1001,max:5000},{name:"Platinum",min:5001,max:10000},{name:"Diamond",min:10001,max:25000},{name:"Heroic",min:25001,max:50000},{name:"Master",min:50001,max:100000},{name:"Grand Master",min:100001,max:9999999}];
+
+function addReferFakeBonus(){
+  if(!currentUser) return;
+  if((currentUser.referCount||0) >=5){
+    currentUser.fakeWallet = (currentUser.fakeWallet||0) + 10;
+    currentUser.referCount = 0;
+    save();
+    alert('🎉 5 Refer Complete! 10 TK FAKE Bonus - কিনতে পারবা না, Real Add করো');
+  }
+}
+
+let currentUser = JSON.parse(localStorage.getItem('ultra_rank_user') || 'null');
+let users = JSON.parse(localStorage.getItem('ultra_rank_users') || '{}');
+
+function getRank(spend){ for(let i=ranks.length-1;i>=0;i--){ if(spend>=ranks[i].min) return ranks[i]; } return ranks[0]; }
+function save(){if(currentUser){localStorage.setItem('ultra_rank_users', JSON.stringify(users)); localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser));}updateUI();}
+
+function updateUI(){
+ if(!currentUser){document.getElementById('loginPage').classList.remove('hide'); return;}
+ document.getElementById('loginPage').classList.add('hide');
+ document.getElementById('headerPhoto').src=currentUser.photo;
+ document.getElementById('wallet').innerText=currentUser.wallet;
+ document.getElementById('walletTop').innerText=currentUser.wallet;
+ document.getElementById('accName').innerText=currentUser.name;
+ document.getElementById('accPin').innerText=currentUser.pin;
+ document.getElementById('detailBalance').innerText=currentUser.wallet;
+ let fw=document.getElementById('fakeWallet'); if(fw) fw.innerText=currentUser.fakeWallet||0;
+ let ol=document.getElementById('ordersList');if(ol){if(!currentUser.orders||currentUser.orders.length==0){ol.innerHTML='<p class="text-center py-8 text-gray-500">No orders yet!</p>';}else{let h='';currentUser.orders.forEach(o=>{h+=`<div class="bg-white rounded-xl p-3 border flex justify-between"><div><p class="font-bold text-sm">#${o.id} - ${o.name}</p><p class="text-[11px]">UID: ${o.uid}</p></div><div class="text-right"><p class="font-black text-sm">${o.price} TK</p><span class="bg-green-100 text-green-600 px-2 py-1 rounded-full text-[10px]">${o.status}</span></div></div>`;});ol.innerHTML=h;}}
+}
+
+function openForgot(){document.getElementById('forgotBox').classList.remove('hidden');document.getElementById('forgotBox').classList.add('flex');}
+function closeForgot(){document.getElementById('forgotBox').classList.add('hidden');document.getElementById('forgotBox').classList.remove('flex');}
+function doForgot(){let email=document.getElementById('forgotEmail').value.trim().toLowerCase();let newPass=document.getElementById('forgotNewPass').value.trim();let confirmPass=document.getElementById('forgotConfirmPass').value.trim();if(!email||!users[email]) return alert('Account নাই!');if(newPass!==confirmPass) return alert('Password মিলে নাই!');users[email].password=newPass;currentUser=users[email];save();alert('✅ Password Reset Success!');closeForgot();}
+
+function manualLogin(){
+  let email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  let name=document.getElementById('loginName').value.trim()||email.split('@')[0];
+  let pass=document.getElementById('loginPass').value.trim();
+  if(!email||!email.includes('@')) return alert('Valid Gmail দিন!');
+  if(!pass) return alert('Password দিন!');
+  if(users[email]){
+    if(users[email].password!==pass){
+      return alert('❌ ভুল Password! সঠিক Password দিয়ে Login করুন - ভুল পাসওয়ার্ডে ID ঢুকবে না!');
+    }
+    currentUser=users[email];
+    if(currentUser.fakeWallet===undefined) currentUser.fakeWallet=0;
+    if(currentUser.referCount===undefined) currentUser.referCount=0;
+    if(currentUser.wallet===undefined) currentUser.wallet=0;
+  }else{
+    currentUser={name:name,email:email,password:pass,wallet:0,fakeWallet:0,referCount:0,totalSpend:0,weeklySpend:0,orders:[],photo:'https://i.pravatar.cc/150?u='+email,pin:Math.floor(Math.random()*90000)+10000};
+    users[email]=currentUser;
+  }
+  localStorage.setItem('ultra_last_email',email);
+  save();
+  document.getElementById('loginPage').classList.add('hide');
+  updateUI();
+}
+
+function logout(){localStorage.removeItem('ultra_rank_user');location.reload();}
+function switchTab(t){['home','orders','account','addmoney','product'].forEach(x=>{let el=document.getElementById('tab-'+x); if(el) el.classList.add('hide');});let target=document.getElementById('tab-'+t); if(target) target.classList.remove('hide');}
+function openDrawer(){}
+function closeDrawer(){}
+function checkUID(){let uid=document.getElementById('detailUID').value.trim();if(!uid) return alert('UID দিন!');document.getElementById('showUID').innerText=uid;document.getElementById('uidResult').classList.remove('hide');}
+
 const productData = {
 'FF TopUp [BD]': {packs:[
   {name:'Weekly', price:155},
@@ -86,82 +177,58 @@ const productData = {
 ]},
 'FF Like': {packs:[{name:'100 Likes', price:20},{name:'200 Likes', price:25}]},
 'Indonesia Server [UID]': {packs:[{name:'70 Diamond', price:115},{name:'150 Diamond', price:120},{name:'210 Diamond', price:215},{name:'355 Diamond', price:285}]},
-'Brazil Server [UID]': {packs:[{name:'100 Diamond', price:165},{name:'310 Diamond', price:355},{name:'520 Diamond', price:745}]},
 'UNIPIN VOUCHER BD': {packs:[{name:'10 USD', price:1099}]},
+'ChatGPT Plus': {packs:[{name:'ChatGPT Plus 1 Month', price:479}]},
 };
 
-// ===== FAKE REFER WALLET - 5 Refer = 10 TK FAKE - KINTE PARBE NA =====
-function addReferFakeBonus(){
-  if(!currentUser) return;
-  if(currentUser.referCount >=5){
-    currentUser.fakeWallet = (currentUser.fakeWallet||0) + 10;
-    currentUser.referCount = 0;
-    save();
-    alert('🎉 5 Refer Complete! 10 TK FAKE Bonus Add - Kintu ei taka diye package kinte parba na - Real Add Money koro - 01837450067 / 01636487523');
-  }
+function orderNow(name, basePrice){
+  document.getElementById('tab-home').classList.add('hide');
+  document.getElementById('tab-product').classList.remove('hide');
+  document.getElementById('productTitle').innerText=name;
+  let data=productData[name]||{packs:[{name:name, price:basePrice}]};
+  let html='';
+  data.packs.forEach((p,i)=>{
+    html+=`<label class="border-2 ${i==0?'border-[#00c853] bg-green-50':'border-gray-200'} rounded-xl p-3 text-center block relative"><input type="radio" name="recharge" value="${p.price}" data-name="${p.name}" ${i==0?'checked':''} class="absolute top-2 left-2"><p class="font-bold text-[12px]">${p.name}</p><p class="text-orange-500 font-black text-sm mt-1">${p.price} TK</p></label>`;
+  });
+  document.getElementById('rechargeOptions').innerHTML=html;
+  document.getElementById('detailBalance').innerText=currentUser?.wallet||0;
+  document.getElementById('detailNeed').innerText=data.packs[0].price;
 }
 
-let currentUser = JSON.parse(localStorage.getItem('ultra_rank_user') || 'null');
-let users = JSON.parse(localStorage.getItem('ultra_rank_users') || '{}');
-
-function getRank(spend){ for(let i=ranks.length-1;i>=0;i--){ if(spend>=ranks[i].min) return ranks[i]; } return ranks[0]; }
-function save(){if(currentUser){localStorage.setItem('ultra_rank_users', JSON.stringify(users)); localStorage.setItem('ultra_rank_user', JSON.stringify(currentUser));}}
-
-// ALL COUNTRY SERVER DETECT - SOB DESH E DIAMOND JABE
-function detectServerFromPack(packName){
-  const pack = (packName||'').toLowerCase();
-  if(pack.includes('indonesia') || pack.includes('indo')) return 'indonesia';
-  if(pack.includes('brazil') || pack.includes('brasil')) return 'brazil';
-  if(pack.includes('like') || pack.includes('follow') || pack.includes('tiktok')) return 'like';
-  if(pack.includes('pubg') || pack.includes('uc')) return 'pubg';
-  return 'bd';
-}
-function getNumberForGateway(g){ if(g==='Nagad') return '01636487523'; return '01837450067'; }
-
-async function callUltraRobot(uid, diamondName, price){
-  try{
-    const server = detectServerFromPack(diamondName);
-    const res = await fetch("/api/robot/order", {
-      method: "POST",
-      headers: { "Content-Type":"application/json" },
-      body: JSON.stringify({ uid: uid, package: diamondName, price: price, server: server, gateway: 'bKash', number: getNumberForGateway('bKash') })
-    });
-    return await res.json();
-  }catch(e){ return {success:true, orderId:"ULTRA_"+Date.now(), demo:true}; }
-}
-
-// ===== BUY CHECK - FAKE WALLET DIYE KINTE PARBE NA - REAL WALLET ONLY =====
 async function confirmDetailOrder(){
   let uid=document.getElementById('detailUID').value.trim();
-  if(!uid) return alert('Player ID দিন - ULTRA!');
+  if(!uid) return alert('Player ID দিন!');
   let selected=document.querySelector('input[name="recharge"]:checked');
-  if(!selected) return alert('Select package - ULTRA!');
-  let price=parseInt(selected.value); 
-  let pname=selected.dataset.name;
-
-  // FAKE CHECK - PART 1 FIXED
-  if(currentUser.fakeWallet >= price){
-    return alert('❌ Refer er FAKE 10 TK diye package kinte parba na! Real Taka Add koro - bKash/Rocket/Upay 01837450067, Nagad 01636487523 - ULTRA');
+  if(!selected) return alert('Select package!');
+  let price=parseInt(selected.value); let pname=selected.dataset.name;
+  if((currentUser.fakeWallet||0) >= price){
+    return alert('❌ Refer এর FAKE 10 TK দিয়ে package কিনতে পারবা না! Real Taka Add করো - ULTRA');
   }
-  if(!currentUser || currentUser.wallet < price){
-    alert('⚠️ ব্যালেন্স কম! Real Wallet: '+(currentUser?.wallet||0)+' TK - Fake: '+(currentUser?.fakeWallet||0)+' TK - Add Money করুন - bKash/Upay/Rocket 01837450067, Nagad 01636487523 - ULTRA');
+  if(!currentUser||currentUser.wallet<price){
+    alert('⚠️ Balance কম! Real Wallet: '+(currentUser?.wallet||0)+' TK');
+    switchTab('addmoney');
     return;
   }
-
-  // Real wallet diye kinbe - Robot System - SOB DESH
-  currentUser.wallet-=price; 
-  currentUser.totalSpend=(currentUser.totalSpend||0)+price; 
-  currentUser.weeklySpend=(currentUser.weeklySpend||0)+price;
+  currentUser.wallet-=price;
   let id=Math.floor(Math.random()*900000)+700000;
-  let server = detectServerFromPack(pname);
-  alert('✅ Order Confirm! ID: '+id+'\n💎 '+pname+' - '+uid+'\n🌐 Server: '+server.toUpperCase()+'\n10 Sec এ Delivery হবে! - ULTRA - '+server);
-  let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Completed - Robot Done 10 Sec ✓ - ULTRA - '+server.toUpperCase()};
-  currentUser.orders=currentUser.orders||[]; 
-  currentUser.orders.unshift(order); 
-  users[currentUser.email]=currentUser; 
-  save();
-  await callUltraRobot(uid, pname, price);
+  alert('✅ Order Confirm! ID: '+id+' - '+pname);
+  let order={id:id,name:pname,price:price,uid:uid,date:new Date().toLocaleString(),status:'Completed'};
+  currentUser.orders=currentUser.orders||[]; currentUser.orders.unshift(order); users[currentUser.email]=currentUser; save();
+  switchTab('orders');
 }
+
+function doAddMoneyFinal(){
+  let amt=parseInt(document.getElementById('addAmt').value);
+  if(!amt || amt<10) return alert('Minimum 10 TK');
+  currentUser.wallet+=amt;
+  users[currentUser.email].wallet=currentUser.wallet;
+  save();
+  alert('✅ '+amt+' TK Wallet এ Add হয়েছে - Website এ ঢুকছে!');
+  document.getElementById('addAmt').value='';
+  switchTab('account');
+}
+
+updateUI();
 </script>
 </body>
 </html>
