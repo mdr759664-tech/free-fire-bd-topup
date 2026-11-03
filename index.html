@@ -185,22 +185,7 @@ function detectServerFromPack(packName){
   if(pack.includes('like')) return 'like';
   return 'bd';
 }
-const productData = {
-'FF TopUp [BD]': {packs:[{name:'Weekly', price:149},{name:'2X Weekly', price:299},{name:'3X Weekly', price:4},{name:'5X Weekly', price:849},{name:'Monthly', price:780},{name:'25 Diamond', price:25},{name:'50 Diamond', price:40},{name:'115 Diamond', price:85},{name:'240 Diamond', price:165},{name:'355 Diamond', price:235},{name:'505 Diamond', price:325},{name:'610 Diamond', price:390},{name:'850 Diamond', price:525},{name:'1090 Diamond', price:675},{name:'1240 Diamond', price:770},{name:'2530 Diamond', price:1540},{name:'Weekly Lite', price:45}]},
-'Weekly/Monthly Offer': {packs:[{name:'Weekly', price:170},{name:'Monthly', price:780}]},
-'Weekly Lite': {packs:[{name:'Weekly Lite', price:45},{name:'2x Weekly Lite', price:89}]},
-'UNIPIN VOUCHER BD': {packs:[{name:'10 USD', price:1099}]},
-'Indonesia Server [UID]': {packs:[{name:'70 Diamond', price:115},{name:'150 Diamond', price:120},{name:'210 Diamond', price:215},{name:'355 Diamond', price:285}]},
-'Brazil Server [UID]': {packs:[{name:'100 Diamond', price:165},{name:'310 Diamond', price:355},{name:'520 Diamond', price:745}]},
-'FF Like': {packs:[{name:'100 Likes', price:20},{name:'200 Likes', price:25}]},
-'Level Up Pass (BD Server)': {packs:[{name:'LevelUp - level 30', price:95}]},
-'PUBG UC': {packs:[{name:'60 UC', price:115},{name:'325 UC', price:550}]},
-'TikTok Like-Follow': {packs:[{name:'100 Followers', price:85}]},
-'ChatGPT Plus': {packs:[{name:'ChatGPT Plus 1 Month', price:479}]},
-'YouTube Premium': {packs:[{name:'YouTube Premium 1M', price:195}]},
-'NETFLIX': {packs:[{name:'NETFLIX 1M', price:335}]},
-'Canva Pro': {packs:[{name:'Canva Pro 1M', price:125}]},
-};
+
 async function callUltraRobot(uid, diamondName, price){
   try{
     const server = detectServerFromPack(diamondName);
@@ -274,7 +259,8 @@ async function confirmDetailOrder(){
 }
 function refreshOrders(){const list=document.getElementById('recentOrdersList');if(!list) return;list.innerHTML='<p class="text-center py-4 text-sm">🔄 Robot Loading - ULTRA...</p>';setTimeout(()=>{const names=[{n:'EVAN AHMED Shuvo', p:'Weekly - ৳149 - Robot Done - ULTRA'},{n:'Tanjidur Rahaman', p:'Weekly Lite - ৳45 - Robot Done - ULTRA'},{n:'Shanto', p:'Weekly - ৳149 - ULTRA'}];let html='';names.forEach(u=>{html+=`<div class="flex justify-between items-center border-b pb-2"><div class="flex gap-2 items-center"><div class="w-8 h-8 bg-green-200 rounded-full flex items-center justify-center font-bold">${u.n[0]}</div><div><b class="text-sm">${u.n}</b><br><small class="text-gray-500">${u.p}</small></div></div><span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs">✓ Done - ULTRA</span></div>`;});list.innerHTML=html;},700);}
 switchTab('home');updateUI();
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }</script>Line 262: if('serviceWorker' in navigator){...
 </script>
+
+<script src="packages.js"></script>
 </body>
-                                                                                                                                                                                                                       </html>
