@@ -1,5 +1,15 @@
-// packages.js - ULTRA TOP UP BD - Wallet 00 - No GG BAZAR - All Packages From Your Image
+// packages.js - ULTRA TOP UP BD - FIXED with Special Offer
 const productData = {
+
+// --- NEW SPECIAL OFFER - 10% OFF ---
+'Spacial offer - 10% OFF': {
+  packs:[
+    {name:'PREMIUM USERS', price:50, diamonds:'1000 Diamond', special:'premium'},
+    {name:'FRIDAY OFFER', price:80, diamonds:'2000 Diamond', special:'friday'},
+    {name:'FREE 25 DIAMOND', price:0, diamonds:'FREE', special:'telegram', link:'https://t.me/+Q6GAbYR_AusxMjE1'}
+  ]
+},
+
 'FF TopUp [BD]': {
   packs:[
     {name:'Weekly', price:155},
@@ -104,3 +114,23 @@ const productData = {
   ]
 }
 };
+
+// --- SPECIAL OFFER CLICK HANDLER ---
+// এইটা তোমার main js file এ বা index.html এর নিচে বসাও
+function handleSpecialOffer(packName){
+  if(packName.includes('PREMIUM USERS')){
+    alert("🔥 PREMIUM USERS OFFER 🔥\n\n💎 1000 Diamond = 350 Taka\n\n✅ Eta Rank Master (Heroic / Grandmaster) Player der jonno Special Offer!\n\nRank Master hole Support e Screenshot din!");
+    return true;
+  }
+  if(packName.includes('FRIDAY OFFER')){
+    alert("🎉 FRIDAY SPECIAL OFFER 🎉\n\n💎 2000 Diamond = 860 Taka\n\n✅ Eta Friday Special Offer!\n\nFriday te Rank Master hole Support e message din!");
+    return true;
+  }
+  if(packName.includes('FREE 25')){
+    if(confirm("🎁 FREE 25 DIAMOND 🎁\n\nAmar Telegram Channel e Redeem Code deya ache!\n\nChannel e Join kore Code niye 25 Diamond FREE nin!")){
+      window.open("https://t.me/+Q6GAbYR_AusxMjE1", "_blank");
+    }
+    return true;
+  }
+  return false;
+}
