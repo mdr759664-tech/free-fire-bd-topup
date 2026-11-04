@@ -61,7 +61,7 @@
     </div>
   </div>
   <div id="drawer" class="fixed inset-0 z-[100] hidden"><div class="bg-black/50 w-full h-full" onclick="closeDrawer()"></div><div class="bg-white w-[75%] max-w-[320px] h-full absolute right-0 top-0 shadow-2xl overflow-auto"><div class="p-4 border-b"><div class="flex gap-3 items-center"><img id="drawerPhoto" src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full"><div><p class="font-bold text-sm" id="drawerName">Hi, User</p><p class="text-[11px] text-gray-500" id="drawerEmail">support@ultratopupbd.com</p></div></div><button onclick="logout()" class="bg-[#00ff0a] text-white px-5 py-1.5 rounded-full text-[12px] font-bold mt-3">Logout</button></div><div class="p-2 space-y-1 text-sm font-bold"><button onclick="switchTab('account');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Account - Rank - ULTRA</button><button onclick="switchTab('orders');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Orders - Robot</button><button onclick="switchTab('codes');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Codes - Redeem - ULTRA</button><button onclick="switchTab('addmoney');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">Add Money - 01837450067 / 01636487523</button><button onclick="document.getElementById('appDownloadPopup').classList.remove('hide')" class="bg-black text-white px-6 py-2.5 rounded-full font-bold mt-2 flex items-center justify-center gap-2 mx-3 w-[calc(100%-24px)]">📲 Download App - ULTRA</button></div></div></div>
-  <div id="loginPage" class="fixed inset-0 bg-white z-[80] p-6 overflow-auto"><p class="font-black text-[32px] leading-none mt-6">Welcome<br><span class="text-[#e91e63]">Back - 10% OFF</span> <span class="text-[#00c853] text-[16px]">🤖 Robot</span></p><div class="border-2 rounded-[20px] p-4 mt-6"><input id="loginEmail" type="email" placeholder="Gmail - support@ultratopupbd.com" class="w-full border-2 p-3.5 rounded-xl text-sm"><input id="loginName" type="text" placeholder="Name - ULTRA User" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><input id="loginPass" type="password" placeholder="Password - ******" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm"><button onclick="manualLogin()" class="w-full mt-4 bg-black text-white rounded-xl py-4 font-black">Continue - Robot Login</button><div class="flex gap-3 mt-3"><button onclick="manualLogin()" class="flex-1 bg-[#00c853] text-white rounded-xl py-3.5 font-black">Login</button><button onclick="manualLogin()" class="flex-1 bg-[#e91e63] text-white rounded-xl py-3.5 font-black">Sign Up</button></div><button onclick="openForgot()" class="w-full mt-3 bg-yellow-50 border-2 border-[#e91e63] text-[#e91e63] rounded-xl py-3.5 font-black text-[13px]">🔑 Forgot Password?</button><p class="text-[11px] text-center text-gray-500 mt-3">Same Gmail + Same Password = Same ID, PIN, Wallet, Orders!<br>Login কাটছে না! Robot Active!</p></div></div>
+  <div id="loginPage" class="fixed inset-0 bg-white z-[80] p-6 overflow-auto"><p class="font-black text-[32px] leading-none mt-6">Welcome<br><span class="text-[#e91e63]">Back - 10% OFF</span> <span class="text-[#00c853] text-[16px]">🤖 Robot</span></p><div class="border-2 rounded-[20px] p-4 mt-6"><input id="loginEmail" type="text" placeholder="Gmail - support@ultratopupbd.com" class="w-full border-2 p-3.5 rounded-xl text-sm"><input id="loginName" type="text" placeholder="Name - ULTRA User" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><input id="loginPass" type="password" placeholder="Password - ******" class="w-full border-2 border-pink-200 p-3.5 rounded-xl mt-3 text-sm"><button onclick="manualLogin()" class="w-full mt-4 bg-black text-white rounded-xl py-4 font-black">Continue - Robot Login</button><div class="flex gap-3 mt-3"><button onclick="manualLogin()" class="flex-1 bg-[#00c853] text-white rounded-xl py-3.5 font-black">Login</button><button onclick="manualLogin()" class="flex-1 bg-[#e91e63] text-white rounded-xl py-3.5 font-black">Sign Up</button></div><button onclick="openForgot()" class="w-full mt-3 bg-yellow-50 border-2 border-[#e91e63] text-[#e91e63] rounded-xl py-3.5 font-black text-[13px]">🔑 Forgot Password?</button><p class="text-[11px] text-center text-gray-500 mt-3">Same Gmail + Same Password = Same ID, PIN, Wallet, Orders!<br>Login কাটছে না! Robot Active!</p></div></div>
   <div id="forgotBox" class="fixed inset-0 bg-black/60 z-[90] hidden items-center justify-center p-4"><div class="bg-white rounded-[20px] p-5 w-full max-w-[340px] shadow-2xl"><p class="font-black text-lg">🔑 Forgot Password - ULTRA</p><input id="forgotEmail" type="email" placeholder="Gmail" class="w-full border-2 p-3.5 rounded-xl mt-4 text-sm"><input id="forgotNewPass" type="password" placeholder="নতুন Password" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><input id="forgotConfirmPass" type="password" placeholder="Confirm Password" class="w-full border-2 p-3.5 rounded-xl mt-3 text-sm"><button onclick="doForgot()" class="w-full mt-4 bg-[#00c853] text-white rounded-xl py-4 font-black">Password Set - ULTRA</button><button onclick="closeForgot()" class="w-full mt-3 text-[12px] text-gray-500 font-bold">Cancel</button></div></div>
   <div id="tab-home"><div id="noticeBox" class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white flex gap-2"><div class="flex-1"><p class="font-bold text-[13px]">🔥 Notice: 10% OFF + 🤖 Robot Active! - ULTRA</p><p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘণ্টাই চালু - Robot Auto Delivery!</p></div><button onclick="noticeBox.style.display='none'" class="bg-black/20 w-6 h-6 rounded-full text-xs">X</button></div>
     <div id="appDownloadBanner" class="mx-2.5 mt-2.5 bg-black rounded-xl p-3 flex justify-between items-center border-2 border-[#00ff00] relative">
@@ -170,7 +170,27 @@ function updateUI(){
 function openForgot(){document.getElementById('forgotBox').classList.remove('hidden');document.getElementById('forgotBox').classList.add('flex');}
 function closeForgot(){document.getElementById('forgotBox').classList.add('hidden');document.getElementById('forgotBox').classList.remove('flex');}
 function doForgot(){let email=document.getElementById('forgotEmail').value.trim().toLowerCase();let newPass=document.getElementById('forgotNewPass').value.trim();let confirmPass=document.getElementById('forgotConfirmPass').value.trim();if(!email||!users[email]) return alert('Account নাই - ULTRA!');if(newPass!==confirmPass) return alert('Password মিলে নাই - ULTRA!');users[email].password=newPass;currentUser=users[email];save();alert('✅ Password Reset Success - ULTRA!');closeForgot();}
-function manualLogin(){let email=document.getElementById('loginEmail').value.trim().toLowerCase();let name=document.getElementById('loginName').value.trim()||email.split('@')[0];let pass=document.getElementById('loginPass').value.trim();if(!email||!email.includes('@')) return alert('Valid Gmail দিন - ULTRA!');if(!pass) return alert('Password দিন - ULTRA!');if(users[email]){if(users[email].password!==pass) return alert('ভুল Password - ULTRA!');currentUser=users[email];}else{currentUser={name:name,email:email,password:pass,wallet:5,totalSpend:0,weeklySpend:0,orders:[],photo:'https://i.pravatar.cc/150?u='+email,pin:Math.floor(Math.random()*90000)+10000}; users[email]=currentUser;}localStorage.setItem('ultra_last_email',email);save();document.getElementById('loginPage').classList.add('hide');updateUI();}
+function manualLogin(){
+  let email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  let name=document.getElementById('loginName').value.trim();
+  let pass=document.getElementById('loginPass').value.trim();
+  if(!email) return alert('Gmail দিন - ULTRA!');
+  if(!email.includes('@')) email=email+'@gmail.com';
+  if(!name) name=email.split('@')[0];
+  if(!pass || pass==='******') pass='123456';
+  if(users[email]){
+    if(users[email].password!==pass) return alert('ভুল Password - ULTRA! আগের Password দেন');
+    currentUser=users[email];
+  }else{
+    currentUser={name:name,email:email,password:pass,wallet:5,totalSpend:0,weeklySpend:0,orders:[],photo:'https://i.pravatar.cc/150?u='+email,pin:Math.floor(Math.random()*90000)+10000};
+    users[email]=currentUser;
+  }
+  localStorage.setItem('ultra_last_email',email);
+  save();
+  document.getElementById('loginPage').classList.add('hide');
+  alert('✅ Login Done - Welcome '+name+' - ULTRA');
+  updateUI();
+}
 function logout(){localStorage.removeItem('ultra_rank_user');location.reload();}
 function switchTab(t){['home','orders','account','addmoney','codes','product'].forEach(x=>{let el=document.getElementById('tab-'+x); if(el) el.classList.add('hide');});let target=document.getElementById('tab-'+t); if(target) target.classList.remove('hide'); if(t=='addmoney') resetAddMoney();}
 function openDrawer(){document.getElementById('drawer').classList.remove('hidden');}
@@ -261,7 +281,6 @@ function refreshOrders(){const list=document.getElementById('recentOrdersList');
 switchTab('home');updateUI();
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }</script>
 <script src="packages.js"></script>
-  <!-- Support & WhatsApp Button - 1 BAR ONLY -->
 <style>
 .support-btn {
   position: fixed;
@@ -282,25 +301,7 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }</
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   border: 3px solid #b9ffcf;
 }
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  z-index: 999;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
 </style>
-<a href="tel:01837450067" class="support-btn">🎧</a>
-<a href="https://wa.me/8801636487523" target="_blank" class="whatsapp-float">💬</a>
+<a href="https://wa.me/8801636487523" target="_blank" class="support-btn">🎧</a>
 </body>
-                                       </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </html>
