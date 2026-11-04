@@ -263,4 +263,40 @@ if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js'); }</
 </script>
 
 <script src="packages.js"></script>
+  <!-- Support & WhatsApp Button -->
+<style>
+.support-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: #ff0040;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  z-index: 999;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  z-index: 999;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+</style>
+
+<a href="tel:01837450067" class="support-btn">📞 Support</a>
+<a href="https://wa.me/8801636487523" target="_blank" class="whatsapp-float">💬</a>
 </body>
