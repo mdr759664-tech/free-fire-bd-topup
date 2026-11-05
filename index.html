@@ -20,12 +20,10 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 </style>
 </head>
 <body class="pb-28">
-
 <div class="bg-[#e91e63] h-11 flex items-center px-3 text-white sticky top-0 z-50">
 <span class="text-sm font-bold">ULTRA TOP UP BD - 10% OFF! <span class="robot-blink">🤖 Robot</span></span>
 <button id="installBtn" class="ml-auto bg-white text-[#e91e63] px-3 py-1 rounded-full text-[11px] font-black hide">📲 Install App</button>
 </div>
-
 <div class="bg-white px-3 py-2.5 flex justify-between items-center shadow-sm sticky top-11 z-40">
 <div class="flex items-center gap-2">
 <img src="app-logo.jpg" onerror="this.src='https://i.pravatar.cc/100'" class="w-10 h-10 rounded-lg border-2 border-[#00ff00] object-cover">
@@ -36,8 +34,6 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 <img id="headerPhoto" onclick="openDrawer()" src="https://i.pravatar.cc/100?img=12" class="w-9 h-9 rounded-full border-2 border-green-400">
 </div>
 </div>
-
-<!-- NOTICE POPUP -->
 <div id="noticePopup" class="fixed inset-0 bg-black/60 z-[100] flex items-center justify-center p-4">
 <div class="bg-[#ffedf3] rounded-[22px] w-full max-w-[380px] overflow-hidden shadow-2xl">
 <div class="p-5">
@@ -50,11 +46,7 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 <button onclick="document.getElementById('noticePopup').classList.add('hide')" class="bg-[#e91e63] text-white w-full py-4 font-black text-[17px]">✕ CLOSE</button>
 </div>
 </div>
-
-<!-- DRAWER -->
 <div id="drawer" class="fixed inset-0 z-[100] hidden"><div class="bg-black/50 w-full h-full" onclick="closeDrawer()"></div><div class="bg-white w-[75%] max-w-[320px] h-full absolute right-0 top-0 shadow-2xl overflow-auto"><div class="p-4 border-b"><div class="flex gap-3 items-center"><img id="drawerPhoto" src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full"><div><p class="font-bold text-sm" id="drawerName">Hi, User</p><p class="text-[11px] text-gray-500" id="drawerEmail">support@ultratopupbd.com</p></div></div><button onclick="logout()" class="bg-[#00ff0a] text-white px-5 py-1.5 rounded-full text-[12px] font-bold mt-3">Logout</button></div><div class="p-2 space-y-1 text-sm font-bold"><button onclick="switchTab('account');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Account</button><button onclick="switchTab('orders');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Orders</button><button onclick="switchTab('refer');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">🔗 Refer & Earn</button><button onclick="switchTab('codes');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">My Codes</button><button onclick="switchTab('addmoney');closeDrawer()" class="w-full flex gap-3 p-3 hover:bg-gray-50 rounded-xl text-left">Add Money - 01837450067</button></div></div></div>
-
-<!-- LOGIN -->
 <div id="loginPage" class="fixed inset-0 bg-white z-[80] p-6 overflow-auto">
 <p class="font-black text-[32px] leading-none mt-6">Welcome<br><span class="text-[#e91e63]">Back - 10% OFF</span> <span class="text-[#00c853] text-[16px]">🤖 Robot</span></p>
 <div class="border-2 rounded-[20px] p-4 mt-6">
@@ -71,8 +63,6 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 <p class="text-[11px] text-center text-gray-500 mt-3">Refer Code দিলে তোমার বন্ধু 10% Commission পাবে।<br>আসল অর্ডার হইলেই আসল কমিশন যোগ হবে।</p>
 </div>
 </div>
-
-<!-- FORGOT -->
 <div id="forgotBox" class="fixed inset-0 bg-black/60 z-[90] hidden items-center justify-center p-4">
 <div class="bg-white rounded-[20px] p-5 w-full max-w-[340px] shadow-2xl">
 <p class="font-black text-lg">🔑 Forgot Password - ULTRA</p>
@@ -83,12 +73,8 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 <button onclick="closeForgot()" class="w-full mt-3 text-[12px] text-gray-500 font-bold">Cancel</button>
 </div>
 </div>
-
-<!-- HOME -->
 <div id="tab-home">
 <div id="noticeBox" class="bg-[#00c853] m-2.5 rounded-xl p-3 text-white flex gap-2"><div class="flex-1"><p class="font-bold text-[13px]">🔥 Notice: 10% OFF + 🤖 Robot Active! - ULTRA</p><p class="text-[12px] mt-1">ULTRA TOP UP BD ২৪ ঘণ্টাই চালু - Robot Auto Delivery!</p></div><button onclick="document.getElementById('noticeBox').style.display='none'" class="bg-black/20 w-6 h-6 rounded-full text-xs">X</button></div>
-
-<!-- ছবির মতো ডিজাইন -->
 <div class="mx-2.5 mt-3 bg-black rounded-xl p-3 flex items-center justify-between border border-gray-700">
 <div><p class="text-[#00ff00] font-black text-[14px]">📲 ULTRA APP DOWNLOAD করো!</p><p class="text-white text-[11px] mt-1 leading-4">App Download করলে 5 TK Bonus + Ad দেখে<br>Income করতে পারবে!</p></div>
 <button onclick="alert('App Download শীঘ্রই আসছে - ULTRA')" class="bg-[#00c853] text-black px-4 py-2.5 rounded-full font-black text-[12px] shrink-0 ml-2">DOWNLOAD</button>
@@ -98,21 +84,18 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 <div onclick="alert('APK Download - ULTRA')" class="bg-black rounded-xl p-3 text-center"><p class="text-[#00ff00] font-black text-[12px]">📲 APP DOWNLOAD</p><p class="text-white text-[11px] mt-1">APK Download</p><span class="inline-block bg-[#00c853] text-black px-3 py-1 rounded-full text-[10px] font-black mt-2">FREE 10 TK</span></div>
 <div onclick="switchTab('refer')" class="bg-gradient-to-br from-purple-600 to-blue-500 rounded-xl p-3 text-center"><p class="text-white font-black text-[12px]">🔗 REFER & EARN</p><p class="text-white text-[11px] mt-1">10% Bonus</p><span class="inline-block bg-white text-purple-700 px-3 py-1 rounded-full text-[10px] font-black mt-2">10% COMMISSION</span></div>
 </div>
-
 <div class="mx-2.5 mt-3 rounded-[20px] overflow-hidden bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] p-6 text-center border-2 border-[#00ff00] shadow-2xl">
 <p class="font-black text-white text-[26px] leading-none mt-4">FREE FIRE TOP UP</p>
 <p class="font-black text-yellow-300 text-[18px] mt-2">10% OFF + ROBOT DELIVERY</p>
 <div class="bg-white/20 rounded-full px-4 py-2 mt-4 inline-block"><p class="text-white font-bold text-[12px]">🤖 30 Sec Delivery | 01837450067 | Fast Delivery</p></div>
 </div>
-
 <div class="px-2.5 mt-6">
 <p class="font-black text-center text-[18px]">Spacial offer - 10% OFF - ULTRA</p>
 <div class="grid grid-cols-3 gap-2.5 mt-3">
-<div onclick="handleSpecialOffer('Premium Users')" class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-yellow-600 to-orange-600 border-2 border-[#00ff00]"><div class="prod-fallback">PREMIUM<br>USERS<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Premium Users</p></div>
-<div onclick="handleSpecialOffer('Friday Offer')" class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-700"><div class="prod-fallback">FRIDAY<br>OFFER<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Friday Offer</p></div>
-<div onclick="handleSpecialOffer('Free 25 Diamond')" class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-cyan-500 to-blue-600"><div class="prod-fallback">FREE 25<br>DIAMOND<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Free 25 Diamond</p></div>
+<div onclick="orderNow('Premium Users',85)" class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-yellow-600 to-orange-600 border-2 border-[#00ff00]"><div class="prod-fallback">PREMIUM<br>USERS<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Premium Users</p></div>
+<div onclick="orderNow('Friday Offer',80)" class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-green-500 to-emerald-700"><div class="prod-fallback">FRIDAY<br>OFFER<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Friday Offer</p></div>
+<div onclick="orderNow('Free 25 Diamond',25)" class="text-center"><div class="rounded-xl h-28 overflow-hidden prod-card bg-gradient-to-br from-cyan-500 to-blue-600"><div class="prod-fallback">FREE 25<br>DIAMOND<br>10% OFF</div></div><p class="text-[10px] font-bold mt-1">Free 25 Diamond</p></div>
 </div>
-
 <p class="font-black text-center text-[20px] mt-8">FF TOPUP - 10% DISCOUNT + WEEKLY/MONTHLY + LITE</p>
 <div class="grid grid-cols-3 gap-2.5 mt-3">
 <div onclick="orderNow('FF TopUp [BD]',149)" class="text-center"><div class="rounded-xl h-[125px] overflow-hidden prod-card bg-gradient-to-br from-blue-600 to-cyan-500"><div class="prod-fallback">FF TOPUP<br>[BD]<br>10% OFF</div></div><p class="text-[11px] font-bold mt-1">FF TopUp [BD]</p></div>
@@ -134,14 +117,8 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 <div class="bg-white rounded-xl mx-2.5 mt-6 border shadow-sm p-3"><div class="flex justify-between items-center"><div class="flex gap-2 items-center"><div class="bg-pink-100 p-2 rounded-full">🛍️</div><div><b>Recent Orders - Robot</b><div class="flex items-center gap-1 text-green-600 text-xs"><span class="w-2 h-2 bg-green-500 rounded-full live-dot"></span> Live ~ Robot</div></div></div><button onclick="refreshOrders()" class="w-8 h-8 bg-gray-100 rounded-full">↻</button></div><div id="recentOrdersList" class="mt-4 space-y-3"></div></div>
 <div class="bg-[#0a1931] text-white mt-6 pb-6"><div class="p-5"><h2 class="font-black text-xl">STAY CONNECTED - ULTRA</h2><p class="text-sm opacity-70 mt-2">কোন সমস্যায় পড়লে WhatsApp এ যোগাযোগ করবেন। Robot 24/7 Active!</p><button onclick="window.open('https://wa.me/8801837450067','_blank')" class="w-full border border-white/20 rounded-xl p-3 flex items-center gap-3 mt-4 text-left"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">💬</div><div><p class="font-bold text-sm">Help line [9AM-12PM]</p><p class="text-sm">Whatsapp HelpLine - 01837450067</p></div></button><p class="text-center text-sm opacity-80 mt-6 border-t border-white/10 pt-6">© ULTRA TOP UP BD 2026 | All Rights Reserved</p></div></div>
 </div>
-
-<!-- PRODUCT -->
 <div id="tab-product" class="hide"><div class="bg-[#f0f4ff] p-2.5"><button onclick="switchTab('home')" class="bg-white px-3 py-1.5 rounded-full text-[12px] font-bold border mb-2">← Back</button><div class="bg-white rounded-xl p-3 flex gap-3 items-center border"><div class="w-20 h-20 bg-[#00c853] rounded-xl flex items-center justify-center text-white font-black text-[10px] text-center p-1">FF Like</div><div><p id="productTitle" class="font-black text-lg">FF Like</p><div class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[11px] font-bold mt-1 inline-block">✓ 30 সেকেন্ডে ডেলিভারি - Robot - 10% OFF</div></div></div><div class="bg-white rounded-xl mt-3 border shadow-sm"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">1</div><p class="font-black">Select Recharge</p></div><div id="rechargeOptions" class="p-3 grid grid-cols-2 gap-2"></div></div><div class="bg-white rounded-xl mt-3 border shadow-sm"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">2</div><p class="font-black">Account Info</p></div><div class="p-3"><input id="detailUID" type="text" placeholder="এখানে গেমের আইডি কোড দিন" class="w-full border-2 border-blue-200 p-3.5 rounded-xl mt-2 text-sm"><button onclick="checkUID()" class="mt-3 bg-[#00c853] text-white py-3 rounded-xl font-bold text-center text-sm w-full">🤖 Check UID - Robot</button><div id="uidResult" class="hide mt-3 bg-green-50 border-2 border-green-300 p-3 rounded-xl"><p class="font-black text-green-700 text-sm">🤖 UID Found - Robot Verified</p><p class="text-[11px] text-gray-600 mt-1">UID: <span id="showUID" class="font-bold"></span></p></div></div></div><div class="bg-white rounded-xl mt-3 border shadow-sm mb-24"><div class="p-3 flex items-center gap-2 border-b"><div class="bg-[#00c853] text-white w-7 h-7 rounded-full flex items-center justify-center font-bold">3</div><p class="font-black">Select one option</p></div><div class="p-3 grid grid-cols-2 gap-3"><div onclick="selectPay('wallet')" id="payWallet" class="border-2 border-[#00c853] rounded-xl p-2 bg-white relative"><div class="h-24 flex flex-col items-center justify-center"><p class="font-black text-[18px] text-[#00c853]">ULTRA</p><p class="font-black text-[12px]">TOP UP BD</p></div><p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Wallet Pay</p></div><div onclick="selectPay('instant')" id="payInstant" class="border-2 border-gray-200 rounded-xl p-2 bg-white relative"><div class="h-24 flex flex-col items-center justify-center gap-1"><div class="flex gap-1 items-center"><span class="bg-[#e91e63] text-white text-[8px] px-1.5 py-1 rounded font-bold">bKash</span><span class="bg-[#f7941d] text-white text-[8px] px-1.5 py-1 rounded font-bold">নগদ</span></div></div><p class="bg-gray-100 text-[11px] p-1.5 mt-2 rounded font-bold text-center">Instant Pay - 01837450067</p></div></div><div class="px-3 pb-3 space-y-2 text-[12px]"><p>ⓘ ব্যালেন্স <span class="text-green-600 font-bold" id="detailBalance">5.00</span> ৳</p><p>ⓘ প্রয়োজন <span class="text-green-600 font-bold" id="detailNeed">50</span> ৳ - 10% OFF</p></div><button onclick="confirmDetailOrder()" class="bg-[#00c853] text-white w-full py-4 rounded-xl font-black text-lg mt-2">🤖 Buy Now - Robot Delivery - 10% OFF</button></div></div></div>
-
-<!-- ACCOUNT -->
 <div id="tab-account" class="hide"><div class="p-2.5"><div class="rank-card rounded-[20px] p-5 text-white text-center"><p class="text-[12px] tracking-widest opacity-70">CURRENT RANK</p><p id="rankName" class="font-black text-[32px] mt-1">Bronze</p><div class="flex justify-between text-[12px] mt-5"><span id="rankRange">0 - 100 Tk</span><span id="rankPercent">0%</span></div><div class="bg-white/30 h-3 rounded-full mt-2 overflow-hidden"><div id="rankProgress" class="progress-bg h-full rounded-full" style="width:10%"></div></div><p id="rankNeed" class="text-[12px] mt-2 opacity-80">Need 100 Tk to unlock Silver</p></div><div class="grid grid-cols-2 gap-2.5 mt-3"><div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">ORDERS</p><p id="statOrders" class="font-black text-lg">0</p></div><div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">TOTAL SPEND</p><p id="statTotal" class="font-black text-lg">0 Tk</p></div><div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">REFER EARN</p><p id="statReferEarn" class="font-black text-lg text-green-600">0 Tk</p></div><div class="bg-white rounded-xl p-3 border"><p class="text-[11px] text-gray-500">RANK</p><p id="statRank" class="font-black text-lg">Bronze</p></div></div><div class="bg-white rounded-xl mt-3 p-4 border text-center"><img id="accPhoto" src="https://i.pravatar.cc/100?img=12" class="w-16 h-16 rounded-full mx-auto"><p class="font-bold mt-2"><span id="accName">ULTRA User</span></p><p class="text-[11px] text-gray-500">PIN: <span id="accPin">00000</span> | My Refer Code: <b id="accReferCode" class="text-purple-600">-</b></p><div class="bg-gray-50 rounded-xl p-3 mt-3 text-left"><p class="text-xs text-gray-500">Wallet Balance</p><p class="text-2xl font-black">Tk <span id="wallet">5</span></p></div><button onclick="switchTab('refer')" class="bg-purple-600 text-white w-full py-3 rounded-xl font-bold mt-3">🔗 My Refer - Earn 10%</button><button onclick="logout()" class="bg-red-500 text-white w-full py-2 rounded-xl font-bold mt-2">Logout</button></div></div></div>
-
-<!-- REFER - আসল সিস্টেম -->
 <div id="tab-refer" class="hide p-2.5">
 <div class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-[20px] p-5 text-white text-center">
 <p class="font-black text-[22px]">🔗 REFER & EARN</p>
@@ -161,21 +138,33 @@ body{font-family:'Hind Siliguri',sans-serif;background:#f0f4ff}
 <div class="bg-yellow-50 border border-yellow-300 rounded-xl p-3 mt-3 text-[12px] leading-5"><b>নিয়ম:</b><br>• ফেক টাকা নাই, আসল অর্ডার হইলেই আসল টাকা যোগ হবে।<br>• কমিশন সরাসরি Wallet এ যাবে, Wallet থেকে ব্যবহার করতে পারবা।<br>• নিজের কোড নিজে ব্যবহার করলে কমিশন পাবা না।</div>
 <div class="bg-white rounded-xl p-3 mt-3 border"><p class="font-black">Refer History</p><div id="referHistory" class="mt-2 text-[13px]"></div></div>
 </div>
-
 <div id="tab-orders" class="hide p-2.5"><p class="font-black text-xl">My Orders - Robot Delivery</p><div id="ordersList" class="space-y-3 mt-3"></div></div>
-
 <div id="tab-addmoney" class="hide p-0 bg-[#eef2ff] min-h-screen">
 <div id="addMoneyStep1" class="bg-white p-4"><p class="font-black text-lg">নিরাপদ পেমেন্ট - ULTRA</p><input id="addAmt" type="number" placeholder="পরিমাণ - 10 থেকে 50000" class="w-full border-2 border-[#00c853] p-3.5 rounded-xl mt-4 text-sm"><button onclick="goToPayment()" class="bg-[#1a3a8f] text-white w-full py-3.5 rounded-xl font-black mt-3">মোবাইল ব্যাংকিং</button></div>
 <div id="addMoneyStep2" class="hide bg-[#eef2ff] min-h-screen"><div class="bg-white p-4 text-center border-b"><p class="font-black text-lg">নিরাপদ পেমেন্ট</p><p class="text-sm text-gray-500">মোবাইল ব্যাংকিং সিলেক্ট করুন</p></div><div class="p-4"><div class="grid grid-cols-2 gap-3 mt-4"><div onclick="selectGateway('bKash')" id="gw-bKash" class="bg-white border-2 border-[#e91e63] rounded-xl p-4 h-24 flex flex-col items-center justify-center"><p class="font-black text-pink-600 text-lg">bKash</p><p class="text-[10px] font-bold">01837450067</p></div><div onclick="selectGateway('Upay')" id="gw-Upay" class="bg-white border-2 border-gray-200 rounded-xl p-4 h-24 flex flex-col items-center justify-center"><p class="font-black text-yellow-600 text-lg">উপায়</p><p class="text-[10px] font-bold">01837450067</p></div><div onclick="selectGateway('Rocket')" id="gw-Rocket" class="bg-white border-2 border-gray-200 rounded-xl p-4 h-24 flex flex-col items-center justify-center"><p class="font-black text-purple-600 text-lg">রকেট</p><p class="text-[10px] font-bold">01837450067</p></div><div onclick="selectGateway('Nagad')" id="gw-Nagad" class="bg-white border-2 border-gray-200 rounded-xl p-4 h-24 flex flex-col items-center justify-center"><p class="font-black text-orange-600 text-lg">নগদ</p><p class="text-[10px] font-bold">01636487523</p></div></div><button onclick="confirmPayGateway()" class="bg-[#dbeafe] text-[#1a3a8f] w-full py-4 rounded-xl font-black mt-8">পে করুন <span id="payAmountText">60.00</span></button></div></div>
 <div id="addMoneyStep3" class="hide bg-[#eef2ff] min-h-screen"><div class="bg-[#e91e63] text-white p-3 flex items-center gap-2"><button onclick="resetAddMoney()" class="text-xl">←</button><p class="font-bold text-sm">🔒 নিরাপদ পেমেন্ট - <span id="selectedGwText">bKash - 01837450067</span></p></div><div class="bg-white m-2 rounded-xl p-3"><p class="font-bold">নিরাপদ পেমেন্ট</p><p class="text-lg font-black">৳ <span id="finalAmount">60</span> - <span id="finalGwName">bKash</span></p></div><div class="bg-[#e91e63] m-2.5 rounded-xl p-4 text-white"><p class="font-black text-center text-[18px]">ট্রানজেকশন আইডি দিন</p><input id="trxId" type="text" placeholder="ট্রানজেকশন আইডি দিন" class="w-full p-3.5 rounded-xl mt-3 text-black text-sm font-bold outline-none"><div class="mt-4 space-y-3 text-[14px] leading-7"><p>• Send Money এ ক্লিক করুন।</p><p>• এই নম্বরে টাকা পাঠান। <span id="finalNumber" class="font-black text-yellow-300 text-[18px] bg-white/20 px-2 py-1 rounded">01837450067</span> <button onclick="copyFinalNumber()" class="bg-white/20 px-2 py-1 rounded">⎙ কপি</button></p><p>• টাকার পরিমাণঃ <span class="font-black text-yellow-300" id="trxAmount">60</span></p></div></div><button onclick="doAddMoneyFinal()" class="bg-[#8b0000] text-white w-full py-4 font-black mt-3 mx-2.5 rounded-xl" style="width:calc(100% - 20px)">ভেরিফাই - ULTRA Robot</button></div>
 </div>
-
 <div id="tab-codes" class="hide p-8 text-center"><div class="bg-white rounded-xl p-8 shadow border"><p class="font-black">My Codes - Redeem</p><input id="redeemInput" type="text" placeholder="Redeem Code - ULTRA10" class="w-full border-2 p-3 rounded-xl mt-3"><button onclick="redeemCode()" class="bg-[#00c853] text-white w-full py-3 rounded-xl font-black mt-3">Redeem</button><div id="redeemResult" class="hide mt-3"><p id="redeemMsg"></p></div></div></div>
-
 <div class="fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-2 z-50"><button onclick="switchTab('home')" class="flex flex-col items-center text-[#00c853]"><span class="text-[20px]">⌂</span><span class="text-[10px] font-bold">Home</span></button><button onclick="switchTab('orders')" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">📦</span><span class="text-[10px]">My Orders</span></button><button onclick="switchTab('addmoney')" class="bg-[#00c853] w-14 h-14 rounded-full flex items-center justify-center text-white text-3xl -mt-6 border-4 border-white shadow font-bold">+</button><button onclick="switchTab('refer')" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">🔗</span><span class="text-[10px]">Refer</span></button><button onclick="switchTab('account')" class="flex flex-col items-center text-gray-500"><span class="text-[20px]">👤</span><span class="text-[10px]">My Account</span></button></div>
-
 <script>
-var productData = window.productData || {};
+// ===== PACKAGE.JS - INDEX.JS ER VITORE BOSANO - SOB PACKAGE EKHAN THEKE ASBE =====
+var productData = {
+  "Premium Users": { packs: [{name:"Premium - 100 Diamond", price:85},{name:"Premium - 310 Diamond", price:250},{name:"Premium - 520 Diamond", price:410}]},
+  "Friday Offer": { packs: [{name:"Friday - 100 Diamond", price:80},{name:"Friday - Weekly", price:140},{name:"Friday - Monthly", price:700}]},
+  "Free 25 Diamond": { packs: [{name:"Free 25 Diamond Claim", price:25},{name:"25 Diamond", price:25}]},
+  "FF TopUp [BD]": { packs: [{name:"25 Diamond", price:25},{name:"50 Diamond", price:45},{name:"100 Diamond", price:85},{name:"210 Diamond", price:170},{name:"310 Diamond", price:250},{name:"520 Diamond", price:410},{name:"1060 Diamond", price:820},{name:"2180 Diamond", price:1640}]},
+  "Weekly/Monthly Offer": { packs: [{name:"Weekly", price:149},{name:"Monthly", price:749},{name:"Weekly + Monthly Combo", price:890}]},
+  "UNIPIN VOUCHER BD": { packs: [{name:"UniPin 100 TK", price:109},{name:"UniPin 500 TK", price:549},{name:"UniPin 1000 TK", price:1099}]},
+  "Weekly Lite": { packs: [{name:"Weekly Lite - 7 Din", price:45},{name:"Weekly Lite x2", price:90},{name:"Weekly Lite x3", price:135}]},
+  "Level Up Pass (BD Server)": { packs: [{name:"Level Up Pass", price:109},{name:"Level Up Pass x2", price:218}]},
+  "Indonesia Server [UID]": { packs: [{name:"70 Diamond - Indo", price:85},{name:"140 Diamond - Indo", price:165},{name:"355 Diamond - Indo", price:410},{name:"720 Diamond - Indo", price:820}]},
+  "Brazil Server [UID]": { packs: [{name:"100 Diamond - Brazil", price:135},{name:"310 Diamond - Brazil", price:380},{name:"520 Diamond - Brazil", price:620},{name:"1060 Diamond - Brazil", price:1250}]},
+  "FF Like": { packs: [{name:"100 Like", price:29},{name:"200 Like", price:55},{name:"500 Like", price:125},{name:"1000 Like", price:240}]},
+  "PUBG UC": { packs: [{name:"60 UC", price:115},{name:"325 UC", price:550},{name:"660 UC", price:1099}]},
+  "ChatGPT Plus": { packs: [{name:"ChatGPT Plus 1 Month", price:479}]},
+  "TikTok Like-Follow": { packs: [{name:"100 Follow", price:85},{name:"500 Follow", price:380},{name:"1000 Like", price:95}]}
+};
+window.productData = productData;
 var deferredPrompt = null;
 window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); deferredPrompt=e; var b=document.getElementById('installBtn'); if(b) b.classList.remove('hide'); });
 document.getElementById('installBtn')?.addEventListener('click', function(){ if(deferredPrompt) deferredPrompt.prompt(); });
@@ -250,7 +239,7 @@ function openDrawer(){ document.getElementById('drawer').classList.remove('hidde
 function closeDrawer(){ document.getElementById('drawer').classList.add('hidden'); }
 function getNumberForGateway(g){ if(g==='Nagad') return '01636487523'; return '01837450067'; }
 var selectedGateway='bKash'; var pendingAmount=0;
-function handleSpecialOffer(name){ alert('🔥 '+name+' - 10% OFF - ULTRA'); }
+function handleSpecialOffer(name){ orderNow(name, 85); }
 function detectServerFromPack(packName){ var p=(packName||'').toLowerCase(); if(p.includes('indonesia')||p.includes('indo')) return 'indonesia'; if(p.includes('brazil')||p.includes('brasil')) return 'brazil'; if(p.includes('like')) return 'like'; return 'bd'; }
 function copyFinalNumber(){ var num=document.getElementById('finalNumber').innerText; if(navigator.clipboard) navigator.clipboard.writeText(num); alert('✅ '+num+' Copy Done'); }
 function resetAddMoney(){ document.getElementById('addMoneyStep1').classList.remove('hide'); document.getElementById('addMoneyStep2').classList.add('hide'); document.getElementById('addMoneyStep3').classList.add('hide'); }
@@ -292,7 +281,6 @@ function confirmDetailOrder(){
  currentUser.wallet-=price; currentUser.totalSpend=(currentUser.totalSpend||0)+price; currentUser.weeklySpend=(currentUser.weeklySpend||0)+price;
  var id=Math.floor(Math.random()*900000)+700000;
  var server=detectServerFromPack(pname);
- // আসল রেফার কমিশন - 10% - শুধু আসল অর্ডার হইলেই
  if(currentUser.referBy && users[currentUser.referBy] && currentUser.referBy!==currentUser.email){
    var commission=Math.floor(price*0.10);
    var referrer=users[currentUser.referBy];
@@ -313,4 +301,4 @@ function refreshOrders(){ var list=document.getElementById('recentOrdersList'); 
 switchTab('home'); updateUI(); refreshOrders();
 </script>
 </body>
-                                                                                                                                                                                                                                                                                                                                                                                                    </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </html>
