@@ -1,68 +1,48 @@
-// api/robot/order.js - FIXED - NO KEY, NO NUMBER, NO FAKE SUCCESS
+// api/robot/order.js - REAL ROBOT - KEY CODE TE NAI, VERCEL E
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  if (req.method !== 'POST') return res.status(405).json({ success: false, error: 'Method not allowed' });
 
-  let { uid, package: pack, price, diamond } = req.body;
+  const { uid, package: pack, price, zoneId } = req.body;
+  if (!uid || !pack) return res.status(400).json({ success: false, error: 'UID & Package lagbe' });
 
-  if (!uid || !pack) {
-    if (diamond) { pack = `${diamond} Diamond`; }
-    else { return res.status(400).json({ success: false, error: 'UID & Package lagbe' }); }
+  // Key + URL sudhu Vercel theke asbe - Code e kichu nai
+  const API_KEY = process.env.RESELL_API_KEY || '';
+  const API_URL = process.env.RESELL_API_URL || '';
+  
+  if (!API_KEY || !API_URL) {
+    return res.status(500).json({ success: false, error: 'Robot off - Admin ke janao' });
   }
 
-  // Server detect - sudhu package er naam theke
-  function detectServer(name) {
-    const n = (name || '').toLowerCase();
-    if (n.includes('indonesia') || n.includes('indo')) return 'indonesia';
-    if (n.includes('brazil') || n.includes('brasil')) return 'brazil';
-    if (n.includes('singapore') || n.includes('sg')) return 'singapore';
-    if (n.includes('pubg') || n.includes('uc')) return 'pubg';
-    if (n.includes('level') || n.includes('pass')) return 'bd_level';
-    return 'bd';
-  }
-
-  const server = detectServer(pack);
-
-  // Key + URL sudhu Vercel theke - code e kichu nai
-  const SUPPLIER_KEY = process.env.SUPPLIER_API_KEY || '';
-  const SUPPLIER_URL = process.env.SUPPLIER_API_URL || '';
-
-  if (!SUPPLIER_URL || !SUPPLIER_KEY) {
-    return res.status(500).json({ success: false, error: 'Order system off - Admin ke janao' });
-  }
-
-  let diamondAmount = diamond || 0;
-  if (!diamondAmount) {
-    const match = pack.match(/(\d+)/);
-    if (match) diamondAmount = parseInt(match[1]);
-  }
+  // resell.codes er Docs onujayi product ID lagbe
+  // Dashboard > API Docs e Product ID dekhte parba
+  const productId = process.env.RESELL_PRODUCT_FF || '';
 
   try {
-    const r = await fetch(SUPPLIER_URL, {
+    const r = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': SUPPLIER_KEY,
-        'X-Server': server
+        'Authorization': `Bearer ${API_KEY}`
       },
       body: JSON.stringify({
-        uid: String(uid).trim(),
+        product_id: productId,
+        player_id: String(uid).trim(),
+        zone_id: zoneId || '',
         package: pack,
-        diamond: diamondAmount,
-        price: price,
-        server: server,
-        game: server === 'pubg' ? 'PUBG' : 'Free Fire'
+        quantity: 1,
+        price: price
       })
     });
 
     const data = await r.json().catch(() => ({}));
 
-    if (data.success || data.orderId) {
-      return res.json({ success: true, orderId: data.orderId, server, diamond: diamondAmount, package: pack, uid, message: 'Order Done! ID te asbe!' });
+    // Supplier confirm korle tobei success
+    if (data.success || data.order_id || data.id) {
+      return res.json({ success: true, orderId: data.order_id || data.id, uid, package: pack, status: 'Processing', message: 'Robot Order Gese! 5-15 min e ID te asbe' });
     } else {
-      return res.json({ success: false, error: 'Order jay nai - Pore try koro' });
+      return res.json({ success: false, error: data.message || 'Supplier order ney nai - Balance check koro' });
     }
-
   } catch (e) {
-    return res.status(500).json({ success: false, error: 'Order pathate pari nai - Pore try koro' });
+    return res.status(500).json({ success: false, error: 'Robot order pathate pari nai' });
   }
 }
